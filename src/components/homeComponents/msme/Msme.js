@@ -8,7 +8,7 @@ export default function MSME() {
         <div className="bg-gray-100 rounded-xl shadow-sm p-8 transition-all hover:shadow-md">
           <p className="text-gray-700 leading-relaxed mb-6">
             Micro, Small and Medium Enterprises (MSMEs) are the backbone of the Indian economy.
-            They contribute significantly to the country's GDP, exports, and employment generation.
+            They contribute significantly to the country GDP, exports, and employment generation.
           </p>
           
           <p className="text-gray-700 leading-relaxed mb-6">
