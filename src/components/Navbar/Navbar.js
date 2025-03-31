@@ -301,8 +301,6 @@ const Header = () => {
                             }`}
                         onClick={() => setShowMenu(false)}
                     ></div>
-
-                    {/* Mobile menu */}
                     <div
                         className={`fixed top-0 right-0 h-full w-4/5 max-w-sm bg-white z-50 shadow-2xl transform transition-transform duration-300 ease-in-out lg:hidden overflow-y-auto ${showMenu ? "translate-x-0" : "translate-x-full"
                             }`}

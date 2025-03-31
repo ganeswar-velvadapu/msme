@@ -11,7 +11,6 @@ export default function AfterCarousel() {
         <div className="mb-10">
           <MSME />
       </div>
-
       <div className="flex flex-col gap-12">
         <div className="grid md:grid-cols-2 gap-8">
           <LatestNews />

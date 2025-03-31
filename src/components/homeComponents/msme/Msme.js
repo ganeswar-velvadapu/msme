@@ -5,7 +5,6 @@ export default function MSME() {
     <>
       <div className="max-w-7xl mx-auto  px-4 py-12">
         <h2 className="text-3xl mb-8 text-gray-800 border-blue-500 font-bold">What is MSME?</h2>
-        
         <div className="bg-gray-100 rounded-xl shadow-sm p-8 transition-all hover:shadow-md">
           <p className="text-gray-700 leading-relaxed mb-6">
             Micro, Small and Medium Enterprises (MSMEs) are the backbone of the Indian economy.

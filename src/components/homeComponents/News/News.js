@@ -213,7 +213,6 @@ export default function LatestNews() {
         </div>
       </div>
 
-      {/* News Popup with updated background effect */}
       {isPopupOpen && selectedNews && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-opacity-80 backdrop-blur-md p-4"

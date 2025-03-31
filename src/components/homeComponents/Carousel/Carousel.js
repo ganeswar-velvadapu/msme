@@ -17,7 +17,6 @@ const CustomSwiper = ({ images }) => {
   const goToSlide = (index) => {
     setCurrentIndex(index);
   };
-
   useEffect(() => {
     if (!isPaused) {
       const interval = setInterval(nextSlide, 4000);

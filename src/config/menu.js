@@ -39,6 +39,7 @@ const main = [
       }
     ]
   },
+  
   {
     "name": "People",
     "url": "/people",

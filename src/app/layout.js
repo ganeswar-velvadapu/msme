@@ -18,7 +18,6 @@ export const metadata = {
   title: "Depeartment of Materials Science and Metallurgy",
   description: "Depeartment of Materials Science and Metallurgy",
 };
-
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
