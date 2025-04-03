@@ -44,7 +44,7 @@ const main = [
     },
     {
         "name": "People",
-        "url": "/people",
+        "url": "/people/faculty",
         "hasChildren": true,
         "children": [
             {
