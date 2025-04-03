@@ -9,17 +9,13 @@ import { CgClose, CgMenu } from "react-icons/cg";
 // Using the menu.js data directly
 const main = [
     {
-        "name": "Home",
-        "url": "/",
-    },
-    {
-        "name": "About Us",
+        "name": "About",
         "url": "/about",
         "hasChildren": true,
         "children": [
             {
                 "name": "Message from HOD",
-                "url": "/about"
+                "url": "/about/message"
             },
         ]
     },
@@ -198,7 +194,7 @@ const Header = () => {
 
     return (
         <header
-            className={`bg-white transition-all duration-300 shadow-lg ${sticky ? "fixed top-0 left-0 w-full shadow-xl z-50" : ""
+            className={`bg-gray-100 transition-all duration-300 shadow-lg ${sticky ? "fixed top-0 left-0 w-full shadow-xl z-50" : ""
                 }`}
             ref={headerRef}
         >
@@ -207,7 +203,7 @@ const Header = () => {
                     <div className="flex-shrink-0">
                         <Link href="/" className="flex items-center">
                             <span className="text-gray-800 font-semibold text-xl hidden md:block md:mr-10">
-                                Department of Materials Science and Metallurgical Engineering
+                                Materials Science and Metallurgical Engineering
                             </span>
                         </Link>
                     </div>
@@ -229,24 +225,26 @@ const Header = () => {
                                 <React.Fragment key={`menu-${i}`}>
                                     {menu.hasChildren ? (
                                         <li className="relative group">
-                                            <span
+                                            <Link
+                                                href={menu.url}
                                                 className="flex items-center cursor-pointer text-gray-700 hover:text-gray-900 text-lg font-medium py-2 px-1 border-b-2 border-transparent hover:border-gray-800 transition-colors duration-200"
                                                 aria-haspopup="true"
                                             >
                                                 {menu.name}
                                                 <IoIosArrowDown className="ml-1 text-sm transition-transform duration-200 group-hover:rotate-180" />
-                                            </span>
+                                            </Link>
                                             <ul className="hidden group-hover:block absolute left-0 top-full bg-white shadow-xl rounded-md py-2 min-w-[250px] z-10 border-t-2 border-gray-800">
                                                 {menu.children.map((child, j) => (
                                                     <li key={`children-${j}`} className="relative group/nested">
                                                         {child.hasChildren ? (
                                                             <>
-                                                                <span
+                                                                <Link
+                                                                    href={child.url}
                                                                     className="flex items-center justify-between py-2 px-4 text-gray-700 hover:bg-gray-50 hover:text-gray-900 text-base cursor-pointer"
                                                                 >
                                                                     {child.name}
                                                                     <IoIosArrowForward className="ml-1 text-sm transition-transform duration-200 group-hover/nested:rotate-90" />
-                                                                </span>
+                                                                </Link>
                                                                 <ul className="hidden group-hover/nested:block absolute left-full top-0 bg-white shadow-xl rounded-md py-2 min-w-[250px] z-20 border-l-2 border-gray-800">
                                                                     {child.children.map((grandchild, k) => (
                                                                         <li key={`grandchild-${k}`}>
@@ -276,13 +274,14 @@ const Header = () => {
                                                 ))}
                                             </ul>
                                         </li>
+
                                     ) : (
                                         <li>
                                             <Link
                                                 href={menu.url}
                                                 className={`block py-2 px-1 text-lg font-medium border-b-2 ${asPath === menu.url
-                                                        ? "text-gray-900 border-gray-800"
-                                                        : "text-gray-700 hover:text-gray-900 border-transparent hover:border-gray-800"
+                                                    ? "text-gray-900 border-gray-800"
+                                                    : "text-gray-700 hover:text-gray-900 border-transparent hover:border-gray-800"
                                                     } transition-colors duration-200`}
                                                 onClick={handleLinkClick}
                                             >
@@ -389,8 +388,8 @@ const Header = () => {
                                             <Link
                                                 href={menu.url}
                                                 className={`block px-6 py-3 text-lg ${asPath === menu.url
-                                                        ? "text-gray-900 font-medium bg-gray-50"
-                                                        : "text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                                                    ? "text-gray-900 font-medium bg-gray-50"
+                                                    : "text-gray-700 hover:text-gray-900 hover:bg-gray-50"
                                                     }`}
                                                 onClick={handleLinkClick}
                                             >
