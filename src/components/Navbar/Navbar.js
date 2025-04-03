@@ -87,48 +87,48 @@ const main = [
         "children": [
             {
                 "name": "Programs",
-                "url": "/academia",
+                "url": "academia/programs",
                 "hasChildren": true,
                 "children": [
                     {
                         "name": "B Tech",
-                        "url": "https://sites.google.com/ce.iith.ac.in/environmental/home"
+                        "url": "academia/programs/btech"
                     },
                     {
                         "name": "M Tech",
-                        "url": "https://sites.google.com/view/geotech-iith/"
+                        "url": "academia/programs/mtech"
                     },
                     {
                         "name": "PhD",
-                        "url": "https://sites.google.com/ce.iith.ac.in/hydraulic-and-water-resources-/home?authuser=0"
+                        "url": "academia/programs/phd"
                     },
                 ]
             },
             {
                 "name": "UG Course Curriculum",
-                "url": "https://sites.google.com/ce.iith.ac.in/environmental/home",
+                "url": "",
             },
             {
                 "name": "PG Course Curriculum",
-                "url": "/facilities/computational"
+                "url": ""
             },
             {
                 "name": "Labs",
-                "url": "/facilities/computational"
+                "url": ""
             },
             {
                 "name": "Time Table",
-                "url": "/facilities/computational"
+                "url": ""
             }
         ]
     },
     {
         "name": "Careers",
-        "url": "/activities",
+        "url": "/careers",
     },
     {
         "name": "Contact",
-        "url": "/resources",
+        "url": "/contact",
     }
 ];
 
