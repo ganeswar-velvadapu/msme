@@ -1,143 +1,48 @@
-// "use client";
-
-// export default function MSME() {
-//   return (
-//     <>
-//       <div className="max-w-7xl mx-auto  px-4 py-12">
-//         <h2 className="text-3xl mb-8 text-gray-800 border-blue-500 font-bold">What is MSME?</h2>
-//         <div className="bg-gray-100 rounded-xl shadow-sm p-8 transition-all hover:shadow-md">
-//           <p className="text-gray-700 leading-relaxed mb-6">
-//             Micro, Small and Medium Enterprises (MSMEs) are the backbone of the Indian economy.
-//             They contribute significantly to the country's GDP, exports, and employment generation.
-//           </p>
-          
-//           <p className="text-gray-700 leading-relaxed mb-6">
-//             MSMEs are classified based on their investment in plant and machinery or equipment:
-//           </p>
-          
-//           <div className="space-y-6 mb-8">
-//             <div className="flex items-start bg-gray-50 p-4 rounded-lg">
-//               <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 mr-4 flex-shrink-0">
-//                 <span className="text-xl">Mi</span>
-//               </div>
-//               <div>
-//                 <h3 className="font-medium text-gray-900 mb-1">Micro enterprises</h3>
-//                 <p className="text-gray-600">Investment up to Rs. 1 crore and turnover up to Rs. 5 crore</p>
-//               </div>
-//             </div>
-            
-//             <div className="flex items-start bg-gray-50 p-4 rounded-lg">
-//               <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center text-green-600 mr-4 flex-shrink-0">
-//                 <span className="text-xl">S</span>
-//               </div>
-//               <div>
-//                 <h3 className="font-medium text-gray-900 mb-1">Small enterprises</h3>
-//                 <p className="text-gray-600">Investment up to Rs. 10 crore and turnover up to Rs. 50 crore</p>
-//               </div>
-//             </div>
-            
-//             <div className="flex items-start bg-gray-50 p-4 rounded-lg">
-//               <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center text-purple-600 mr-4 flex-shrink-0">
-//                 <span className="text-xl">Me</span>
-//               </div>
-//               <div>
-//                 <h3 className="font-medium text-gray-900 mb-1">Medium enterprises</h3>
-//                 <p className="text-gray-600">Investment up to Rs. 50 crore and turnover up to Rs. 250 crore</p>
-//               </div>
-//             </div>
-//           </div>
-          
-//           <div className="border-t border-gray-100 pt-6">
-//             <p className="text-gray-700 leading-relaxed">
-//               The government provides various schemes and initiatives to support the growth and development of MSMEs,
-//               including financial assistance, technological upgradation, infrastructure development, and marketing support.
-//             </p>
-//           </div>
-//         </div>
-        
-//         <div className="mt-6 text-center">
-//           <a href="#" className="inline-block text-blue-600 hover:text-blue-800 font-medium transition-colors">
-//             Learn more about MSME initiatives →
-//           </a>
-//         </div>
-//       </div>
-//     </>
-//   );
-// }
-
 "use client";
+
+import Link from "next/link";
 
 export default function MaterialScience() {
   return (
-    <>
-      <div className="max-w-7xl mx-auto px-4 py-12">
-        <h2 className="text-3xl mb-8 text-gray-800 border-blue-500 font-bold">Material Science & Metallurgical Engineering</h2>
-        <div className="bg-gray-100 rounded-xl shadow-sm p-8 transition-all hover:shadow-md">
-          <p className="text-gray-700 leading-relaxed mb-6">
-            Micro, Small and Medium Enterprises (MSMEs) are the backbone of the Indian economy.
-            They contribute significantly to the country GDP, exports, and employment generation.
-          </p>
-          
-          <p className="text-gray-700 leading-relaxed mb-6">
-            This field covers different classes of materials, including metals, ceramics, polymers, and composites:
-          </p>
-          
-          <div className="space-y-6 mb-8">
-            <div className="flex items-start bg-gray-50 p-4 rounded-lg">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 mr-4 flex-shrink-0">
-                <span className="text-xl">Me</span>
-              </div>
-              <div>
-                <h3 className="font-medium text-gray-900 mb-1">Metals</h3>
-                <p className="text-gray-600">Strong, conductive, and widely used in construction, automotive, and aerospace industries.</p>
-              </div>
+    <section className="max-w-7xl mx-auto px-4 py-16">
+      <h2 className="text-5xl mb-10 font-bold tracking-tight">Material Science & Metallurgical Engineering</h2>
+
+      <div className="bg-white rounded-lg border border-gray-200 p-8 shadow-sm">
+        <p className="text-gray-800 leading-relaxed mb-8 text-xl">
+          Micro, Small and Medium Enterprises (MSMEs) are the backbone of the Indian economy.
+          They contribute significantly to the country's GDP, exports, and employment generation.
+        </p>
+
+        <p className="text-gray-800 leading-relaxed mb-8 text-lg">
+          This field covers different classes of materials, including metals, ceramics, polymers, and composites:
+        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          <div className="group bg-gray-50 p-6 rounded-lg border border-gray-100 hover:shadow-md transition-all">
+            <div className="flex items-center mb-4">
+
+              <h3 className="font-medium text-gray-900 text-xl">Metals</h3>
             </div>
-            
-            <div className="flex items-start bg-gray-50 p-4 rounded-lg">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center text-green-600 mr-4 flex-shrink-0">
-                <span className="text-xl">Ce</span>
-              </div>
-              <div>
-                <h3 className="font-medium text-gray-900 mb-1">Ceramics</h3>
-                <p className="text-gray-600">Brittle but heat-resistant materials used in electronics, medical implants, and aerospace.</p>
-              </div>
-            </div>
-            
-            <div className="flex items-start bg-gray-50 p-4 rounded-lg">
-              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center text-purple-600 mr-4 flex-shrink-0">
-                <span className="text-xl">Po</span>
-              </div>
-              <div>
-                <h3 className="font-medium text-gray-900 mb-1">Polymers</h3>
-                <p className="text-gray-600">Lightweight and flexible materials used in packaging, medical devices, and automotive parts.</p>
-              </div>
-            </div>
-            
-            <div className="flex items-start bg-gray-50 p-4 rounded-lg">
-              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center text-orange-600 mr-4 flex-shrink-0">
-                <span className="text-xl">Co</span>
-              </div>
-              <div>
-                <h3 className="font-medium text-gray-900 mb-1">Composites</h3>
-                <p className="text-gray-600">Combination of two or more materials for enhanced strength and durability in aerospace and sports equipment.</p>
-              </div>
-            </div>
-          </div>
-          
-          <div className="border-t border-gray-100 pt-6">
-            <p className="text-gray-700 leading-relaxed">
-              Advances in Material Science contribute to innovations in nanotechnology, biomaterials, and sustainable materials,
-              impacting various industries and improving everyday life.
-            </p>
+            <p className="text-gray-600">Strong, conductive, and widely used in construction, automotive, and aerospace industries.</p>
           </div>
         </div>
-        
-        <div className="mt-6 text-center">
-          <a href="#" className="inline-block text-blue-600 hover:text-blue-800 font-medium transition-colors">
-            Learn more about Material Science & Metallurgical Engineering →
-          </a>
+
+        <div className="border-t border-gray-200 pt-6">
+          <p className="text-gray-800 leading-relaxed">
+            Advances in Material Science contribute to innovations in nanotechnology, biomaterials, and sustainable materials,
+            impacting various industries and improving everyday life.
+          </p>
         </div>
       </div>
-    </>
+
+      <div className="mt-8 text-center">
+        <Link href="/about" className="inline-flex items-center text-gray-900 font-medium hover:text-gray-600 transition-colors group">
+          Learn more about Material Science & Metallurgical Engineering
+          <svg className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+          </svg>
+        </Link>
+      </div>
+    </section>
   );
 }
