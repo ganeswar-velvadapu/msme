@@ -21,7 +21,7 @@ const main = [
     },
     {
         "name": "Research",
-        "url": "/research/areas",
+        "url": "/research",
         "hasChildren": true,
         "children": [
             {
