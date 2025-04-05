@@ -113,7 +113,7 @@ export default function UpcomingEvents() {
         
         <div
           ref={scrollRef}
-          className="h-[550px] md:h-[650px] overflow-y-auto scrollbar-hide grid grid-cols-1 md:grid-cols-2 gap-4 p-4"
+          className="h-[550px] md:h-[650px] overflow-y-auto scrollbar-hide grid grid-cols-1 gap-4 p-4"
         >
           {materialsScienceEvents.map((item, index) => {
             const eventType = getEventType(item.eventName);
