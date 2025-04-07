@@ -21,11 +21,8 @@ const serverFunction: ServerFunctionClient = async function (args) {
     importMap,
   })
 }
-
 const Layout = ({ children }: Args) => (
-  <RootLayout config={config} importMap={importMap} serverFunction={serverFunction}>
-    {children}
-  </RootLayout>
-)
-
+    // eslint-disable-next-line react/no-children-prop
+    <RootLayout config={config} importMap={importMap} serverFunction={serverFunction} children={children ?? null} />
+);
 export default Layout
