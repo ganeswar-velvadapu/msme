@@ -11,13 +11,6 @@ const main = [
     {
         "name": "About",
         "url": "/about",
-        "hasChildren": true,
-        "children": [
-            {
-                "name": "Message from HOD",
-                "url": "/about/message"
-            },
-        ]
     },
     {
         "name": "Research",
@@ -105,16 +98,19 @@ const main = [
                 ]
             },
             {
-                "name": "UG Course Curriculum",
+                "name": "Course Curriculum",
                 "url": "",
-            },
-            {
-                "name": "PG Course Curriculum",
-                "url": ""
-            },
-            {
-                "name": "Labs",
-                "url": ""
+                "hasChildren" : true,
+                "children": [
+                    {
+                        "name": "UG Course Curriculum",
+                        "url": "academia/programs/btech"
+                    },
+                    {
+                        "name": "PG Course Curriculum",
+                        "url": "academia/programs/mtech"
+                    },
+                ]
             },
             {
                 "name": "Time Table",
@@ -199,14 +195,7 @@ const Header = () => {
             ref={headerRef}
         >
             <div className="container mx-auto px-4">
-                <nav className="flex items-center justify-between h-20">
-                    <div className="flex-shrink-0">
-                        <Link href="/" className="flex items-center">
-                            <span className="text-gray-800 font-semibold text-xl hidden md:block md:mr-10">
-                                Materials Science and Metallurgical Engineering
-                            </span>
-                        </Link>
-                    </div>
+                <nav className="flex items-center justify-center h-20"> 
                     <button
                         className="lg:hidden flex items-center justify-center w-12 h-12 text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-full transition-colors duration-200"
                         onClick={() => setShowMenu(!showMenu)}
@@ -219,7 +208,7 @@ const Header = () => {
                             <CgMenu className="text-2xl" />
                         )}
                     </button>
-                    <div className="hidden lg:flex lg:items-center lg:justify-end lg:flex-1">
+                    <div className="hidden lg:flex lg:items-center lg:justify-center lg:flex-1">
                         <ul className="flex space-x-8 items-center">
                             {main.map((menu, i) => (
                                 <React.Fragment key={`menu-${i}`}>
