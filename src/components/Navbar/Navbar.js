@@ -80,20 +80,20 @@ const main = [
         "children": [
             {
                 "name": "Programs",
-                "url": "academia/programs",
+                "url": "/academia/programs/btech",
                 "hasChildren": true,
                 "children": [
                     {
                         "name": "B Tech",
-                        "url": "academia/programs/btech"
+                        "url": "/academia/programs/btech"
                     },
                     {
                         "name": "M Tech",
-                        "url": "academia/programs/mtech"
+                        "url": "/academia/programs/mtech"
                     },
                     {
                         "name": "PhD",
-                        "url": "academia/programs/phd"
+                        "url": "/academia/programs/phd"
                     },
                 ]
             },
@@ -104,11 +104,11 @@ const main = [
                 "children": [
                     {
                         "name": "UG Course Curriculum",
-                        "url": "academia/programs/btech"
+                        "url": "/academia/programs/btech"
                     },
                     {
                         "name": "PG Course Curriculum",
-                        "url": "academia/programs/mtech"
+                        "url": "/academia/programs/mtech"
                     },
                 ]
             },
