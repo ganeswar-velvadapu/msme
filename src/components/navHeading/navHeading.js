@@ -62,7 +62,7 @@ export default function NavHeading() {
                                     className="font-['Montserrat'] text-sm sm:text-xl md:text-3xl  font-bold"
                                     style={{ textShadow: "0px 1px 2px rgba(0,0,0,0.1)" }}
                                 >
-                                    Department of Materials Science and Metallurgy Engineering
+                                    Materials Science and Metallurgy Engineering
                                 </h1>
                             </Link>
 
