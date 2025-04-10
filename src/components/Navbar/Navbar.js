@@ -6,9 +6,8 @@ import React, { useEffect, useRef, useState } from "react";
 import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
 import { CgClose, CgMenu } from "react-icons/cg";
 
-// Using the menu.js data directly
 const main = [
-    {
+    {   
         "name": "About",
         "url": "/about",
     },
@@ -100,7 +99,7 @@ const main = [
             {
                 "name": "Course Curriculum",
                 "url": "",
-                "hasChildren" : true,
+                "hasChildren": true,
                 "children": [
                     {
                         "name": "UG Course Curriculum",
@@ -195,7 +194,7 @@ const Header = () => {
             ref={headerRef}
         >
             <div className="container mx-auto px-4">
-                <nav className="flex items-center justify-center h-20"> 
+                <nav className="flex items-center justify-center h-20">
                     <button
                         className="lg:hidden flex items-center justify-center w-12 h-12 text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-full transition-colors duration-200"
                         onClick={() => setShowMenu(!showMenu)}

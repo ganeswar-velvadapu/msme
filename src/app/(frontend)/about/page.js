@@ -151,7 +151,7 @@ export default function About() {
                 MSME plays a crucial role in advancing technology across various sectors including aerospace, automotive, electronics, energy, healthcare, and infrastructure development. The continuous innovation in materials has been fundamental to human technological progress throughout history.
               </p>
               <p className="text-gray-700">
-                At its core, MSME bridges fundamental scientific understanding with practical engineering applications, creating materials that push the boundaries of what's possible in modern technology.
+                At its core, MSME bridges fundamental scientific understanding with practical engineering applications, creating materials that push the boundaries of what&apos;s possible in modern technology.
               </p>
             </div>
           </div>
@@ -202,16 +202,16 @@ export default function About() {
             <div className="md:w-2/3">
               <div className="bg-gray-50 p-6 rounded-lg">
                 <p className="text-gray-700 italic mb-4">
-                  "I am delighted to welcome you to the Department of Materials Science and Metallurgical Engineering. Our department stands at the forefront of scientific and technological advancement in materials research, with a rich heritage dating back to the institute's inception.
+                  I am delighted to welcome you to the Department of Materials Science and Metallurgical Engineering. Our department stands at the forefront of scientific and technological advancement in materials research, with a rich heritage dating back to the institute&apos;s inception.
                 </p>
                 <p className="text-gray-700 italic mb-4">
-                  In today's rapidly evolving technological landscape, materials play a pivotal role in addressing global challenges related to energy, environment, healthcare, and infrastructure. Our dedicated faculty, researchers, and students work collaboratively to develop innovative materials solutions that contribute to human progress and sustainability.
+                  In today&apos;s rapidly evolving technological landscape, materials play a pivotal role in addressing global challenges related to energy, environment, healthcare, and infrastructure. Our dedicated faculty, researchers, and students work collaboratively to develop innovative materials solutions that contribute to human progress and sustainability.
                 </p>
                 <p className="text-gray-700 italic mb-4">
                   We take pride in our comprehensive curriculum that balances theoretical knowledge with practical skills, preparing our students to excel in academia, industry, and entrepreneurship. Our research initiatives span from fundamental investigations at the atomic scale to applied technologies ready for industrial implementation.
                 </p>
                 <p className="text-gray-700 italic">
-                  I invite you to explore our department and discover the exciting opportunities in materials science and engineering. Whether you are a prospective student, researcher, industry partner, or simply curious about our field, we welcome your interest and look forward to potential collaborations."
+                  I invite you to explore our department and discover the exciting opportunities in materials science and engineering. Whether you are a prospective student, researcher, industry partner, or simply curious about our field, we welcome your interest and look forward to potential collaborations.
                 </p>
                 <div className="mt-4 text-right">
                   <p className="font-semibold text-black">Prof. Rajesh Kumar</p>
