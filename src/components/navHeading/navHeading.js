@@ -35,7 +35,7 @@ export default function NavHeading() {
             className={`py-4 sm:py-5 transition-all duration-300 `}
         >
             <div className="container mx-auto px-4">
-                <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+                <div className="flex flex-col md:flex-row items-center justify-center gap-4">
                     {/* Logo section */}
                     <div className="flex flex-row items-center gap-3 sm:gap-4 md:gap-6 lg:gap-8">
                         <Link
@@ -45,8 +45,8 @@ export default function NavHeading() {
                         >
                             <div className="p-1 rounded-lg group-hover:shadow-md transition-all duration-300">
                                 <img
-                                    src="https://www.iith.ac.in/assets/images/logo.png"
-                                    className="w-auto h-20 transition-transform duration-300 group-hover:scale-105 bg-transparent "
+                                    src="https://upload.wikimedia.org/wikipedia/en/thumb/1/19/IIT_Hyderabad_Insignia.svg/200px-IIT_Hyderabad_Insignia.svg.png"
+                                    className="w-36 h-32 transition-transform duration-300 group-hover:scale-105 bg-white"
                                     alt="IIT Hyderabad Logo"
                                 />
                             </div>
@@ -59,10 +59,10 @@ export default function NavHeading() {
 
                             <Link href="/" className="group transition-all duration-300 transform">
                                 <h1
-                                    className="font-['Montserrat'] text-sm sm:text-xl md:text-3xl  font-bold"
+                                    className="font-['Montserrat'] text-sm sm:text-xl md:text-4xl  font-bold"
                                     style={{ textShadow: "0px 1px 2px rgba(0,0,0,0.1)" }}
                                 >
-                                    Materials Science and Metallurgy Engineering
+                                    Materials Science and Metallurgical Engineering
                                 </h1>
                             </Link>
 
