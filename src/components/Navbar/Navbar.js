@@ -7,7 +7,7 @@ import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
 import { CgClose, CgMenu } from "react-icons/cg";
 
 const main = [
-    {   
+    {
         "name": "About",
         "url": "/about",
     },
@@ -73,7 +73,7 @@ const main = [
         ]
     },
     {
-        "name": "Academia",
+        "name": "Academics",
         "url": "/academia",
         "hasChildren": true,
         "children": [
@@ -118,13 +118,55 @@ const main = [
         ]
     },
     {
-        "name": "Careers",
-        "url": "/careers",
+        "name": "Admissions",
+        "url": "/admissions/btech",
+        "hasChildren": true,
+                "children": [
+                    {
+                        "name": "B.Tech",
+                        "url": "/admissions/btech"
+                    },
+                    {
+                        "name": "M.Tech",
+                        "url": "/admissions/mtech"
+                    },
+                    {
+                        "name": "PhD",
+                        "url": "/admissions/phd"
+                    },
+                ]
     },
     {
-        "name": "Contact",
+        "name": "Careers",
+        "url": "/careers",
+        "hasChildren" : true,
+        children : [
+            {
+                "name" : "Faculty Position",
+                "url" : "/careers/faculty_position"
+            },
+            {
+                "name" : "Post Doc Position",
+                "url" : "/careers/post_doc_position"
+            },
+            {
+                "name" : "Staff Position",
+                "url" : "/careers/staff_position"
+            },
+            {
+                "name" : "Where do MSME graduates go after graduation?",
+                "url" : "/careers/where_to_go"
+            },
+            {
+                "name" : "Placements",
+                "url" : "/careers/placements"
+            },
+        ]
+    },
+    {
+        "name": "Contact Us",
         "url": "/contact",
-    }
+    },
 ];
 
 const Header = () => {
