@@ -2,9 +2,10 @@
 import Link from 'next/link';
 import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram, FaMapMarkerAlt, FaPhone, FaEnvelope, FaChevronRight } from 'react-icons/fa';
 export default function Footer() {
-    const email = "head@msme.iith.ac.in";
+    const headEmail = `head@msme.iith.ac.in`;
+    const officeEmail = `office@msme.iith.ac.in`
     const location = "MSME Block, IIT Hyderabad, Kandi, Sangareddy, Hyderabad, Telangana, India";
-    const phone = "+91 12 3456789"; 
+    const phone = "+91 12 3456789";
     const copyright = "© 2025 Department of Materials Science and Metallurgical Engineering, IIT Hyderabad. All rights reserved.";
 
     const footerLinks = {
@@ -48,13 +49,10 @@ export default function Footer() {
                     <div className="max-w-md mb-8 md:mb-0">
                         <h2 className="text-2xl font-bold mb-3">Department of Materials Science and Metallurgical Engineering</h2>
                         <h3 className="text-lg text-gray-600 mb-4">IIT Hyderabad</h3>
-                        <p className="text-gray-700 mb-6">
-                            Leading research and education in materials science and metallurgical engineering, structural engineering, 
-                            transportation systems, environmental engineering, and more.
-                        </p>
+
                         <div className="flex space-x-4">
                             {socialLinks.map((social) => (
-                                <Link 
+                                <Link
                                     key={social.name}
                                     href={social.url}
                                     className="w-10 h-10 rounded-lg flex items-center justify-center bg-black hover:bg-gray-700 text-white transition-all duration-300"
@@ -65,7 +63,7 @@ export default function Footer() {
                             ))}
                         </div>
                     </div>
-                    
+
                     <div className="flex flex-col justify-center">
                         <div className="flex flex-col space-y-4">
                             <div className="flex items-start">
@@ -80,8 +78,15 @@ export default function Footer() {
                             </div>
                             <div className="flex items-center">
                                 <FaEnvelope className="mr-3 text-black text-lg flex-shrink-0" />
-                                <Link href={`mailto:${email}`} className="text-gray-800 hover:text-gray-600 transition-colors duration-300">
-                                    {email}
+                                <Link href={`mailto:${headEmail}`} className="text-gray-800 hover:text-gray-600 transition-colors duration-300">
+                                    {headEmail}
+                                </Link>
+
+                            </div>
+                            <div className="flex items-center">
+                                <FaEnvelope className="mr-3 text-black text-lg flex-shrink-0" />
+                                <Link href={`mailto:${officeEmail}`} className="text-gray-800 hover:text-gray-600 transition-colors duration-300">
+                                    {officeEmail}
                                 </Link>
                             </div>
                         </div>
