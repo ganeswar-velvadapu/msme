@@ -5,7 +5,6 @@ import Link from "next/link";
 export default function MaterialScience() {
   return (
     <section className="max-w-7xl mx-auto px-4 py-16">
-      <h2 className="text-5xl mb-10 font-bold tracking-tight">Material Science & Metallurgical Engineering</h2>
 
       <div className="bg-white rounded-lg border border-gray-200 p-8 shadow-sm">
         <p className="text-gray-800 leading-relaxed mb-8 text-xl">
