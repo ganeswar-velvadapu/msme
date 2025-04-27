@@ -69,6 +69,7 @@ export interface Config {
   collections: {
     users: User;
     media: Media;
+    placements: Placement;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -77,6 +78,7 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
+    placements: PlacementsSelect<false> | PlacementsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -151,6 +153,36 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "placements".
+ */
+export interface Placement {
+  id: number;
+  year: number;
+  btech_placements: {
+    registeredStudents: number;
+    placedStudents: number;
+    minCTC: number;
+    maxCTC: number;
+    medianCTC: number;
+    id?: string | null;
+  }[];
+  mtech_placements: {
+    registeredStudents: number;
+    placedStudents: number;
+    minCTC: number;
+    maxCTC: number;
+    medianCTC: number;
+    id?: string | null;
+  }[];
+  companiesHired: {
+    companyName: string;
+    id?: string | null;
+  }[];
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -163,6 +195,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'media';
         value: number | Media;
+      } | null)
+    | ({
+        relationTo: 'placements';
+        value: number | Placement;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -238,6 +274,41 @@ export interface MediaSelect<T extends boolean = true> {
   height?: T;
   focalX?: T;
   focalY?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "placements_select".
+ */
+export interface PlacementsSelect<T extends boolean = true> {
+  year?: T;
+  btech_placements?:
+    | T
+    | {
+        registeredStudents?: T;
+        placedStudents?: T;
+        minCTC?: T;
+        maxCTC?: T;
+        medianCTC?: T;
+        id?: T;
+      };
+  mtech_placements?:
+    | T
+    | {
+        registeredStudents?: T;
+        placedStudents?: T;
+        minCTC?: T;
+        maxCTC?: T;
+        medianCTC?: T;
+        id?: T;
+      };
+  companiesHired?:
+    | T
+    | {
+        companyName?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
