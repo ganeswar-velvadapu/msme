@@ -138,20 +138,20 @@ const main = [
     },
     {
         "name": "Careers",
-        "url": "/careers",
+        "url": "https://www.iith.ac.in/careers/",
         "hasChildren" : true,
         children : [
             {
-                "name" : "Faculty Position",
-                "url" : "/careers/faculty_position"
+                "name" : "Join as Faculty",
+                "url" : "https://www.iith.ac.in/careers/"
             },
             {
-                "name" : "Post Doc Position",
-                "url" : "/careers/post_doc_position"
+                "name" : "Join as Post Doc",
+                "url" : "https://www.iith.ac.in/careers/"
             },
             {
-                "name" : "Staff Position",
-                "url" : "/careers/staff_position"
+                "name" : "Join as Staff",
+                "url" : "https://www.iith.ac.in/careers/"
             },
             {
                 "name" : "Where do MSME graduates go after graduation?",
