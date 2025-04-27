@@ -10,7 +10,7 @@ export const HomeCarousel:CollectionConfig = {
             label : "Upload Carousel Image",
             type : "upload",
             relationTo : "media",
-            required : true
+
         }
     ]
 }
