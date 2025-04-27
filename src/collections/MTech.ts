@@ -20,13 +20,13 @@ export const MTech: CollectionConfig = {
             name: "mtech_batch",
             type: "text",
             label: "Enter Batch",
-            required: true
+          
         },
         {
             name : "mtech_specialization",
             type : "text",
             label : 'Enter Specialization',
-            required : true
+            
         }
     ]
 }
