@@ -6,33 +6,18 @@ export default function MaterialScience() {
   return (
     <section className="max-w-7xl mx-auto px-4 py-16">
 
-      <div className="bg-white rounded-lg border border-gray-200 p-8 shadow-sm">
-        <p className="text-gray-800 leading-relaxed mb-8 text-xl">
-          Micro, Small and Medium Enterprises (MSMEs) are the backbone of the Indian economy.
-          They contribute significantly to the country&apos; s GDP, exports, and employment generation.
+      <div className="mt-12 bg-white rounded-lg border border-gray-200 p-8 shadow-sm">
+        <h2 className="text-3xl font-bold text-gray-900 mb-6">
+          Welcome to the Materials Science and Metallurgical Engineering (MSME) Department at IIT Hyderabad
+        </h2>
+        <p className="text-gray-800 leading-relaxed mb-6 text-lg">
+          At MSME, we believe in engineering materials from their building blocks (atoms) to practical, real-world applications. The core of our research is built on a materials paradigm connecting process, structure, and property with the material's performance in cutting-edge technologies.
         </p>
-
-        <p className="text-gray-800 leading-relaxed mb-8 text-lg">
-          This field covers different classes of materials, including metals, ceramics, polymers, and composites:
+        <p className="text-gray-800 leading-relaxed mb-6 text-lg">
+          We offer an interdisciplinary academic program designed to groom the next generation of engineers at the forefront of materials design and development.
         </p>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-          <div className="group bg-gray-50 p-6 rounded-lg border border-gray-100 hover:shadow-md transition-all">
-            <div className="flex items-center mb-4">
-
-              <h3 className="font-medium text-gray-900 text-xl">Metals</h3>
-            </div>
-            <p className="text-gray-600">Strong, conductive, and widely used in construction, automotive, and aerospace industries.</p>
-          </div>
-        </div>
-
-        <div className="border-t border-gray-200 pt-6">
-          <p className="text-gray-800 leading-relaxed">
-            Advances in Material Science contribute to innovations in nanotechnology, biomaterials, and sustainable materials,
-            impacting various industries and improving everyday life.
-          </p>
-        </div>
       </div>
+
 
       <div className="mt-8 text-center">
         <Link href="/about" className="inline-flex items-center text-gray-900 font-medium hover:text-gray-600 transition-colors group">
