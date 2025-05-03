@@ -9,6 +9,7 @@ import sharp from 'sharp'
 import { Users } from '@/collections/Users'
 import { Media } from '@/collections/Media'
 import { Placements } from '@/collections/Placements'
+import { HomeCarousel } from '@/globals/HomeCarousel'
 
 // import { Users } from './collections/Users'
 // import { Media } from './collections/Media'
@@ -24,6 +25,7 @@ export default buildConfig({
     },
   },
   collections: [Users, Media,Placements],
+  globals : [HomeCarousel],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

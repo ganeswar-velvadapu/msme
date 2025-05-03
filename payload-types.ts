@@ -86,8 +86,12 @@ export interface Config {
   db: {
     defaultIDType: number;
   };
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    homecarousel: Homecarousel;
+  };
+  globalsSelect: {
+    homecarousel: HomecarouselSelect<false> | HomecarouselSelect<true>;
+  };
   locale: null;
   user: User & {
     collection: 'users';
@@ -341,6 +345,36 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "homecarousel".
+ */
+export interface Homecarousel {
+  id: number;
+  home_carousel_images?:
+    | {
+        carousel_image?: (number | null) | Media;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "homecarousel_select".
+ */
+export interface HomecarouselSelect<T extends boolean = true> {
+  home_carousel_images?:
+    | T
+    | {
+        carousel_image?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

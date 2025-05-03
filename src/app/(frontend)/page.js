@@ -1,16 +1,23 @@
-import AfterCarousel from "@/components/homeComponents/afterCarousel/AfterCarousel";
+import { getPayload } from "payload";
+import config from "@payload-config";
 import CustomSwiper from "@/components/homeComponents/Carousel/Carousel";
-import Image from "next/image";
+import AfterCarousel from "@/components/homeComponents/afterCarousel/AfterCarousel";
 
-export default function Home() {
+export default async function Home() {
+  const payload = await getPayload({ config });
 
-  const images = [
-    "https://lh7-rt.googleusercontent.com/slidesz/AGV_vUd46LsVgqr-0E_YNs3wolJkrdlYj78fYmnkF59Kr7FHklpWVxQ7lC6b6RucmfrPi5rfJwTQ924Q4ozqvHW6FjkBYZQdkSqPICFSdpvUYzQZ8SzULHm_ILb6fjhVlx17LodCqnaosvq7beYk7iHzWA=s2048?key=H7QixwRKWBkCSOcfw9h8YV1D",
-    ]
+  // Fetch home carousel images
+  const global = await payload.findGlobal({ slug: "homecarousel" });
+
+  const images =
+    global?.home_carousel_images?.map(
+      (item) => item.carousel_image?.url
+    ) || [];
+
   return (
     <>
-        <CustomSwiper images={images}/>
-        <AfterCarousel/>
+      <CustomSwiper images={images} />
+      <AfterCarousel />
     </>
-    );
+  );
 }
