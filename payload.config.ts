@@ -10,9 +10,20 @@ import { Users } from '@/collections/Users'
 import { Media } from '@/collections/Media'
 import { Placements } from '@/collections/Placements'
 import { HomeCarousel } from '@/globals/HomeCarousel'
+import { News } from '@/collections/News'
+import { Events } from '@/collections/Events'
+import { ResearchAreas } from '@/collections/ResearchAreas'
+import { ResearchFacilities } from '@/collections/ResearchFacilities'
+import { ResearchFacilitiesCarousel } from '@/collections/ResearchFacilitiesCarousel'
+import { Projects } from '@/collections/Projects'
+import { Collaborations } from '@/collections/Collaborations'
+import { Faculty } from '@/collections/Faculty'
+import { Staff } from '@/collections/Staff'
+import { BTech } from '@/collections/BTech'
+import { MTech } from '@/collections/MTech'
+import { PhD } from '@/collections/PhD'
+import { Alumni } from '@/collections/Alumni'
 
-// import { Users } from './collections/Users'
-// import { Media } from './collections/Media'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -24,7 +35,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media,Placements],
+  collections: [Users, Media,Placements,News,Events,ResearchAreas,ResearchFacilities,ResearchFacilitiesCarousel,Projects,Collaborations,Faculty,Staff,BTech,MTech,PhD,Alumni],
   globals : [HomeCarousel],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',

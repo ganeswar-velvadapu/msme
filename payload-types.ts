@@ -70,6 +70,19 @@ export interface Config {
     users: User;
     media: Media;
     placements: Placement;
+    news: News;
+    events: Event;
+    researchareas: Researcharea;
+    researchfacilities: Researchfacility;
+    researchfacilitiescarousel: Researchfacilitiescarousel;
+    projects: Project;
+    collaborations: Collaboration;
+    faculty: Faculty;
+    staff: Staff;
+    btech: Btech;
+    mtech: Mtech;
+    phd: Phd;
+    alumni: Alumnus;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -79,6 +92,19 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     placements: PlacementsSelect<false> | PlacementsSelect<true>;
+    news: NewsSelect<false> | NewsSelect<true>;
+    events: EventsSelect<false> | EventsSelect<true>;
+    researchareas: ResearchareasSelect<false> | ResearchareasSelect<true>;
+    researchfacilities: ResearchfacilitiesSelect<false> | ResearchfacilitiesSelect<true>;
+    researchfacilitiescarousel: ResearchfacilitiescarouselSelect<false> | ResearchfacilitiescarouselSelect<true>;
+    projects: ProjectsSelect<false> | ProjectsSelect<true>;
+    collaborations: CollaborationsSelect<false> | CollaborationsSelect<true>;
+    faculty: FacultySelect<false> | FacultySelect<true>;
+    staff: StaffSelect<false> | StaffSelect<true>;
+    btech: BtechSelect<false> | BtechSelect<true>;
+    mtech: MtechSelect<false> | MtechSelect<true>;
+    phd: PhdSelect<false> | PhdSelect<true>;
+    alumni: AlumniSelect<false> | AlumniSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -187,6 +213,245 @@ export interface Placement {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "news".
+ */
+export interface News {
+  id: number;
+  news_tag?: string | null;
+  news_date?: string | null;
+  news_title?: string | null;
+  news_short_description?: string | null;
+  news_read_more_description?: string | null;
+  news_web_page?: string | null;
+  news_image?: (number | null) | Media;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "events".
+ */
+export interface Event {
+  id: number;
+  events_tag?: string | null;
+  events_date?: string | null;
+  events_title?: string | null;
+  events_description?: string | null;
+  events_venue?: string | null;
+  events_image?: (number | null) | Media;
+  events_web_page?: string | null;
+  events_pdf_broucher_link?: string | null;
+  events_time?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "researchareas".
+ */
+export interface Researcharea {
+  id: number;
+  research_area_name?: string | null;
+  research_areas?:
+    | {
+        research_area_type?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  about_research_area?: string | null;
+  research_areas_associated_faculty?:
+    | {
+        research_area_faculty_name?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "researchfacilities".
+ */
+export interface Researchfacility {
+  id: number;
+  research_facility_name?: string | null;
+  research_facility_location?: string | null;
+  research_facility_fic?: string | null;
+  research_facility_fic_email?: string | null;
+  research_facility_staff_incharge?: string | null;
+  research_facility_usage_charges?: string | null;
+  research_facility_forms?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "researchfacilitiescarousel".
+ */
+export interface Researchfacilitiescarousel {
+  id: number;
+  research_facility_name?: string | null;
+  research_facility_location?: string | null;
+  research_facility_fic?: string | null;
+  research_facility_fic_email?: string | null;
+  research_facility_staff_incharge?: string | null;
+  research_facility_usage_charges?: string | null;
+  research_facility_forms?: string | null;
+  research_facility_image_url?: (number | null) | Media;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "projects".
+ */
+export interface Project {
+  id: number;
+  project_title?: string | null;
+  project_pi?: string | null;
+  project_duration?: string | null;
+  project_agency?: string | null;
+  project_type?: ('Consultancy Projects' | 'Research Projects') | null;
+  project_status?: ('Ongoing' | 'Completed') | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "collaborations".
+ */
+export interface Collaboration {
+  id: number;
+  collaborator_name?: string | null;
+  faculty_collaborator_name?: string | null;
+  institute_name?: string | null;
+  collaboration_type?: ('Industrial Collaboration' | 'Institutional Collaboration') | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "faculty".
+ */
+export interface Faculty {
+  id: number;
+  faculty_image?: (number | null) | Media;
+  faculty_name?: string | null;
+  faculty_designation?: string | null;
+  faculty_email?: string | null;
+  faculty_phd_detail?: string | null;
+  faculty_office?: string | null;
+  faculty_research_interests?:
+    | {
+        research_interest_faculty?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  faculty_publications?:
+    | {
+        faculty_publication?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  faculty_course_taught?:
+    | {
+        faculty_course_code?: string | null;
+        faculty_course_name?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "staff".
+ */
+export interface Staff {
+  id: number;
+  staff_image?: (number | null) | Media;
+  staff_name?: string | null;
+  staff_designation?: string | null;
+  staff_email?: string | null;
+  staff_education?: string | null;
+  staff_office?: string | null;
+  staff_research_interests?:
+    | {
+        research_interest_staff?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "btech".
+ */
+export interface Btech {
+  id: number;
+  btech_student_name?: string | null;
+  btech_roll_no?: string | null;
+  btech_batch?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "mtech".
+ */
+export interface Mtech {
+  id: number;
+  mtech_student_name?: string | null;
+  mtech_roll_no?: string | null;
+  mtech_batch?: string | null;
+  mtech_specialization?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "phd".
+ */
+export interface Phd {
+  id: number;
+  phd_image?: (number | null) | Media;
+  phd_name?: string | null;
+  phd_roll_no?: string | null;
+  phd_email?: string | null;
+  phd_education?: string | null;
+  phd_advisor?: string | null;
+  phd_research_topic?: string | null;
+  phd_research_interest?:
+    | {
+        research_interest_phd?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  phd_course_ta?:
+    | {
+        phd_course_code?: string | null;
+        phd_course_name?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "alumni".
+ */
+export interface Alumnus {
+  id: number;
+  alumni_student_name?: string | null;
+  alumni_degree?: string | null;
+  alumni_batch?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -203,6 +468,58 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'placements';
         value: number | Placement;
+      } | null)
+    | ({
+        relationTo: 'news';
+        value: number | News;
+      } | null)
+    | ({
+        relationTo: 'events';
+        value: number | Event;
+      } | null)
+    | ({
+        relationTo: 'researchareas';
+        value: number | Researcharea;
+      } | null)
+    | ({
+        relationTo: 'researchfacilities';
+        value: number | Researchfacility;
+      } | null)
+    | ({
+        relationTo: 'researchfacilitiescarousel';
+        value: number | Researchfacilitiescarousel;
+      } | null)
+    | ({
+        relationTo: 'projects';
+        value: number | Project;
+      } | null)
+    | ({
+        relationTo: 'collaborations';
+        value: number | Collaboration;
+      } | null)
+    | ({
+        relationTo: 'faculty';
+        value: number | Faculty;
+      } | null)
+    | ({
+        relationTo: 'staff';
+        value: number | Staff;
+      } | null)
+    | ({
+        relationTo: 'btech';
+        value: number | Btech;
+      } | null)
+    | ({
+        relationTo: 'mtech';
+        value: number | Mtech;
+      } | null)
+    | ({
+        relationTo: 'phd';
+        value: number | Phd;
+      } | null)
+    | ({
+        relationTo: 'alumni';
+        value: number | Alumnus;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -311,6 +628,232 @@ export interface PlacementsSelect<T extends boolean = true> {
         companyName?: T;
         id?: T;
       };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "news_select".
+ */
+export interface NewsSelect<T extends boolean = true> {
+  news_tag?: T;
+  news_date?: T;
+  news_title?: T;
+  news_short_description?: T;
+  news_read_more_description?: T;
+  news_web_page?: T;
+  news_image?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "events_select".
+ */
+export interface EventsSelect<T extends boolean = true> {
+  events_tag?: T;
+  events_date?: T;
+  events_title?: T;
+  events_description?: T;
+  events_venue?: T;
+  events_image?: T;
+  events_web_page?: T;
+  events_pdf_broucher_link?: T;
+  events_time?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "researchareas_select".
+ */
+export interface ResearchareasSelect<T extends boolean = true> {
+  research_area_name?: T;
+  research_areas?:
+    | T
+    | {
+        research_area_type?: T;
+        id?: T;
+      };
+  about_research_area?: T;
+  research_areas_associated_faculty?:
+    | T
+    | {
+        research_area_faculty_name?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "researchfacilities_select".
+ */
+export interface ResearchfacilitiesSelect<T extends boolean = true> {
+  research_facility_name?: T;
+  research_facility_location?: T;
+  research_facility_fic?: T;
+  research_facility_fic_email?: T;
+  research_facility_staff_incharge?: T;
+  research_facility_usage_charges?: T;
+  research_facility_forms?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "researchfacilitiescarousel_select".
+ */
+export interface ResearchfacilitiescarouselSelect<T extends boolean = true> {
+  research_facility_name?: T;
+  research_facility_location?: T;
+  research_facility_fic?: T;
+  research_facility_fic_email?: T;
+  research_facility_staff_incharge?: T;
+  research_facility_usage_charges?: T;
+  research_facility_forms?: T;
+  research_facility_image_url?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "projects_select".
+ */
+export interface ProjectsSelect<T extends boolean = true> {
+  project_title?: T;
+  project_pi?: T;
+  project_duration?: T;
+  project_agency?: T;
+  project_type?: T;
+  project_status?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "collaborations_select".
+ */
+export interface CollaborationsSelect<T extends boolean = true> {
+  collaborator_name?: T;
+  faculty_collaborator_name?: T;
+  institute_name?: T;
+  collaboration_type?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "faculty_select".
+ */
+export interface FacultySelect<T extends boolean = true> {
+  faculty_image?: T;
+  faculty_name?: T;
+  faculty_designation?: T;
+  faculty_email?: T;
+  faculty_phd_detail?: T;
+  faculty_office?: T;
+  faculty_research_interests?:
+    | T
+    | {
+        research_interest_faculty?: T;
+        id?: T;
+      };
+  faculty_publications?:
+    | T
+    | {
+        faculty_publication?: T;
+        id?: T;
+      };
+  faculty_course_taught?:
+    | T
+    | {
+        faculty_course_code?: T;
+        faculty_course_name?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "staff_select".
+ */
+export interface StaffSelect<T extends boolean = true> {
+  staff_image?: T;
+  staff_name?: T;
+  staff_designation?: T;
+  staff_email?: T;
+  staff_education?: T;
+  staff_office?: T;
+  staff_research_interests?:
+    | T
+    | {
+        research_interest_staff?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "btech_select".
+ */
+export interface BtechSelect<T extends boolean = true> {
+  btech_student_name?: T;
+  btech_roll_no?: T;
+  btech_batch?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "mtech_select".
+ */
+export interface MtechSelect<T extends boolean = true> {
+  mtech_student_name?: T;
+  mtech_roll_no?: T;
+  mtech_batch?: T;
+  mtech_specialization?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "phd_select".
+ */
+export interface PhdSelect<T extends boolean = true> {
+  phd_image?: T;
+  phd_name?: T;
+  phd_roll_no?: T;
+  phd_email?: T;
+  phd_education?: T;
+  phd_advisor?: T;
+  phd_research_topic?: T;
+  phd_research_interest?:
+    | T
+    | {
+        research_interest_phd?: T;
+        id?: T;
+      };
+  phd_course_ta?:
+    | T
+    | {
+        phd_course_code?: T;
+        phd_course_name?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "alumni_select".
+ */
+export interface AlumniSelect<T extends boolean = true> {
+  alumni_student_name?: T;
+  alumni_degree?: T;
+  alumni_batch?: T;
   updatedAt?: T;
   createdAt?: T;
 }
