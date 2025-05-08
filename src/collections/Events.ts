@@ -47,6 +47,11 @@ export const Events:CollectionConfig = {
             type : "text",
             label : "Enter PDF/Broucher Link",
         },
+        {
+            name : "events_time",
+            type:"text",
+            label : "Enter time"
+        }
     ]
 
 }

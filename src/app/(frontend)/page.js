@@ -6,7 +6,6 @@ import AfterCarousel from "@/components/homeComponents/afterCarousel/AfterCarous
 export default async function Home() {
   const payload = await getPayload({ config });
 
-  // Fetch home carousel images
   const global = await payload.findGlobal({ slug: "homecarousel" });
 
   const images =

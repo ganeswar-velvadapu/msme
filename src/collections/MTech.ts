@@ -8,13 +8,12 @@ export const MTech: CollectionConfig = {
             name: "mtech_student_name",
             type: "text",
             label: "Enter student name",
-            required: true
         },
         {
             name: "mtech_roll_no",
             type: "text",
             label: "Enter Roll Number",
-            required: true
+
         },
         {
             name: "mtech_batch",

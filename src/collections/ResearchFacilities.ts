@@ -25,17 +25,17 @@ export const ResearchFacilities:CollectionConfig = {
         },
         {
             name : "research_facility_staff_incharge",
-            type : "email",
+            type : "text",
             label : "Research Facility Staff incharge" 
         },
         {
             name : "research_facility_usage_charges",
-            type : "email",
+            type : "text",
             label : "Research Facility Usage charges" 
         },
         {
             name : "research_facility_forms",
-            type : "email",
+            type : "text",
             label : "Research Facility Forms" 
         }
     ]

@@ -49,7 +49,7 @@ const main = [
             },
             {
                 "name": "Students",
-                "url": "/people/students/ug",
+                "url": "/people/students/btech",
                 "hasChildren": true,
                 "children": [
                     {

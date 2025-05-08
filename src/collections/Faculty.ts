@@ -7,37 +7,37 @@ export const Faculty: CollectionConfig = {
             name: "faculty_image",
             type: "upload",
             relationTo: "media",
-            required: true,
+
             label: "Upload Faculty Image"
         },
         {
             name: "faculty_name",
             type: "text",
-            required: true,
+
             label: "Enter Faculty Name"
         },
         {
             name: "faculty_designation",
             type: "text",
-            required: true,
+
             label: "Faculty Designation"
         },
         {
             name: "faculty_email",
             type: "email",
-            required: true,
+
             label: "Enter Faculty Email"
         },
         {
             name: "faculty_phd_detail",
             type: "text",
-            required: true,
+
             label: "Enter PhD details"
         },
         {
             name: "faculty_office",
             type: "text",
-            required: true,
+
             label: "Enter Faculty Office"
         },
         {
@@ -47,7 +47,7 @@ export const Faculty: CollectionConfig = {
                 {
                     name: "research_interest_faculty",
                     type: "text",
-                    required: true,
+
                     label: "Enter Research Interest"
                 }
             ],
@@ -60,7 +60,7 @@ export const Faculty: CollectionConfig = {
                 {
                     name: "faculty_publication",
                     type: "text",
-                    required: true,
+
                     label: "Enter Publication Name"
                 }
             ],
@@ -73,13 +73,13 @@ export const Faculty: CollectionConfig = {
                 {
                     name: "faculty_course_code",
                     type: "text",
-                    required: true,
+
                     label: "Enter Course Code"
                 },
                 {
                     name: "faculty_course_name",
                     type: "text",
-                    required: true,
+
                     label: "Enter Course Name"
                 }
             ],

@@ -6,14 +6,13 @@ export const About: GlobalConfig = {
         {
             name: "about_msme",
             type: "textarea",
-
-            label: "About MSME"
+            label: "About MSME",
+            defaultValue: `Materials Science is an interdisciplinary branch of engineering that deals with the discovery and design of materials for nanotechnology, manufacturing, semiconductor, biomedical, and energy applications. The branch's core involves building materials via various synthesis and processing routes, followed by experimentally and computationally characterizing materials' innate crystal structure and unique properties, and ultimately maximizing their performance, efficiency, and sustainability in real-world applications. Modern metallurgists explore innovative processing routes to transform minerals into metals and work in an interdisciplinary team alongside materials scientists to design metals for extraction in batteries, light-weight manufacturing, and for space as well as extreme environments. `
         },
         {
             name: "about_the_department",
             type: "textarea",
-
-            label: "About the Department"
+            label: "About the Department",
         },
         {
             name: "vision",
