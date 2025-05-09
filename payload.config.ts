@@ -23,6 +23,7 @@ import { BTech } from '@/collections/BTech'
 import { MTech } from '@/collections/MTech'
 import { PhD } from '@/collections/PhD'
 import { Alumni } from '@/collections/Alumni'
+import { About } from '@/globals/About'
 
 
 const filename = fileURLToPath(import.meta.url)
@@ -36,7 +37,7 @@ export default buildConfig({
     },
   },
   collections: [Users, Media,Placements,News,Events,ResearchAreas,ResearchFacilities,ResearchFacilitiesCarousel,Projects,Collaborations,Faculty,Staff,BTech,MTech,PhD,Alumni],
-  globals : [HomeCarousel],
+  globals : [HomeCarousel,About],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
