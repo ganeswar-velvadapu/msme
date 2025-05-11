@@ -54,8 +54,8 @@ export default function AboutClient({ aboutList }) {
       {/* Vision */}
       {activeTab === "vision" && vision && (
         <div className="bg-white rounded-lg shadow-lg p-6 mb-8">
-          <h2 className="text-2xl font-bold mb-4 text-black text-center">Department Vision</h2>
-          <p className="text-gray-700 whitespace-pre-line text-center max-w-3xl mx-auto">{vision}</p>
+          <h2 className="text-2xl font-bold mb-4 text-black">Department Vision</h2>
+          <p className="text-gray-700 whitespace-pre-line max-w-3xl">{vision}</p>
         </div>
       )}
 
