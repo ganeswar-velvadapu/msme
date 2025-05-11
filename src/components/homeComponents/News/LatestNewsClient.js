@@ -37,7 +37,7 @@ export default function NewsClient({ newsItems }) {
     if (!selectedNews) return null;
 
     return (
-      <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 p-4" onClick={closeNewsModal}>
+      <div className="fixed inset-0 z-50 flex items-center justify-center  bg-opacity-20 backdrop-blur-sm p-4" onClick={closeNewsModal}>
         <div
           className="bg-white rounded-xl w-full max-w-3xl max-h-[90vh] overflow-y-auto shadow-2xl transform transition-all"
           onClick={(e) => e.stopPropagation()}
@@ -115,12 +115,12 @@ export default function NewsClient({ newsItems }) {
             onClick={() => openNewsModal(news)}
           >
             <div className="h-48 relative overflow-hidden">
-              <img
-                src={getImageUrl(news)}
-                alt={news.news_title}
-                className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
-              />
-              <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black/60 to-transparent"></div>
+                <img
+                  src={getImageUrl(news)}
+                  alt={news.news_title}
+                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                />
+                <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black/60 to-transparent"></div>
               <div className="absolute top-3 left-3">
                 <span className="text-xs font-medium px-3 py-1 rounded-full bg-indigo-100 text-indigo-800 border border-indigo-200">
                   {news.news_tag}

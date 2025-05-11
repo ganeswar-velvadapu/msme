@@ -21,9 +21,8 @@ export default function EventsClient({ materialsScienceEvents }) {
     if (event.events_image && event.events_image.url) {
       return event.events_image.url;
     }
-    return "/api/placeholder/400/400"; // Default placeholder
+    return "/api/placeholder/400/400"; 
   };
-
   const openEventModal = (event) => {
     setSelectedEvent(event);
     setIsModalOpen(true);
@@ -38,21 +37,18 @@ export default function EventsClient({ materialsScienceEvents }) {
     if (!selectedEvent) return null;
 
     return (
-      <div className="fixed inset-0 z-50 flex items-center justify-center bg-white bg-opacity-20 backdrop-blur-sm p-4">
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-opacity-20 backdrop-blur-sm p-4">
         <div 
-          className="bg-white rounded-xl w-full max-w-3xl max-h-[90vh] shadow-2xl transform transition-all"
+          className="bg-white rounded-xl w-full max-w-3xl max-h-[90vh] shadow-2xl transform transition-all overflow-hidden"
           onClick={(e) => e.stopPropagation()}
         >
-          <div className="relative">
-            <div className="h-48 w-full bg-gradient-to-r from-indigo-500 to-blue-600 rounded-t-xl flex items-center justify-center">
-              <div className="w-24 h-24 rounded-xl overflow-hidden border-4 border-white shadow-lg">
-                <img 
-                  src={getImageUrl(selectedEvent)}
-                  alt={selectedEvent.events_title}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            </div>
+          <div className="relative h-64 md:h-80 w-full overflow-hidden">
+            <img 
+              src={getImageUrl(selectedEvent)}
+              alt={selectedEvent.events_title}
+              className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+            />
+            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black/60 to-transparent"></div>
             
             <button 
               onClick={closeEventModal}
@@ -62,13 +58,16 @@ export default function EventsClient({ materialsScienceEvents }) {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
+            
+            <div className="absolute bottom-4 left-4 text-white">
+              <span className="text-sm font-medium px-3 py-1 rounded-full bg-indigo-500 bg-opacity-80 text-white">
+                {selectedEvent.events_tag}
+              </span>
+            </div>
           </div>
           
           <div className="p-6">
             <div className="flex items-center gap-3 mb-3">
-              <span className="text-sm font-medium px-3 py-1 rounded-full bg-indigo-100 text-indigo-800 border border-indigo-200">
-                {selectedEvent.events_tag}
-              </span>
               <span className="text-sm text-gray-500 flex items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
