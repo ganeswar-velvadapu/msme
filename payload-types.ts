@@ -114,9 +114,11 @@ export interface Config {
   };
   globals: {
     homecarousel: Homecarousel;
+    about: About;
   };
   globalsSelect: {
     homecarousel: HomecarouselSelect<false> | HomecarouselSelect<true>;
+    about: AboutSelect<false> | AboutSelect<true>;
   };
   locale: null;
   user: User & {
@@ -906,6 +908,31 @@ export interface Homecarousel {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "about".
+ */
+export interface About {
+  id: number;
+  about_msme?: string | null;
+  about_the_department?: string | null;
+  vision?: string | null;
+  timeline_at_iith?:
+    | {
+        year?: number | null;
+        timeline?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  Explore: {
+    program_name?: string | null;
+    program_brief_description?: string | null;
+    link_to_program?: string | null;
+    id?: string | null;
+  }[];
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "homecarousel_select".
  */
 export interface HomecarouselSelect<T extends boolean = true> {
@@ -913,6 +940,33 @@ export interface HomecarouselSelect<T extends boolean = true> {
     | T
     | {
         carousel_image?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "about_select".
+ */
+export interface AboutSelect<T extends boolean = true> {
+  about_msme?: T;
+  about_the_department?: T;
+  vision?: T;
+  timeline_at_iith?:
+    | T
+    | {
+        year?: T;
+        timeline?: T;
+        id?: T;
+      };
+  Explore?:
+    | T
+    | {
+        program_name?: T;
+        program_brief_description?: T;
+        link_to_program?: T;
         id?: T;
       };
   updatedAt?: T;
