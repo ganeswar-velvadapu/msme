@@ -77,7 +77,8 @@ export default function AboutClient({ aboutList }) {
                 </div>
                 <div className="flex-grow pl-6">
                   <div className="bg-gray-50 p-4 rounded-lg shadow">
-                    <p className="text-gray-700">{item.timeline}</p>
+                  <h2 className="text-xl font-bold mb-4 text-black">{item.timeline_heading}</h2>
+                    <p className="text-gray-700">{item.timeline_content}</p>
                   </div>
                 </div>
               </div>

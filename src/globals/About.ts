@@ -31,7 +31,12 @@ export const About: GlobalConfig = {
                     label: "Enter the year"
                 },
                 {
-                    name: "timeline",
+                    name : "timeline_heading",
+                    type : "text",
+                    label : "Enter timeline heading"
+                },
+                {
+                    name: "timeline_content",
                     type: "text",
 
                     label: "Enter content of the year"

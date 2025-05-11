@@ -918,7 +918,8 @@ export interface About {
   timeline_at_iith?:
     | {
         year?: number | null;
-        timeline?: string | null;
+        timeline_heading?: string | null;
+        timeline_content?: string | null;
         id?: string | null;
       }[]
     | null;
@@ -958,7 +959,8 @@ export interface AboutSelect<T extends boolean = true> {
     | T
     | {
         year?: T;
-        timeline?: T;
+        timeline_heading?: T;
+        timeline_content?: T;
         id?: T;
       };
   Explore?:
