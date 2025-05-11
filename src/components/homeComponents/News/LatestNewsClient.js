@@ -43,11 +43,11 @@ export default function NewsClient({ newsItems }) {
           onClick={(e) => e.stopPropagation()}
         >
           <div className="relative">
-            <div className="h-64 w-full bg-gradient-to-r from-blue-500 to-purple-600 rounded-t-xl overflow-hidden">
+            <div className="h-64 w-full  overflow-hidden">
               <img
                 src={getImageUrl(selectedNews)}
                 alt={selectedNews.news_title}
-                className="w-full h-full object-cover object-center opacity-60"
+                className="w-full h-full object-cover object-center opacity-90"
               />
               <div className="absolute inset-0 flex items-center justify-center">
                 <h2 className="text-3xl font-bold text-white px-6 text-center drop-shadow-lg">
@@ -68,7 +68,7 @@ export default function NewsClient({ newsItems }) {
 
           <div className="p-6">
             <div className="flex items-center gap-3 mb-6">
-              <span className="text-sm font-medium px-3 py-1 rounded-full bg-blue-100 text-blue-800 border border-blue-200">
+              <span className="text-sm font-medium px-3 py-1 rounded-full bg-indigo-100 text-indigo-800 border border-indigo-200">
                 {selectedNews.news_tag}
               </span>
               <span className="text-sm text-gray-500 flex items-center">
@@ -90,7 +90,7 @@ export default function NewsClient({ newsItems }) {
                   href={selectedNews.news_web_page}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-lg transition-colors"
+                  className="inline-flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white py-3 px-6 rounded-lg transition-colors"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
@@ -107,16 +107,14 @@ export default function NewsClient({ newsItems }) {
 
   return (
     <div className="w-full">
-     
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {newsItems.map((news, index) => (
           <div
             key={index}
-            className="news-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg border border-gray-100 hover:border-blue-200 transition-all duration-300 cursor-pointer transform hover:-translate-y-1"
+            className="news-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg border border-gray-100 hover:border-indigo-200 transition-all duration-300 cursor-pointer transform hover:-translate-y-1"
             onClick={() => openNewsModal(news)}
           >
-            <div className="h-56 relative overflow-hidden">
+            <div className="h-48 relative overflow-hidden">
               <img
                 src={getImageUrl(news)}
                 alt={news.news_title}
@@ -124,7 +122,7 @@ export default function NewsClient({ newsItems }) {
               />
               <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black/60 to-transparent"></div>
               <div className="absolute top-3 left-3">
-                <span className="text-xs font-medium px-3 py-1 rounded-full bg-blue-100 text-blue-800 border border-blue-200">
+                <span className="text-xs font-medium px-3 py-1 rounded-full bg-indigo-100 text-indigo-800 border border-indigo-200">
                   {news.news_tag}
                 </span>
               </div>
@@ -137,7 +135,7 @@ export default function NewsClient({ newsItems }) {
             </div>
 
             <div className="p-4">
-              <h3 className="font-bold text-lg text-gray-800 mb-2 line-clamp-2 hover:text-blue-700 transition-colors duration-200">
+              <h3 className="font-bold text-lg text-gray-800 mb-2 line-clamp-2 hover:text-indigo-700 transition-colors duration-200">
                 {news.news_title}
               </h3>
 
@@ -146,7 +144,7 @@ export default function NewsClient({ newsItems }) {
               </p>
 
               <button
-                className="text-sm text-blue-600 hover:text-blue-800 flex items-center transition-colors duration-200 group"
+                className="text-sm text-indigo-600 hover:text-indigo-800 flex items-center transition-colors duration-200 group"
               >
                 Read more
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">

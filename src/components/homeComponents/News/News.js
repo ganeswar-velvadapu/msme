@@ -6,6 +6,6 @@ import LatestNewsClient from "./LatestNewsClient.js";
 
 export default async function LatestNews() {
   const payload = await getPayload({ config });
-  const news = await payload.find({ collection: "news", limit:1000000000 });
+  const news = await payload.find({ collection: "news", limit:10000000 });
   return <LatestNewsClient newsItems={news.docs} />;
 }

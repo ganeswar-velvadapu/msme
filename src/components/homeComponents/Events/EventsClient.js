@@ -1,38 +1,10 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 
 export default function EventsClient({ materialsScienceEvents }) {
   const scrollRef = useRef(null);
-  const [paused, setPaused] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  useEffect(() => {
-    const scrollContainer = scrollRef.current;
-    if (!scrollContainer) return;
-
-    let scrollInterval;
-
-    const startScrolling = () => {
-      scrollInterval = setInterval(() => {
-        if (!paused && scrollContainer) {
-          scrollContainer.scrollTop += 1;
-
-          // Reset to top when reaching bottom
-          if (
-            scrollContainer.scrollTop + scrollContainer.clientHeight >=
-            scrollContainer.scrollHeight
-          ) {
-            scrollContainer.scrollTop = 0;
-          }
-        }
-      }, 50);
-    };
-
-    startScrolling();
-
-    return () => clearInterval(scrollInterval);
-  }, [paused]);
 
   // Format date function
   const formatDate = (dateString) => {
@@ -55,12 +27,10 @@ export default function EventsClient({ materialsScienceEvents }) {
   const openEventModal = (event) => {
     setSelectedEvent(event);
     setIsModalOpen(true);
-    setPaused(true);
   };
 
   const closeEventModal = () => {
     setIsModalOpen(false);
-    setPaused(false);
   };
 
   // Event Modal Component
@@ -68,9 +38,9 @@ export default function EventsClient({ materialsScienceEvents }) {
     if (!selectedEvent) return null;
 
     return (
-      <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 p-4">
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-white bg-opacity-20 backdrop-blur-sm p-4">
         <div 
-          className="bg-white rounded-xl w-full max-w-3xl max-h-[90vh] overflow-y-auto shadow-2xl transform transition-all"
+          className="bg-white rounded-xl w-full max-w-3xl max-h-[90vh] shadow-2xl transform transition-all"
           onClick={(e) => e.stopPropagation()}
         >
           <div className="relative">
@@ -178,17 +148,12 @@ export default function EventsClient({ materialsScienceEvents }) {
 
   return (
     <div className="w-full">
-      
-      <div
-        className="bg-white rounded-xl overflow-hidden shadow-lg border border-gray-100 transition-all duration-300 hover:shadow-xl"
-        onMouseEnter={() => setPaused(true)}
-        onMouseLeave={() => setPaused(false)}
-      >
+      <div className="">
         <div
           ref={scrollRef}
-          className="h-[550px] md:h-[650px] overflow-y-auto scrollbar-hide"
+          className=""
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
             {materialsScienceEvents.map((event, index) => (
               <div
                 key={index}
