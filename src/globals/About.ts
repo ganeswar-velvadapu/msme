@@ -11,9 +11,31 @@ export const About: GlobalConfig = {
         },
         {
             name: "about_the_department",
-            type: "textarea",
-            label: "About the Department",
-        },
+            type: "group",
+            fields: [
+                {
+                    name: "description",
+                    type: "textarea",
+                    label: "Enter Department Description"
+                },
+                {
+                    name: "sections",
+                    type: "array",
+                    fields: [
+                        {
+                            name: "Thrust",
+                            type: "text",
+                            label: "Enter Section Heading"
+                        },
+                        {
+                            name: "Thrust_Area",
+                            type: "textarea",
+                            label: "Enter Section Content"
+                        },
+                    ],
+                }
+            ]
+        },        
         {
             name: "vision",
             type: "textarea",

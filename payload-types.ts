@@ -913,7 +913,16 @@ export interface Homecarousel {
 export interface About {
   id: number;
   about_msme?: string | null;
-  about_the_department?: string | null;
+  about_the_department?: {
+    description?: string | null;
+    sections?:
+      | {
+          Thrust?: string | null;
+          Thrust_Area?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
   vision?: string | null;
   timeline_at_iith?:
     | {
@@ -953,7 +962,18 @@ export interface HomecarouselSelect<T extends boolean = true> {
  */
 export interface AboutSelect<T extends boolean = true> {
   about_msme?: T;
-  about_the_department?: T;
+  about_the_department?:
+    | T
+    | {
+        description?: T;
+        sections?:
+          | T
+          | {
+              Thrust?: T;
+              Thrust_Area?: T;
+              id?: T;
+            };
+      };
   vision?: T;
   timeline_at_iith?:
     | T
