@@ -16,17 +16,17 @@ export default function MTechClient({ mtechList }) {
   ];
 
   return (
-    <div className="bg-white text-black p-6 rounded-lg shadow-md max-w-5xl mx-auto">
-      <h1 className="text-3xl font-bold text-center mb-6">M.Tech Programme</h1>
+    <div className="bg-white m-8 text-black p-8 rounded-xl shadow-lg max-w-6xl mx-auto">
+      <h1 className="text-4xl font-bold text-center mb-8">M.Tech Programme</h1>
 
-      <div className="text-center text-lg text-gray-700 mb-6">
+      <div className="text-center text-lg text-gray-700 mb-8 leading-relaxed max-w-3xl mx-auto">
         {about}
       </div>
 
-      <h2 className="text-xl font-semibold mb-2 text-center">Specializations</h2>
+      <h2 className="text-2xl font-semibold text-center mb-4">Specializations</h2>
 
-      {/* Specialization Buttons - Center Aligned */}
-      <div className="flex justify-center flex-wrap gap-4 mb-6">
+      {/* Specialization Buttons */}
+      <div className="flex flex-wrap justify-center gap-4 mb-6">
         {specializations.map((spec, index) => (
           <button
             key={index}
@@ -34,10 +34,10 @@ export default function MTechClient({ mtechList }) {
               setActiveSpecializationIndex(index);
               setActiveSubTab("about");
             }}
-            className={`px-4 py-2 rounded font-medium ${
+            className={`px-5 py-2 rounded-lg font-medium transition ${
               index === activeSpecializationIndex
                 ? "bg-black text-white"
-                : "bg-gray-200 text-gray-800 hover:bg-gray-300"
+                : "bg-gray-100 text-gray-800 hover:bg-gray-200"
             }`}
           >
             {spec.short_name || spec.name || `Specialization ${index + 1}`}
@@ -46,12 +46,12 @@ export default function MTechClient({ mtechList }) {
       </div>
 
       {/* Sub Tabs */}
-      <div className="border-b flex justify-center gap-6 mb-4">
+      <div className="border-b flex justify-center gap-6 mb-6">
         {subTabs.map((tab) => (
           <button
             key={tab.key}
             onClick={() => setActiveSubTab(tab.key)}
-            className={`py-2 px-3 font-semibold ${
+            className={`py-2 px-3 font-semibold transition ${
               activeSubTab === tab.key
                 ? "border-b-2 border-black text-black"
                 : "text-gray-600 hover:text-black"
@@ -63,19 +63,21 @@ export default function MTechClient({ mtechList }) {
       </div>
 
       {/* Content Section */}
-      <div className="p-2 text-gray-800 text-center">
+      <div className="text-gray-800 text-base leading-relaxed px-4 text-center space-y-4">
         {activeSubTab === "about" && (
-         <div>
+          <div>
             <p>{activeSpecialization.description || "No information available."}</p>
-            <a
-            href={activeSpecialization.brochure_link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-600 hover:underline mt-2 inline-block"
-          >
-            View Brochure
-          </a>
-         </div>
+            {activeSpecialization.brochure_link && (
+              <a
+                href={activeSpecialization.brochure_link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 hover:underline mt-2 inline-block"
+              >
+                View Brochure
+              </a>
+            )}
+          </div>
         )}
         {activeSubTab === "course_and_thesis" && (
           <p>{activeSpecialization.course_and_thesis || "No information available."}</p>
@@ -83,16 +85,6 @@ export default function MTechClient({ mtechList }) {
         {activeSubTab === "eligibility_and_admissions" && (
           <p>{activeSpecialization.eligibility_and_admissions || "No information available."}</p>
         )}
-        {/* {activeSpecialization.brochure_link && activeSubTab !== "about" && (
-          <a
-            href={activeSpecialization.brochure_link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-600 hover:underline mt-2 inline-block"
-          >
-            View Brochure
-          </a>
-        )} */}
       </div>
     </div>
   );
