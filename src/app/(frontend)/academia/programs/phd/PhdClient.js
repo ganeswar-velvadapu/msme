@@ -34,8 +34,8 @@ export default function PhDClient({ phdList }) {
 
   return (
     <div className="p-6 max-w-4xl mx-auto space-y-6">
+    <h1 className="text-3xl font-bold text-center mb-6">PhD Programme</h1>
       {/* Sub Tabs as Pills */}
-      <h2 className="text-xl font-semibold text-center mb-2">Specializations</h2>
       <div className="flex flex-wrap justify-center gap-3">
         {subTabs.map((tab) => (
           <button

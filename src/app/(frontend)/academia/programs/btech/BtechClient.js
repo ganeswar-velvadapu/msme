@@ -25,6 +25,7 @@ export default function BTechClient({ btechList }) {
 
   return (
     <div className="bg-white text-black p-6 rounded-lg shadow-md max-w-4xl mx-auto">
+    <h1 className="text-3xl font-bold text-center mb-6">B.Tech Programme</h1>
       <div className="mb-4">
         <div className="flex space-x-4 border-b">
           <button
