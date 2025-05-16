@@ -12,7 +12,7 @@ export default async function Staff() {
     limit: 1000000000,
   });
 
-  console.log(staff.docs)
+  // console.log(staff.docs)
 
   return <StaffClient staffList={staff.docs} />;
 }
