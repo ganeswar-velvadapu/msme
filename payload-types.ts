@@ -83,6 +83,9 @@ export interface Config {
     mtech: Mtech;
     phd: Phd;
     alumni: Alumnus;
+    'btech-p': BtechP;
+    'mtech-p': MtechP;
+    'phd-p': PhdP;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -105,6 +108,9 @@ export interface Config {
     mtech: MtechSelect<false> | MtechSelect<true>;
     phd: PhdSelect<false> | PhdSelect<true>;
     alumni: AlumniSelect<false> | AlumniSelect<true>;
+    'btech-p': BtechPSelect<false> | BtechPSelect<true>;
+    'mtech-p': MtechPSelect<false> | MtechPSelect<true>;
+    'phd-p': PhdPSelect<false> | PhdPSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -454,6 +460,66 @@ export interface Alumnus {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "btech-p".
+ */
+export interface BtechP {
+  id: number;
+  about?: {
+    about_btech_program?: string | null;
+    program_section?: {
+      btech_program?: string | null;
+      btech_program_descriptiom?: string | null;
+    };
+    academic_handbook_link?: string | null;
+  };
+  curriculum?: {
+    about_curriculum?:
+      | {
+          curriculum_description?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    msme_curriculum_link?: string | null;
+  };
+  admission?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "mtech-p".
+ */
+export interface MtechP {
+  id: number;
+  about?: string | null;
+  specializations?:
+    | {
+        name?: string | null;
+        description?: string | null;
+        brochure_link?: string | null;
+        course_and_thesis?: string | null;
+        eligibility_and_admissions?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "phd-p".
+ */
+export interface PhdP {
+  id: number;
+  about?: string | null;
+  brochure_link?: string | null;
+  course_and_thesis?: string | null;
+  eligibility_and_admissions?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -522,6 +588,18 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'alumni';
         value: number | Alumnus;
+      } | null)
+    | ({
+        relationTo: 'btech-p';
+        value: number | BtechP;
+      } | null)
+    | ({
+        relationTo: 'mtech-p';
+        value: number | MtechP;
+      } | null)
+    | ({
+        relationTo: 'phd-p';
+        value: number | PhdP;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -856,6 +934,69 @@ export interface AlumniSelect<T extends boolean = true> {
   alumni_student_name?: T;
   alumni_degree?: T;
   alumni_batch?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "btech-p_select".
+ */
+export interface BtechPSelect<T extends boolean = true> {
+  about?:
+    | T
+    | {
+        about_btech_program?: T;
+        program_section?:
+          | T
+          | {
+              btech_program?: T;
+              btech_program_descriptiom?: T;
+            };
+        academic_handbook_link?: T;
+      };
+  curriculum?:
+    | T
+    | {
+        about_curriculum?:
+          | T
+          | {
+              curriculum_description?: T;
+              id?: T;
+            };
+        msme_curriculum_link?: T;
+      };
+  admission?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "mtech-p_select".
+ */
+export interface MtechPSelect<T extends boolean = true> {
+  about?: T;
+  specializations?:
+    | T
+    | {
+        name?: T;
+        description?: T;
+        brochure_link?: T;
+        course_and_thesis?: T;
+        eligibility_and_admissions?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "phd-p_select".
+ */
+export interface PhdPSelect<T extends boolean = true> {
+  about?: T;
+  brochure_link?: T;
+  course_and_thesis?: T;
+  eligibility_and_admissions?: T;
   updatedAt?: T;
   createdAt?: T;
 }
