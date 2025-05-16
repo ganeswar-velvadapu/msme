@@ -33,21 +33,20 @@ export default function PhDClient({ phdList }) {
   };
 
   return (
-    <div className="p-6 max-w-4xl mx-auto space-y-6">
-    <h1 className="text-3xl font-bold text-center mb-6">PhD Programme</h1>
-      {/* Sub Tabs as Pills */}
-      <div className="flex flex-wrap justify-center gap-3">
+    <div className="bg-white m-8 text-black p-8 rounded-xl shadow-lg max-w-5xl mx-auto">
+      <h1 className="text-4xl font-bold text-center mb-8">PhD Programme</h1>
+
+      {/* Sub Tabs */}
+      <div className="flex flex-wrap justify-center gap-4 mb-6">
         {subTabs.map((tab) => (
           <button
             key={tab.key}
             onClick={() => setActiveSubTab(tab.key)}
-            className={`px-4 py-2 rounded-lg text-sm font-medium transition-all
-              ${
-                activeSubTab === tab.key
-                  ? 'bg-black text-white shadow-md'
-                  : 'bg-gray-100 text-gray-800 hover:bg-gray-200'
-              }
-            `}
+            className={`px-5 py-2 rounded-lg text-sm font-medium transition ${
+              activeSubTab === tab.key
+                ? 'bg-black text-white shadow-md'
+                : 'bg-gray-100 text-gray-800 hover:bg-gray-200'
+            }`}
           >
             {tab.label}
           </button>
@@ -55,7 +54,7 @@ export default function PhDClient({ phdList }) {
       </div>
 
       {/* Tab Content */}
-      <div className="prose whitespace-pre-wrap max-w-none mt-6">
+      <div className="text-gray-800 leading-relaxed text-center px-4 whitespace-pre-wrap">
         {renderTabContent()}
       </div>
 

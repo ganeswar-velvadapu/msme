@@ -24,81 +24,105 @@ export default function BTechClient({ btechList }) {
   } = curriculum;
 
   return (
-    <div className="bg-white text-black p-6 rounded-lg shadow-md max-w-4xl mx-auto">
-    <h1 className="text-3xl font-bold text-center mb-6">B.Tech Programme</h1>
-      <div className="mb-4">
-        <div className="flex space-x-4 border-b">
-          <button
-            onClick={() => setActiveTab("about")}
-            className={`py-2 px-4 text-lg font-semibold ${activeTab === "about" ? "bg-black text-white" : "bg-gray-200 text-gray-800 hover:bg-gray-300"}`}
-          >
-            About
-          </button>
-          <button
-            onClick={() => setActiveTab("curriculum")}
-            className={`py-2 px-4 text-lg font-semibold ${activeTab === "curriculum" ? "bg-black text-white" : "bg-gray-200 text-gray-800 hover:bg-gray-300"}`}
-          >
-            Curriculum
-          </button>
-          <button
-            onClick={() => setActiveTab("admission")}
-            className={`py-2 px-4 text-lg font-semibold ${activeTab === "admission" ? "bg-black text-white" : "bg-gray-200 text-gray-800 hover:bg-gray-300"}`}
-          >
-            Admission
-          </button>
-        </div>
+    <div className="bg-white m-8 text-black p-8 rounded-xl shadow-lg max-w-6xl mx-auto">
+      <h1 className="text-4xl font-bold text-center mb-8">B.Tech Programme</h1>
 
-        {activeTab === "about" && (
-          <div className="p-4">
-            <p className="text-gray-700 mb-6">{about_btech_program}</p>
-
-            <h2 className="text-2xl font-bold mb-2">{program_section.btech_program}</h2>
-            <p className="text-gray-700 mb-4">{program_section.btech_program_descriptiom}</p>
-            <div className="bg-gray-100 p-4 rounded">
-        <h3 className="text-xl font-semibold mb-2">Handbook</h3>
-        {academic_handbook_link && (
-          <a
-            href={academic_handbook_link}
-            className="text-blue-600 hover:underline"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View Academic Handbook
-          </a>
-        )}
+      {/* Tabs */}
+      <div className="flex flex-wrap justify-center gap-4 mb-8 border-b pb-4">
+        <button
+          onClick={() => setActiveTab("about")}
+          className={`px-5 py-2 text-base font-semibold rounded-md transition ${
+            activeTab === "about"
+              ? "bg-black text-white"
+              : "bg-gray-100 text-gray-800 hover:bg-gray-200"
+          }`}
+        >
+          About
+        </button>
+        <button
+          onClick={() => setActiveTab("curriculum")}
+          className={`px-5 py-2 text-base font-semibold rounded-md transition ${
+            activeTab === "curriculum"
+              ? "bg-black text-white"
+              : "bg-gray-100 text-gray-800 hover:bg-gray-200"
+          }`}
+        >
+          Curriculum & Courses
+        </button>
+        <button
+          onClick={() => setActiveTab("admission")}
+          className={`px-5 py-2 text-base font-semibold rounded-md transition ${
+            activeTab === "admission"
+              ? "bg-black text-white"
+              : "bg-gray-100 text-gray-800 hover:bg-gray-200"
+          }`}
+        >
+          Admissions Requirements
+        </button>
       </div>
-          </div>
-        )}
 
-        {activeTab === "curriculum" && (
-          <div className="p-4">
-            <h3 className="text-xl font-semibold mb-2">Curriculum</h3>
-            <ul className="list-disc list-inside space-y-1 text-gray-800">
-              {about_curriculum.map((item, i) => (
-                <li key={i}>{item.curriculum_description}</li>
-              ))}
-            </ul>
-            {msme_curriculum_link && (
+      {/* About Section */}
+      {activeTab === "about" && (
+        <div className="space-y-6">
+          <p className="text-gray-700 text-lg leading-relaxed">{about_btech_program}</p>
+
+          <div>
+            <h2 className="text-2xl font-bold mb-2">{program_section.btech_program}</h2>
+            <p className="text-gray-700 text-base leading-relaxed">
+              {program_section.btech_program_descriptiom}
+            </p>
+          </div>
+
+          {/* Academic Handbook */}
+          {academic_handbook_link && (
+            <div className="bg-gray-100 p-4 rounded-lg">
+              <h3 className="text-xl font-semibold mb-2">Academic Handbook</h3>
               <a
-                href={msme_curriculum_link}
-                className="inline-block mt-3 text-blue-600 hover:underline"
+                href={academic_handbook_link}
+                className="text-blue-600 hover:underline"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                View Curriculum PDF
+                View Academic Handbook
               </a>
-            )}
-          </div>
-        )}
+            </div>
+          )}
+        </div>
+      )}
 
-        {activeTab === "admission" && (
-          <div className="p-4">
-            <h3 className="text-xl font-semibold mb-2">Admissions</h3>
-            <p className="text-gray-800">{admission}</p>
+      {/* Curriculum Section */}
+      {activeTab === "curriculum" && (
+        <div className="space-y-6">
+          <h3 className="text-2xl font-semibold">Curriculum</h3>
+          <div className="space-y-4">
+            {about_curriculum.map((item, i) => (
+              <div key={i} className="bg-gray-100 rounded-lg p-4 shadow-sm">
+                <p className="text-gray-800 text-base">{item.curriculum_description}</p>
+              </div>
+            ))}
           </div>
-        )}
-      </div>
 
+          {/* Curriculum PDF */}
+          {msme_curriculum_link && (
+            <a
+              href={msme_curriculum_link}
+              className="inline-block mt-4 text-blue-600 font-medium hover:underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View Curriculum PDF
+            </a>
+          )}
+        </div>
+      )}
+
+      {/* Admission Section */}
+      {activeTab === "admission" && (
+        <div className="space-y-4">
+          <h3 className="text-2xl font-semibold">Admissions</h3>
+          <p className="text-gray-800 text-base leading-relaxed">{admission}</p>
+        </div>
+      )}
     </div>
   );
 }
