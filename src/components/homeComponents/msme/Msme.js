@@ -11,7 +11,7 @@ export default function MaterialScience() {
           Welcome to the Materials Science and Metallurgical Engineering (MSME) Department at IIT Hyderabad
         </h2>
         <p className="text-gray-800 leading-relaxed mb-6 text-lg">
-          At MSME, we believe in engineering materials from their building blocks (atoms) to practical, real-world applications. The core of our research is built on a materials paradigm connecting process, structure, and property with the material's performance in cutting-edge technologies.
+          At MSME, we believe in engineering materials from their building blocks (atoms) to practical, real-world applications. The core of our research is built on a materials paradigm connecting process, structure, and property with the material performance in cutting-edge technologies.
         </p>
         <p className="text-gray-800 leading-relaxed mb-6 text-lg">
           We offer an interdisciplinary academic program designed to groom the next generation of engineers at the forefront of materials design and development.
