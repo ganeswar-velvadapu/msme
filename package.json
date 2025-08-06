@@ -7,13 +7,15 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "generate:importmap" : "payload generate:importmap"
   },
   "dependencies": {
     "@payloadcms/db-postgres": "^3.32.0",
     "@payloadcms/next": "^3.32.0",
     "@payloadcms/payload-cloud": "^3.32.0",
     "@payloadcms/richtext-lexical": "^3.32.0",
+    "@payloadcms/ui": "^3.49.1",
     "graphql": "^16.8.1",
     "lucide-react": "^0.487.0",
     "next": "15.2.4",

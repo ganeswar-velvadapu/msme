@@ -86,6 +86,7 @@ export interface Config {
     'btech-p': BtechP;
     'mtech-p': MtechP;
     'phd-p': PhdP;
+    accounts: Account;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -111,6 +112,7 @@ export interface Config {
     'btech-p': BtechPSelect<false> | BtechPSelect<true>;
     'mtech-p': MtechPSelect<false> | MtechPSelect<true>;
     'phd-p': PhdPSelect<false> | PhdPSelect<true>;
+    accounts: AccountsSelect<false> | AccountsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -330,9 +332,7 @@ export interface Project {
  */
 export interface Collaboration {
   id: number;
-  collaborator_name?: string | null;
-  faculty_collaborator_name?: string | null;
-  institute_name?: string | null;
+  logo?: (number | null) | Media;
   collaboration_type?: ('Industrial Collaboration' | 'Institutional Collaboration') | null;
   updatedAt: string;
   createdAt: string;
@@ -520,6 +520,21 @@ export interface PhdP {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "accounts".
+ */
+export interface Account {
+  id: number;
+  name?: string | null;
+  picture?: string | null;
+  user: number | User;
+  issuerName: string;
+  scope: string;
+  sub: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -600,6 +615,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'phd-p';
         value: number | PhdP;
+      } | null)
+    | ({
+        relationTo: 'accounts';
+        value: number | Account;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -815,9 +834,7 @@ export interface ProjectsSelect<T extends boolean = true> {
  * via the `definition` "collaborations_select".
  */
 export interface CollaborationsSelect<T extends boolean = true> {
-  collaborator_name?: T;
-  faculty_collaborator_name?: T;
-  institute_name?: T;
+  logo?: T;
   collaboration_type?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -997,6 +1014,20 @@ export interface PhdPSelect<T extends boolean = true> {
   brochure_link?: T;
   course_and_thesis?: T;
   eligibility_and_admissions?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "accounts_select".
+ */
+export interface AccountsSelect<T extends boolean = true> {
+  name?: T;
+  picture?: T;
+  user?: T;
+  issuerName?: T;
+  scope?: T;
+  sub?: T;
   updatedAt?: T;
   createdAt?: T;
 }

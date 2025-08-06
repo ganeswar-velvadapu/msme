@@ -1,31 +1,23 @@
 import { CollectionConfig } from "payload";
 
-export const Collaborations:CollectionConfig = {
-    slug : "collaborations",
-    fields : [
+export const Collaborations: CollectionConfig = {
+    slug: "collaborations",
+    fields: [
+
         {
-            name : "collaborator_name",
-            type : "text",
-            label : "Name of the collaborator"
+            name: "logo",
+            type: "upload",
+            relationTo: "media",
+            label: "Upload Collaboration Logo"
         },
         {
-            name : "faculty_collaborator_name",
-            type : "text",
-            label : "Name of the faculty"
-        },
-        {
-            name : "institute_name",
-            type : "text",
-            label : "Institute or Industry Name"
-        },
-        {
-            name : "collaboration_type",
-            type : "select",
-            options : [
+            name: "collaboration_type",
+            type: "select",
+            options: [
                 "Industrial Collaboration",
                 "Institutional Collaboration"
             ],
-            label : "Collaboration Type"
+            label: "Collaboration Type"
         }
     ]
 }
