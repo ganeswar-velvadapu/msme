@@ -67,6 +67,9 @@ export interface Config {
   };
   blocks: {};
   collections: {
+    'phd-admissions': PhdAdmission;
+    'mtech-admissions': MtechAdmission;
+    'btech-admissions': BtechAdmission;
     users: User;
     media: Media;
     placements: Placement;
@@ -92,6 +95,9 @@ export interface Config {
   };
   collectionsJoins: {};
   collectionsSelect: {
+    'phd-admissions': PhdAdmissionsSelect<false> | PhdAdmissionsSelect<true>;
+    'mtech-admissions': MtechAdmissionsSelect<false> | MtechAdmissionsSelect<true>;
+    'btech-admissions': BtechAdmissionsSelect<false> | BtechAdmissionsSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     placements: PlacementsSelect<false> | PlacementsSelect<true>;
@@ -152,6 +158,74 @@ export interface UserAuthOperations {
     email: string;
     password: string;
   };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "phd-admissions".
+ */
+export interface PhdAdmission {
+  id: number;
+  fellowships_phd_root?:
+    | {
+        fellowship_phd: string;
+        fellowship_phd_link: string;
+        id?: string | null;
+      }[]
+    | null;
+  brochure_link_phd: string;
+  /**
+   * For details, refer to the respective PhD brochures and fellowship links.
+   */
+  admission_process_phd: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "mtech-admissions".
+ */
+export interface MtechAdmission {
+  id: number;
+  specializations_mtech?:
+    | {
+        name_mtech_ad: string;
+        eligibility_mtech_ad?:
+          | {
+              category_mtech_ad: string;
+              details_mtech_ad: string;
+              id?: string | null;
+            }[]
+          | null;
+        admission_process_mtech?:
+          | {
+              admission_type_mtech: string;
+              admission_details_mtech: string;
+              id?: string | null;
+            }[]
+          | null;
+        brochure_link_mtech?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "btech-admissions".
+ */
+export interface BtechAdmission {
+  id: number;
+  /**
+   * Admission to the MSME BTech program is through JEE (Main and Advanced). For details, refer to the JEE website.
+   */
+  admission_process_btech?: string | null;
+  /**
+   * Link to JEE website for more details.
+   */
+  link_to_jee_website?: string | null;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -260,6 +334,7 @@ export interface Event {
 export interface Researcharea {
   id: number;
   research_area_name?: string | null;
+  research_area_photo?: (number | null) | Media;
   research_areas?:
     | {
         research_area_type?: string | null;
@@ -342,6 +417,9 @@ export interface Collaboration {
 export interface Faculty {
   id: number;
   faculty_image?: (number | null) | Media;
+  faculty_group_web_page?: string | null;
+  linked_in_faculty?: string | null;
+  google_scholar_url?: string | null;
   faculty_name?: string | null;
   faculty_designation?: string | null;
   faculty_email?: string | null;
@@ -530,6 +608,18 @@ export interface PayloadLockedDocument {
   id: number;
   document?:
     | ({
+        relationTo: 'phd-admissions';
+        value: number | PhdAdmission;
+      } | null)
+    | ({
+        relationTo: 'mtech-admissions';
+        value: number | MtechAdmission;
+      } | null)
+    | ({
+        relationTo: 'btech-admissions';
+        value: number | BtechAdmission;
+      } | null)
+    | ({
         relationTo: 'users';
         value: number | User;
       } | null)
@@ -649,6 +739,62 @@ export interface PayloadMigration {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "phd-admissions_select".
+ */
+export interface PhdAdmissionsSelect<T extends boolean = true> {
+  fellowships_phd_root?:
+    | T
+    | {
+        fellowship_phd?: T;
+        fellowship_phd_link?: T;
+        id?: T;
+      };
+  brochure_link_phd?: T;
+  admission_process_phd?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "mtech-admissions_select".
+ */
+export interface MtechAdmissionsSelect<T extends boolean = true> {
+  specializations_mtech?:
+    | T
+    | {
+        name_mtech_ad?: T;
+        eligibility_mtech_ad?:
+          | T
+          | {
+              category_mtech_ad?: T;
+              details_mtech_ad?: T;
+              id?: T;
+            };
+        admission_process_mtech?:
+          | T
+          | {
+              admission_type_mtech?: T;
+              admission_details_mtech?: T;
+              id?: T;
+            };
+        brochure_link_mtech?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "btech-admissions_select".
+ */
+export interface BtechAdmissionsSelect<T extends boolean = true> {
+  admission_process_btech?: T;
+  link_to_jee_website?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users_select".
  */
 export interface UsersSelect<T extends boolean = true> {
@@ -753,6 +899,7 @@ export interface EventsSelect<T extends boolean = true> {
  */
 export interface ResearchareasSelect<T extends boolean = true> {
   research_area_name?: T;
+  research_area_photo?: T;
   research_areas?:
     | T
     | {
@@ -830,6 +977,9 @@ export interface CollaborationsSelect<T extends boolean = true> {
  */
 export interface FacultySelect<T extends boolean = true> {
   faculty_image?: T;
+  faculty_group_web_page?: T;
+  linked_in_faculty?: T;
+  google_scholar_url?: T;
   faculty_name?: T;
   faculty_designation?: T;
   faculty_email?: T;
