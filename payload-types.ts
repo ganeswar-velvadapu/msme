@@ -75,7 +75,6 @@ export interface Config {
     placements: Placement;
     news: News;
     events: Event;
-    'btech-admission': BtechAdmission;
     researchareas: Researcharea;
     researchfacilities: Researchfacility;
     researchfacilitiescarousel: Researchfacilitiescarousel;
@@ -104,7 +103,6 @@ export interface Config {
     placements: PlacementsSelect<false> | PlacementsSelect<true>;
     news: NewsSelect<false> | NewsSelect<true>;
     events: EventsSelect<false> | EventsSelect<true>;
-    'btech-admission': BtechAdmissionSelect<false> | BtechAdmissionSelect<true>;
     researchareas: ResearchareasSelect<false> | ResearchareasSelect<true>;
     researchfacilities: ResearchfacilitiesSelect<false> | ResearchfacilitiesSelect<true>;
     researchfacilitiescarousel: ResearchfacilitiescarouselSelect<false> | ResearchfacilitiescarouselSelect<true>;
@@ -331,16 +329,6 @@ export interface Event {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "btech-admission".
- */
-export interface BtechAdmission {
-  id: number;
-  admission?: string | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "researchareas".
  */
 export interface Researcharea {
@@ -417,9 +405,7 @@ export interface Project {
  */
 export interface Collaboration {
   id: number;
-  collaborator_name?: string | null;
-  faculty_collaborator_name?: string | null;
-  institute_name?: string | null;
+  logo?: (number | null) | Media;
   collaboration_type?: ('Industrial Collaboration' | 'Institutional Collaboration') | null;
   updatedAt: string;
   createdAt: string;
@@ -652,10 +638,6 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'events';
         value: number | Event;
-      } | null)
-    | ({
-        relationTo: 'btech-admission';
-        value: number | BtechAdmission;
       } | null)
     | ({
         relationTo: 'researchareas';
@@ -913,15 +895,6 @@ export interface EventsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "btech-admission_select".
- */
-export interface BtechAdmissionSelect<T extends boolean = true> {
-  admission?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "researchareas_select".
  */
 export interface ResearchareasSelect<T extends boolean = true> {
@@ -993,9 +966,7 @@ export interface ProjectsSelect<T extends boolean = true> {
  * via the `definition` "collaborations_select".
  */
 export interface CollaborationsSelect<T extends boolean = true> {
-  collaborator_name?: T;
-  faculty_collaborator_name?: T;
-  institute_name?: T;
+  logo?: T;
   collaboration_type?: T;
   updatedAt?: T;
   createdAt?: T;

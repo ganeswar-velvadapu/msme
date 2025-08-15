@@ -29,6 +29,8 @@ import { BTech_P } from '@/collections/Acad_Btech';
 import BTechAdmission from '@/collections/BTech_Admission'
 import MTechAdmission from '@/collections/MTech_Admission'
 import PhDAdmission from '@/collections/PhD_Admissions'
+import MTech_P from '@/collections/Acad_Mtech'
+import PhD_P from '@/collections/Acad_Phd'
 
 
 const filename = fileURLToPath(import.meta.url)
