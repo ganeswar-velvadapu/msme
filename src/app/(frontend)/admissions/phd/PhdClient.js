@@ -2,10 +2,10 @@
 
 import React, { useState } from 'react';
 
-export default function PhDClient({ phdAdmissionList }) {
+export default function PhDClient({ phdList }) {
   const [activeEntryIndex, setActiveEntryIndex] = useState(0);
 
-  const phdEntries = phdAdmissionList || [];
+  const phdEntries = phdList || [];
   const activeEntry = phdEntries[activeEntryIndex] || {};
   
   const {
