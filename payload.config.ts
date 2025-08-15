@@ -26,13 +26,9 @@ import { Alumni } from '@/collections/Alumni'
 import { About } from '@/globals/About'
 import { BTech_P } from '@/collections/Acad_Btech';
 
-<<<<<<< HEAD
-import { BTech_Admission } from '@/collections/Admission_btech'
-=======
 import BTechAdmission from '@/collections/BTech_Admission'
 import MTechAdmission from '@/collections/MTech_Admission'
 import PhDAdmission from '@/collections/PhD_Admissions'
->>>>>>> 927d89213753ed0a726133b3fd056e96b8e4ee47
 
 
 const filename = fileURLToPath(import.meta.url)
