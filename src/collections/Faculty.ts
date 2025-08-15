@@ -11,6 +11,21 @@ export const Faculty: CollectionConfig = {
             label: "Upload Faculty Image"
         },
         {
+            name : "faculty_group_web_page",
+            type : "text",
+            label : "Faculty Group Web Page"
+        },
+        {
+            name : "linked_in_faculty",
+            type : "text",
+            label : "LinkedIn URL"
+        },
+        {
+            name : "google_scholar_url",
+            type : "text",
+            label :"Google Scholar link"
+        },
+        {
             name: "faculty_name",
             type: "text",
 

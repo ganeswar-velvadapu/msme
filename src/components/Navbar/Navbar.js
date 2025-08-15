@@ -13,7 +13,7 @@ const main = [
     },
     {
         "name": "Research",
-        "url": "/research",
+        "url": "/research/areas",
         "hasChildren": true,
         "children": [
             {
@@ -74,7 +74,7 @@ const main = [
     },
     {
         "name": "Academics",
-        "url": "/academia",
+        "url": "/academia/programs/btech",
         "hasChildren": true,
         "children": [
             {

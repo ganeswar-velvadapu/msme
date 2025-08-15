@@ -9,6 +9,12 @@ export const ResearchAreas:CollectionConfig = {
             label : "Research Area Name"
         },
         {
+            name : "research_area_photo",
+            type : "upload",
+            relationTo : "media",
+            label : "Research Area Photo"
+        },
+        {
             name : "research_areas",
             type:"array",
             label : "Research Areas",

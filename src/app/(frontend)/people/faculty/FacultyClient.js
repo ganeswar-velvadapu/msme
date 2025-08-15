@@ -91,6 +91,50 @@ export default function FacultyClient({ facultyList }) {
                                         alt={selectedFaculty.faculty_name}
                                         className="w-full aspect-square object-cover rounded-lg shadow-sm"
                                     />
+                                    <div className="mt-4">
+                                        {/* LinkedIn URL */}
+                                        {selectedFaculty.linked_in_faculty && (
+                                            <div className="mb-2">
+                                                <a
+                                                    href={selectedFaculty.linked_in_faculty}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="text-gray-600 hover:underline"
+                                                >
+                                                    LinkedIn Profile
+                                                </a>
+                                            </div>
+                                        )}
+
+                                        {/* Google Scholar URL */}
+                                        {selectedFaculty.google_scholar_url && (
+                                            <div className="mb-2">
+                                                <a
+                                                    href={selectedFaculty.google_scholar_url}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="text-gray-600 hover:underline"
+                                                >
+                                                    Google Scholar
+                                                </a>
+                                            </div>
+                                        )}
+
+                                        {/* Faculty Group Web Page URL */}
+                                        {selectedFaculty.faculty_group_web_page && (
+                                            <div className="mb-2">
+                                                <a
+                                                    href={selectedFaculty.faculty_group_web_page}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="text-gray-600 hover:underline"
+                                                >
+                                                    Faculty Group Web Page
+                                                </a>
+                                            </div>
+                                        )}
+                                    </div>
+
                                 </div>
 
                                 <div className="w-full md:w-2/3">
@@ -105,7 +149,7 @@ export default function FacultyClient({ facultyList }) {
 
                                         <div className="flex items-center gap-2">
                                             <GraduationCap size={18} className="text-gray-500" />
-                                            <span className="text-gray-700">PhD from {selectedFaculty.faculty_phd_detail}</span>
+                                            <span className="text-gray-700">{selectedFaculty.faculty_phd_detail}</span>
                                         </div>
 
                                         <div className="flex items-center gap-2">
@@ -113,6 +157,8 @@ export default function FacultyClient({ facultyList }) {
                                             <span className="text-gray-700">Office: {selectedFaculty.faculty_office}</span>
                                         </div>
                                     </div>
+
+
 
                                     <div className="mb-6">
                                         <div className="flex items-center gap-2 mb-2">
