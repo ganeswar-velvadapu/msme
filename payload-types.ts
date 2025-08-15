@@ -86,7 +86,6 @@ export interface Config {
     'btech-p': BtechP;
     'mtech-p': MtechP;
     'phd-p': PhdP;
-    accounts: Account;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -112,7 +111,6 @@ export interface Config {
     'btech-p': BtechPSelect<false> | BtechPSelect<true>;
     'mtech-p': MtechPSelect<false> | MtechPSelect<true>;
     'phd-p': PhdPSelect<false> | PhdPSelect<true>;
-    accounts: AccountsSelect<false> | AccountsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -498,7 +496,13 @@ export interface MtechP {
         description?: string | null;
         brochure_link?: string | null;
         course_and_thesis?: string | null;
-        eligibility_and_admissions?: string | null;
+        eligibility_and_admissions?:
+          | {
+              heading?: string | null;
+              content?: string | null;
+              id?: string | null;
+            }[]
+          | null;
         id?: string | null;
       }[]
     | null;
@@ -515,21 +519,6 @@ export interface PhdP {
   brochure_link?: string | null;
   course_and_thesis?: string | null;
   eligibility_and_admissions?: string | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "accounts".
- */
-export interface Account {
-  id: number;
-  name?: string | null;
-  picture?: string | null;
-  user: number | User;
-  issuerName: string;
-  scope: string;
-  sub: string;
   updatedAt: string;
   createdAt: string;
 }
@@ -615,10 +604,6 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'phd-p';
         value: number | PhdP;
-      } | null)
-    | ({
-        relationTo: 'accounts';
-        value: number | Account;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -999,7 +984,13 @@ export interface MtechPSelect<T extends boolean = true> {
         description?: T;
         brochure_link?: T;
         course_and_thesis?: T;
-        eligibility_and_admissions?: T;
+        eligibility_and_admissions?:
+          | T
+          | {
+              heading?: T;
+              content?: T;
+              id?: T;
+            };
         id?: T;
       };
   updatedAt?: T;
@@ -1014,20 +1005,6 @@ export interface PhdPSelect<T extends boolean = true> {
   brochure_link?: T;
   course_and_thesis?: T;
   eligibility_and_admissions?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "accounts_select".
- */
-export interface AccountsSelect<T extends boolean = true> {
-  name?: T;
-  picture?: T;
-  user?: T;
-  issuerName?: T;
-  scope?: T;
-  sub?: T;
   updatedAt?: T;
   createdAt?: T;
 }

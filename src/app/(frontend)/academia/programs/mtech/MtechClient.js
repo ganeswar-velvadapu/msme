@@ -63,7 +63,7 @@ export default function MTechClient({ mtechList }) {
       </div>
 
       {/* Content Section */}
-      <div className="text-gray-800 text-base leading-relaxed px-4 text-center space-y-4">
+      <div className="text-gray-800 text-base leading-relaxed px-4 space-y-4">
         {activeSubTab === "about" && (
           <div>
             <p>{activeSpecialization.description || "No information available."}</p>
@@ -83,7 +83,18 @@ export default function MTechClient({ mtechList }) {
           <p>{activeSpecialization.course_and_thesis || "No information available."}</p>
         )}
         {activeSubTab === "eligibility_and_admissions" && (
-          <p>{activeSpecialization.eligibility_and_admissions || "No information available."}</p>
+          <div>
+            {activeSpecialization.eligibility_and_admissions && activeSpecialization.eligibility_and_admissions.length > 0 ? (
+              activeSpecialization.eligibility_and_admissions.map((section, index) => (
+                <div key={index} className="mb-4">
+                  {section.heading && <h3 className="text-lg font-semibold">{section.heading} : </h3>}
+                   <p>{section.content || "No content available."}</p>
+                </div>
+              ))
+            ) : (
+              <p>No eligibility and admissions information available.</p>
+            )}
+          </div>
         )}
       </div>
     </div>
