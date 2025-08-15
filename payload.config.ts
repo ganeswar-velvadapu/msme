@@ -27,6 +27,7 @@ import { About } from '@/globals/About'
 import {BTech_P} from '@/collections/Acad_Btech';
 import MTech_P from '@/collections/Acad_Mtech';
 import PhD_P from '@/collections/Acad_Phd';
+import { BTech_Admission } from '@/collections/Admission_btech'
 
 
 
@@ -41,7 +42,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media,Placements,News,Events,ResearchAreas,ResearchFacilities,ResearchFacilitiesCarousel,Projects,Collaborations,Faculty,Staff,BTech,MTech,PhD,Alumni,BTech_P,MTech_P,PhD_P],
+  collections: [Users, Media,Placements,News,Events,BTech_Admission,ResearchAreas,ResearchFacilities,ResearchFacilitiesCarousel,Projects,Collaborations,Faculty,Staff,BTech,MTech,PhD,Alumni,BTech_P,MTech_P,PhD_P],
   globals : [HomeCarousel,About],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',

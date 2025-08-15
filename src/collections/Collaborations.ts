@@ -4,28 +4,20 @@ export const Collaborations:CollectionConfig = {
     slug : "collaborations",
     fields : [
         {
-            name : "collaborator_name",
-            type : "text",
-            label : "Name of the collaborator"
+            name: "collaboration_image",
+            type: "upload",
+            relationTo: "media",
+            label: "Logo"
         },
         {
-            name : "faculty_collaborator_name",
-            type : "text",
-            label : "Name of the faculty"
-        },
-        {
-            name : "institute_name",
-            type : "text",
-            label : "Institute or Industry Name"
-        },
-        {
-            name : "collaboration_type",
-            type : "select",
-            options : [
+            name: "collaboration_type",
+            type: "select",
+            options: [
                 "Industrial Collaboration",
                 "Institutional Collaboration"
             ],
-            label : "Collaboration Type"
+            label: "Collaboration Type"
         }
+
     ]
 }
