@@ -1,13 +1,14 @@
 import { CollectionConfig } from "payload";
 
-export const Collaborations:CollectionConfig = {
-    slug : "collaborations",
-    fields : [
+export const Collaborations: CollectionConfig = {
+    slug: "collaborations",
+    fields: [
+
         {
-            name: "collaboration_image",
+            name: "logo",
             type: "upload",
             relationTo: "media",
-            label: "Logo"
+            label: "Upload Collaboration Logo"
         },
         {
             name: "collaboration_type",

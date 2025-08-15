@@ -342,7 +342,9 @@ export interface Project {
  */
 export interface Collaboration {
   id: number;
-  collaboration_image?: (number | null) | Media;
+  collaborator_name?: string | null;
+  faculty_collaborator_name?: string | null;
+  institute_name?: string | null;
   collaboration_type?: ('Industrial Collaboration' | 'Institutional Collaboration') | null;
   updatedAt: string;
   createdAt: string;
@@ -508,7 +510,13 @@ export interface MtechP {
         description?: string | null;
         brochure_link?: string | null;
         course_and_thesis?: string | null;
-        eligibility_and_admissions?: string | null;
+        eligibility_and_admissions?:
+          | {
+              heading?: string | null;
+              content?: string | null;
+              id?: string | null;
+            }[]
+          | null;
         id?: string | null;
       }[]
     | null;
@@ -838,7 +846,9 @@ export interface ProjectsSelect<T extends boolean = true> {
  * via the `definition` "collaborations_select".
  */
 export interface CollaborationsSelect<T extends boolean = true> {
-  collaboration_image?: T;
+  collaborator_name?: T;
+  faculty_collaborator_name?: T;
+  institute_name?: T;
   collaboration_type?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -1003,7 +1013,13 @@ export interface MtechPSelect<T extends boolean = true> {
         description?: T;
         brochure_link?: T;
         course_and_thesis?: T;
-        eligibility_and_admissions?: T;
+        eligibility_and_admissions?:
+          | T
+          | {
+              heading?: T;
+              content?: T;
+              id?: T;
+            };
         id?: T;
       };
   updatedAt?: T;

@@ -35,8 +35,20 @@ const MTech_P: CollectionConfig = {
         },
         {
           name: 'eligibility_and_admissions',
-          type: 'textarea',
+          type: 'array',
           label: 'Eligibility and Admissions',
+          fields: [
+            {
+              name: 'heading',
+              type: 'text',
+              label: 'Section Heading',
+            },
+            {
+              name: 'content',
+              type: 'textarea',
+              label: 'Section Content',
+            },
+          ],
         },
       ],
     },
