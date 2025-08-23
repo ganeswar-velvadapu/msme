@@ -425,6 +425,7 @@ export interface Faculty {
   faculty_group_web_page?: string | null;
   linked_in_faculty?: string | null;
   google_scholar_url?: string | null;
+  scopus_id?: string | null;
   faculty_name?: string | null;
   faculty_designation?: string | null;
   faculty_email?: string | null;
@@ -534,7 +535,7 @@ export interface Phd {
 export interface Alumnus {
   id: number;
   alumni_student_name?: string | null;
-  alumni_degree?: string | null;
+  alumni_degree?: ('B. Tech' | 'M. Tech' | 'PhD') | null;
   alumni_batch?: string | null;
   updatedAt: string;
   createdAt: string;
@@ -990,6 +991,7 @@ export interface FacultySelect<T extends boolean = true> {
   faculty_group_web_page?: T;
   linked_in_faculty?: T;
   google_scholar_url?: T;
+  scopus_id?: T;
   faculty_name?: T;
   faculty_designation?: T;
   faculty_email?: T;
