@@ -2,170 +2,133 @@
 import { useState } from 'react';
 
 export default function ResearchAreasClient({ researchAreas }) {
-  const [expandedArea, setExpandedArea] = useState(null);
 
-  const toggleExpand = (id) => {
-    if (expandedArea === id) {
-      setExpandedArea(null);
-    } else {
-      setExpandedArea(id);
-    }
-  };
 
-  // Sample data for demonstration
-  const sampleResearchAreas = researchAreas || [
-    {
-      id: 1,
-      research_area_name: "Artificial Intelligence & Machine Learning",
-      about_research_area: "Our AI research focuses on developing cutting-edge algorithms and models that can solve complex real-world problems. We explore deep learning, natural language processing, computer vision, and reinforcement learning to create intelligent systems that can understand, learn, and adapt.",
-      research_area_photo: {
-        url: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=300&fit=crop"
-      },
-      research_areas: [
-        { research_area_type: "Deep Learning" },
-        { research_area_type: "Natural Language Processing" },
-        { research_area_type: "Computer Vision" },
-        { research_area_type: "Reinforcement Learning" }
-      ],
-      research_areas_associated_faculty: [
-        { research_area_faculty_name: "Dr. Sarah Chen" },
-        { research_area_faculty_name: "Prof. Michael Rodriguez" },
-        { research_area_faculty_name: "Dr. Aisha Patel" }
-      ]
-    },
-    {
-      id: 2,
-      research_area_name: "Renewable Energy Systems",
-      about_research_area: "Advancing sustainable energy solutions through innovative research in solar, wind, and battery technologies. Our interdisciplinary approach combines materials science, engineering, and environmental studies to create more efficient and cost-effective renewable energy systems.",
-      research_area_photo: {
-        url: "https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=400&h=300&fit=crop"
-      },
-      research_areas: [
-        { research_area_type: "Solar Energy" },
-        { research_area_type: "Wind Power" },
-        { research_area_type: "Energy Storage" },
-        { research_area_type: "Smart Grids" }
-      ],
-      research_areas_associated_faculty: [
-        { research_area_faculty_name: "Dr. Emily Johnson" },
-        { research_area_faculty_name: "Prof. David Kim" }
-      ]
-    }
-  ];
+  // console.log(researchAreas[0].research_area_photo)
+
+
+
+  // // Sample data for demonstration
+  // const sampleResearchAreas = researchAreas || [
+  //   {
+  //     id: 1,
+  //     research_area_name: "Materials For Energy and Environment",
+  //     about_research_area: "Materials science plays a crucial role in advancing technologies for sustainable energy and environmental protection. At MSME, thermoelectric materials, are gaining traction for waste heat recovery, and are being engineered at the nanoscale to enhance their efficiency and scalability. Researchers are investigating batteries, especially lithium-ion and emerging solid-state types, are central to energy storage solutions. Material innovations in electrochemical processes are ongoing to improving their performance, safety, and lifespan. We are also actively investigating materials and catalysts routes for green hydrogen production, technology that is a cornerstone of a sustainable energy future. Researchers at MSME are exploring critical minerals are essential for the global transition to clean energy technologies like solar, wind, and electric vehicles. Additionally, we are developing carbon capture technologies that leverage advanced porous materials, such as metal-organic frameworks (MOFs), to selectively capture CO₂ from industrial emissions.",
+  //     research_area_photo: {
+  //       url: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=300&fit=crop"
+  //     },
+  //     research_areas: [
+  //       { research_area_type: "100% Recyclable Materials" },
+  //       { research_area_type: "Thermoelectric Materials" },
+  //       { research_area_type: "Green Hydrogen" },
+  //       { research_area_type: "Solar Energy" },
+  //       { research_area_type: "Battery Technology" }
+  //     ],
+  //     research_areas_associated_faculty: [
+  //       { research_area_faculty_name: "Suhash R. Dey" },
+  //       { research_area_faculty_name: "Atul Deshpande" },
+  //       { research_area_faculty_name: "Heman R. Devi" },
+  //       { research_area_faculty_name: "Deepu J. Babu" },
+  //       { research_area_faculty_name: "Suresh Perumal" },
+  //       { research_area_faculty_name: "Ashok Kamaraj" },
+  //       { research_area_faculty_name: "Anuj Goyal" }
+  //     ]
+  //   },
+  //   {
+  //     id: 2,
+  //     research_area_name: "Artificial Intelligence & Machine Learning",
+  //     about_research_area: "Our AI research focuses on developing cutting-edge algorithms and models that can solve complex real-world problems. We explore deep learning, natural language processing, computer vision, and reinforcement learning to create intelligent systems that can understand, learn, and adapt.",
+  //     research_area_photo: {
+  //       url: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=300&fit=crop"
+  //     },
+  //     research_areas: [
+  //       { research_area_type: "Deep Learning" },
+  //       { research_area_type: "Natural Language Processing" },
+  //       { research_area_type: "Computer Vision" },
+  //       { research_area_type: "Reinforcement Learning" }
+  //     ],
+  //     research_areas_associated_faculty: [
+  //       { research_area_faculty_name: "Dr. Sarah Chen" },
+  //       { research_area_faculty_name: "Prof. Michael Rodriguez" },
+  //       { research_area_faculty_name: "Dr. Aisha Patel" }
+  //     ]
+  //   }
+  // ];
 
   const dataToUse = researchAreas || sampleResearchAreas;
 
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        {/* Header Section */}
-        <div className="text-center mb-16">
-          <div className="inline-block">
-            <h1 className="text-5xl font-extrabold bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent mb-4">
-              Research Areas
-            </h1>
+  // Icon components for different research areas
+  const getResearchIcon = (icons) => {
+
+    return (
+      <>
+        <div className="p-4">
+          <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+            {icons.map((icon, index) => (
+              <div key={icon.id || index} className="flex justify-center">
+                <img
+                  src={icon.image.url}
+                  alt={`Icon ${index + 1}`}
+                  className="w-30 h-30 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200"
+                />
+              </div>
+            ))}
           </div>
-          
+        </div>
+      </>
+    )
+  };
+
+  return (
+    <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto">
+        {/* Header Section */}
+        <div className="text-center mb-12">
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+            Research Areas
+          </h1>
         </div>
 
-        {/* Research Areas Grid */}
-        <div className="space-y-8">
+        {/* Research Areas Cards */}
+        <div className="space-y-6">
           {dataToUse.map((area, areaIndex) => (
-            <div 
-              key={area.id || areaIndex} 
-              className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-1"
+            <div
+              key={area.id || areaIndex}
+              className="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden"
             >
-              {/* Header */}
-              <div 
-                className="p-8 cursor-pointer flex justify-between items-center bg-gradient-to-r from-gray-50 to-white hover:from-gray-100 hover:to-gray-50 transition-all duration-300"
-                onClick={() => toggleExpand(area.id || areaIndex)}
-              >
-                <div className="flex items-center space-x-4">
-                  
-                  <h2 className="text-3xl font-bold text-gray-900 tracking-tight">{area.research_area_name}</h2>
+              {/* Card Content */}
+              <div className="p-8">
+                {/* Title */}
+                <h2 className="text-2xl font-bold text-gray-900 mb-4 border-b-2 border-gray-200 pb-2">
+                  {area.research_area_name}
+                </h2>
+
+
+
+                {/* Description */}
+                <div className="mb-8">
+                  <p className="text-gray-700 text-base leading-relaxed text-justify">
+                    {area.about_research_area}
+                  </p>
                 </div>
-                
-                <button className="p-2 rounded-full hover:bg-white transition-all duration-300 shadow-md">
-                  <div className={`transform transition-transform duration-300 ${expandedArea === (area.id || areaIndex) ? 'rotate-180' : 'rotate-0'}`}>
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </div>
-                </button>
-              </div>
 
-              {/* Expanded Content */}
-              <div className={`overflow-hidden transition-all duration-500 ${expandedArea === (area.id || areaIndex) ? 'opacity-100' : 'max-h-0 opacity-0'}`}>
-                <div className="px-8 pb-8">
-                  <div className="h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent mb-8"></div>
+                {/* Research Icons */}
+                {getResearchIcon(area.research_area_photo)}
+
+
+                <h3 className='mb-4 font-bold text-xl'>Faculty Memebers</h3>
+                {/* Faculty Members Tags */}
+                <div className="flex flex-wrap gap-3">
                   
-                  {/* Content Layout */}
-                  <div className="grid lg:grid-cols-3 gap-8">
-                    {/* Left Column - Photo */}
-                    <div className="lg:col-span-1">
-                      {area.research_area_photo && (
-                        <div className="relative group">
-                          {/* <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl transform rotate-3 group-hover:rotate-6 transition-transform duration-300"></div> */}
-                          <img 
-                            src={area.research_area_photo.url} 
-                            alt={area.research_area_name} 
-                            className="relative w-full h-80 object-cover rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300" 
-                          />
-                        </div>
-                      )}
-                    </div>
 
-                    {/* Right Column - Content */}
-                    <div className="lg:col-span-2 space-y-8">
-                      {/* About Section */}
-                      <div>
-                        <h3 className="text-2xl font-bold text-gray-900 mb-4 flex items-center">
-                          {/* <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div> */}
-                          About this Research Area
-                        </h3>
-                        <p className="text-gray-700 text-lg leading-relaxed">{area.about_research_area}</p>
-                      </div>
-
-                      {/* Research Specializations */}
-                      <div>
-                        <h3 className="text-2xl font-bold text-gray-900 mb-4 flex items-center">
-                          {/* <div className="w-2 h-2 bg-purple-500 rounded-full mr-3"></div> */}
-                          Research Specializations
-                        </h3>
-                        <div className="flex flex-wrap gap-3">
-                          {area.research_areas?.map((subArea, index) => (
-                            <span 
-                              key={index} 
-                              className="px-4 py-2 bg-gradient-to-r from-blue-50 to-purple-50 text-gray-800 rounded-full text-sm font-semibold border border-blue-100 hover:from-blue-100 hover:to-purple-100 transition-all duration-300 shadow-sm hover:shadow-md"
-                            >
-                              {subArea.research_area_type}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Faculty Members */}
-                      <div className='overflow-y-auto'>
-                        <h3 className="text-2xl font-bold text-gray-900 mb-4 flex items-center">
-                          Faculty Members
-                        </h3>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                          {area.research_areas_associated_faculty?.map((faculty, index) => (
-                            <div 
-                              key={index} 
-                              className="group p-4 bg-gradient-to-br from-gray-50 to-white rounded-xl border border-gray-200 hover:border-blue-300 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5"
-                            >
-                              <div className="flex items-center space-x-3">
-                                <p className="font-semibold text-gray-900 group-hover:text-blue-700 transition-colors duration-300">
-                                  {faculty.research_area_faculty_name}
-                                </p>
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  {area.research_areas_associated_faculty?.map((faculty, index) => (
+                    <span
+                      key={index}
+                      className="px-4 py-2 bg-gray-100 text-gray-800 rounded-full text-sm font-medium border border-gray-300 hover:bg-gray-200 transition-colors duration-200"
+                    >
+                      {faculty.research_area_faculty_name}
+                    </span>
+                  ))}
                 </div>
               </div>
             </div>

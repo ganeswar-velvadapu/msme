@@ -334,7 +334,12 @@ export interface Event {
 export interface Researcharea {
   id: number;
   research_area_name?: string | null;
-  research_area_photo?: (number | null) | Media;
+  research_area_photo?:
+    | {
+        image?: (number | null) | Media;
+        id?: string | null;
+      }[]
+    | null;
   research_areas?:
     | {
         research_area_type?: string | null;
@@ -899,7 +904,12 @@ export interface EventsSelect<T extends boolean = true> {
  */
 export interface ResearchareasSelect<T extends boolean = true> {
   research_area_name?: T;
-  research_area_photo?: T;
+  research_area_photo?:
+    | T
+    | {
+        image?: T;
+        id?: T;
+      };
   research_areas?:
     | T
     | {
