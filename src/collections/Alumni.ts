@@ -8,19 +8,19 @@ export const Alumni: CollectionConfig = {
             name: "alumni_student_name",
             type: "text",
             label: "Enter student name",
-            
+
         },
         {
             name: "alumni_degree",
-            type: "text",
+            type: "select",
             label: "Enter Degree",
-            
+            options: ["B. Tech", "M. Tech", 'PhD']
         },
         {
             name: "alumni_batch",
             type: "text",
             label: "Enter Batch",
-            
+
         }
     ]
 }
