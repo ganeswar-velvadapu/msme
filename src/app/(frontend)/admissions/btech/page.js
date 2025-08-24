@@ -7,10 +7,11 @@ import BtechClient from "./BtechClient";
 export default async function Btech() {
   const payload = await getPayload({ config });
 
-  const btech = await payload.find({
-    collection: "btech-admissions",
-    limit: 1000000000,
+  const btech = await payload.findGlobal({
+    slug: "btech-admissions"
   });
 
-  return <BtechClient btechList={btech.docs} />;
+  // console.log(btech)
+
+  return <BtechClient btech={btech} />;
 }

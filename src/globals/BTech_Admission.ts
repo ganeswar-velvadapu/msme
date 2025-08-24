@@ -1,6 +1,6 @@
-import { CollectionConfig } from 'payload';
+import { GlobalConfig } from 'payload';
 
-const BTechAdmission: CollectionConfig = {
+const BTechAdmission: GlobalConfig = {
   slug: 'btech-admissions',
   fields: [
     {

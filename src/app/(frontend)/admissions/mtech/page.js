@@ -7,10 +7,11 @@ import MtechClient from "./MtechClient";
 export default async function Mtech() {
   const payload = await getPayload({ config });
 
-  const mtech = await payload.find({
-    collection: 'mtech-admissions',
-    limit: 1000000000,
+  const mtech = await payload.findGlobal({
+    slug: 'mtech-admissions',
   });
 
-  return <MtechClient mtechList={mtech.docs} />;
+  console.log(mtech)
+
+  return <MtechClient mtech={mtech} />;
 }

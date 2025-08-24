@@ -1,6 +1,6 @@
-import { CollectionConfig } from 'payload';
+import { GlobalConfig } from 'payload';
 
-const PhDAdmission: CollectionConfig = {
+const PhDAdmission: GlobalConfig = {
   slug: 'phd-admissions',
   fields: [
     {
