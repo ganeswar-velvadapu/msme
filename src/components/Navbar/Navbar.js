@@ -5,154 +5,9 @@ import { usePathname } from "next/navigation";
 import React, { useEffect, useRef, useState } from "react";
 import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
 import { CgClose, CgMenu } from "react-icons/cg";
+import main from "../../constants/menu"
 
-const main = [
-    {
-        "name": "About",
-        "url": "/about",
-    },
-    {
-        "name": "Research",
-        "url": "/research/areas",
-        "hasChildren": true,
-        "children": [
-            {
-                "name": "Research Areas",
-                "url": "/research/areas",
-            },
-            {
-                "name": "Research Facilities",
-                "url": "/research/facilities",
-            },
-            {
-                "name": "Projects",
-                "url": "/research/projects",
-            },
-            {
-                "name": "Collaborations",
-                "url": "/research/collaborations",
-            }
-        ]
-    },
-    {
-        "name": "People",
-        "url": "/people/faculty",
-        "hasChildren": true,
-        "children": [
-            {
-                "name": "Faculty",
-                "url": "/people/faculty"
-            },
-            {
-                "name": "Staff",
-                "url": "/people/staff"
-            },
-            {
-                "name": "Students",
-                "url": "/people/students/btech",
-                "hasChildren": true,
-                "children": [
-                    {
-                        "name": "B Tech",
-                        "url": "/people/students/btech"
-                    },
-                    {
-                        "name": "M Tech",
-                        "url": "/people/students/mtech"
-                    },
-                    {
-                        "name": "PhD",
-                        "url": "/people/students/phd"
-                    }
-                ]
-            },
-            {
-                "name": "Alumni",
-                "url": "/people/alumni"
-            }
-        ]
-    },
-    {
-        "name": "Academics",
-        "url": "/academia/programs/btech",
-        "hasChildren": true,
-        "children": [
-            {
-                "name": "Programs",
-                "url": "/academia/programs/btech",
-                "hasChildren": true,
-                "children": [
-                    {
-                        "name": "B Tech",
-                        "url": "/academia/programs/btech"
-                    },
-                    {
-                        "name": "M Tech",
-                        "url": "/academia/programs/mtech"
-                    },
-                    {
-                        "name": "PhD",
-                        "url": "/academia/programs/phd"
-                    },
-                ]
-            },
-            {
-                "name": "Time Table",
-                "url": ""
-            }
-        ]
-    },
-    {
-        "name": "Admissions",
-        "url": "/admissions/btech",
-        "hasChildren": true,
-                "children": [
-                    {
-                        "name": "B.Tech",
-                        "url": "/admissions/btech"
-                    },
-                    {
-                        "name": "M.Tech",
-                        "url": "/admissions/mtech"
-                    },
-                    {
-                        "name": "PhD",
-                        "url": "/admissions/phd"
-                    },
-                ]
-    },
-    {
-        "name": "Careers",
-        "url": "https://www.iith.ac.in/careers/",
-        "hasChildren" : true,
-        children : [
-            {
-                "name" : "Join as Faculty",
-                "url" : "https://www.iith.ac.in/careers/"
-            },
-            {
-                "name" : "Join as Post Doc",
-                "url" : "https://www.iith.ac.in/careers/"
-            },
-            {
-                "name" : "Join as Staff",
-                "url" : "https://www.iith.ac.in/careers/"
-            },
-            {
-                "name" : "Where do MSME graduates go after graduation?",
-                "url" : "/careers/where_to_go"
-            },
-            {
-                "name" : "Placements",
-                "url" : "/careers/placements"
-            },
-        ]
-    },
-    {
-        "name": "Contact Us",
-        "url": "/contact",
-    },
-];
+
 
 const Header = () => {
     const [showMenu, setShowMenu] = useState(false);
@@ -221,7 +76,8 @@ const Header = () => {
             ref={headerRef}
         >
             <div className="container mx-auto px-4">
-                <nav className="flex items-center justify-center h-20">
+                <nav className="flex items-center justify-between h-20">
+                    <h3 className="text-xl font-semibold md:hidden">Department of MSME</h3>
                     <button
                         className="lg:hidden flex items-center justify-center w-12 h-12 text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-full transition-colors duration-200"
                         onClick={() => setShowMenu(!showMenu)}
@@ -311,7 +167,7 @@ const Header = () => {
 
                     {/* Mobile menu overlay */}
                     <div
-                        className={`fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden transition-opacity duration-300 ${showMenu ? "opacity-100" : "opacity-0 pointer-events-none"
+                        className={`fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden transition-opacity duration-300 ${showMenu ? "opacity-80" : "opacity-0 pointer-events-none"
                             }`}
                         onClick={() => setShowMenu(false)}
                     ></div>
