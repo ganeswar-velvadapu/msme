@@ -97,21 +97,6 @@ const main = [
                 ]
             },
             {
-                "name": "Course Curriculum",
-                "url": "",
-                "hasChildren": true,
-                "children": [
-                    {
-                        "name": "UG Course Curriculum",
-                        "url": "/academia/programs/btech"
-                    },
-                    {
-                        "name": "PG Course Curriculum",
-                        "url": "/academia/programs/mtech"
-                    },
-                ]
-            },
-            {
                 "name": "Time Table",
                 "url": ""
             }
