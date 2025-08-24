@@ -53,11 +53,6 @@ export const About: GlobalConfig = {
                     label: "Enter the year"
                 },
                 {
-                    name : "timeline_heading",
-                    type : "text",
-                    label : "Enter timeline heading"
-                },
-                {
                     name: "timeline_content",
                     type: "text",
 
@@ -75,12 +70,6 @@ export const About: GlobalConfig = {
                     type: "text",
 
                     label: "Enter the Program name"
-                },
-                {
-                    name: "program_brief_description",
-                    type: "text",
-
-                    label: "Enter program description"
                 },
                 {
                     name: "link_to_program",

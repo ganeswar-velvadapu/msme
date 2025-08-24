@@ -25,11 +25,14 @@ import { PhD } from '@/collections/PhD'
 import { Alumni } from '@/collections/Alumni'
 import { About } from '@/globals/About'
 import { BTech_P } from '@/collections/Acad_Btech';
-import MTech_P from '@/collections/Acad_Mtech';
-import PhD_P from '@/collections/Acad_Phd';
-import BTechAdmission from '@/collections/BTech_Admission'
-import MTechAdmission from '@/collections/MTech_Admission'
-import PhDAdmission from '@/collections/PhD_Admissions'
+
+
+import MTech_P from '@/collections/Acad_Mtech'
+import PhD_P from '@/collections/Acad_Phd'
+import MTechAdmission from '@/globals/MTech_Admission'
+import BTechAdmission from '@/globals/BTech_Admission'
+import PhDAdmission from '@/globals/PhD_Admissions'
+
 
 
 const filename = fileURLToPath(import.meta.url)
@@ -41,14 +44,14 @@ export default buildConfig({
     importMap: {
       baseDir: path.resolve(dirname),
     },
-  
+
   },
-  collections: [PhDAdmission,MTechAdmission,BTechAdmission,Users, Media, Placements, News, Events, ResearchAreas, ResearchFacilities, ResearchFacilitiesCarousel, Projects, Collaborations, Faculty, Staff, BTech, MTech, PhD, Alumni, BTech_P, MTech_P, PhD_P],
-  globals: [HomeCarousel, About],
+  collections: [Users, Media, Placements, News, Events, ResearchAreas, ResearchFacilities, ResearchFacilitiesCarousel, Projects, Collaborations, Faculty, Staff, BTech, MTech, PhD, Alumni, BTech_P, MTech_P, PhD_P],
+  globals: [HomeCarousel, About,MTechAdmission,BTechAdmission,PhDAdmission],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
-  outputFile: path.resolve(dirname, 'payload-types.ts'),
+    outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
   db: postgresAdapter({
     pool: {

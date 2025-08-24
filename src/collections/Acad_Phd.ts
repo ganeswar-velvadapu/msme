@@ -2,6 +2,10 @@ import { CollectionConfig } from 'payload';
 
 const PhD_P: CollectionConfig = {
   slug: 'phd-p',
+  labels: {
+    singular: 'PhD Programme',
+    plural: 'PhD Programmes',
+  },
   fields: [
     {
       name: 'about',

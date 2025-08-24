@@ -19,5 +19,6 @@ export const Collaborations: CollectionConfig = {
             ],
             label: "Collaboration Type"
         }
+
     ]
 }

@@ -12,7 +12,7 @@ export default function MTechClient({ mtechList }) {
   const subTabs = [
     { key: "about", label: "About" },
     { key: "course_and_thesis", label: "Course and Thesis Requirements" },
-    { key: "eligibility_and_admissions", label: "Eligibility and Admissions" },
+    { key: "eligibility_and_admissions", label: "Eligibility and Admissions" }, 
   ];
 
   return (
