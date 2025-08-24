@@ -45,7 +45,7 @@ export default function MTechClient({ mtech }) {
               <h4 className="text-lg font-semibold mb-4">Eligibility Criteria</h4>
               {activeSpecialization.eligibility_mtech_ad.map((eligibility, index) => (
                 <div key={eligibility.id || index} className="mb-4 last:mb-0">
-                  <div className="font-medium text-blue-600 mb-2">
+                  <div className="font-medium text-black mb-2">
                     {eligibility.category_mtech_ad}
                   </div>
                   <p className="text-gray-700 leading-relaxed">
@@ -58,11 +58,11 @@ export default function MTechClient({ mtech }) {
 
           {/* Admission Process Section */}
           {activeSpecialization.admission_process_mtech && activeSpecialization.admission_process_mtech.length > 0 && (
-            <div className="bg-blue-50 p-6 rounded-lg">
+            <div className="bg-gray-50 p-6 rounded-lg">
               <h4 className="text-lg font-semibold mb-4">Admission Process</h4>
               {activeSpecialization.admission_process_mtech.map((process, index) => (
                 <div key={index} className="mb-4 last:mb-0">
-                  <div className="font-medium text-green-600 mb-2">
+                  <div className="font-medium text-black mb-2">
                     {process.admission_type_mtech}
                   </div>
                   <p className="text-gray-700 leading-relaxed">

@@ -11,7 +11,7 @@ export default async function Mtech() {
     slug: 'mtech-admissions',
   });
 
-  console.log(mtech)
+  // console.log(mtech)
 
   return <MtechClient mtech={mtech} />;
 }

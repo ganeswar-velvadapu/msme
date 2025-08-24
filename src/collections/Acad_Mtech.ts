@@ -2,6 +2,10 @@ import { CollectionConfig } from 'payload';
 
 const MTech_P: CollectionConfig = {
   slug: 'mtech-p',
+  labels: {
+    singular: 'M. Tech Programme',
+    plural: 'M.Tech Programmes',
+  },
   fields: [
     {
       name: 'about',

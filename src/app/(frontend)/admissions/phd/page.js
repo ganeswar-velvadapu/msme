@@ -7,10 +7,13 @@ import PhDClient from "./PhdClient";
 export default async function Phd() {
   const payload = await getPayload({ config });
 
-  const phd = await payload.find({
-    collection: "phd-admissions",
-    limit: 1000000000,
+  const phd = await payload.findGlobal({
+    slug: "phd-admissions",
   });
 
-  return <PhDClient phdList={phd.docs} />;
+
+  // console.log(phd)
+
+
+  return <PhDClient phdData={phd} />;
 }

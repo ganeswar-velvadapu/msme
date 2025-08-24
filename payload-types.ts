@@ -121,15 +121,15 @@ export interface Config {
   globals: {
     homecarousel: Homecarousel;
     about: About;
-    'btech-admissions': BtechAdmission;
     'mtech-admissions': MtechAdmission;
+    'btech-admissions': BtechAdmission;
     'phd-admissions': PhdAdmission;
   };
   globalsSelect: {
     homecarousel: HomecarouselSelect<false> | HomecarouselSelect<true>;
     about: AboutSelect<false> | AboutSelect<true>;
-    'btech-admissions': BtechAdmissionsSelect<false> | BtechAdmissionsSelect<true>;
     'mtech-admissions': MtechAdmissionsSelect<false> | MtechAdmissionsSelect<true>;
+    'btech-admissions': BtechAdmissionsSelect<false> | BtechAdmissionsSelect<true>;
     'phd-admissions': PhdAdmissionsSelect<false> | PhdAdmissionsSelect<true>;
   };
   locale: null;
@@ -1130,6 +1130,36 @@ export interface About {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "mtech-admissions".
+ */
+export interface MtechAdmission {
+  id: number;
+  specializations_mtech?:
+    | {
+        name_mtech_ad: string;
+        eligibility_mtech_ad?:
+          | {
+              category_mtech_ad?: string | null;
+              details_mtech_ad?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        admission_process_mtech?:
+          | {
+              admission_type_mtech?: string | null;
+              admission_details_mtech?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        brochure_link_mtech?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "btech-admissions".
  */
 export interface BtechAdmission {
@@ -1147,52 +1177,64 @@ export interface BtechAdmission {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "mtech-admissions".
- */
-export interface MtechAdmission {
-  id: number;
-  specializations_mtech?:
-    | {
-        name_mtech_ad: string;
-        eligibility_mtech_ad?:
-          | {
-              category_mtech_ad: string;
-              details_mtech_ad: string;
-              id?: string | null;
-            }[]
-          | null;
-        admission_process_mtech?:
-          | {
-              admission_type_mtech: string;
-              admission_details_mtech: string;
-              id?: string | null;
-            }[]
-          | null;
-        brochure_link_mtech?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  updatedAt?: string | null;
-  createdAt?: string | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "phd-admissions".
  */
 export interface PhdAdmission {
   id: number;
-  fellowships_phd_root?:
+  fellowships_phd?:
     | {
-        fellowship_phd: string;
-        fellowship_phd_link: string;
+        /**
+         * e.g., MoE, Project sponsored Fellowships, etc.
+         */
+        fellowship_type: string;
+        /**
+         * Details about the fellowship including eligibility, requirements, etc.
+         */
+        fellowship_description?: {
+          root: {
+            type: string;
+            children: {
+              type: string;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        } | null;
+        brochure_links?:
+          | {
+              /**
+               * e.g., "Check brochure for details (PDF link)"
+               */
+              link_text: string;
+              /**
+               * Full URL to the PDF or webpage
+               */
+              link_url: string;
+              id?: string | null;
+            }[]
+          | null;
+        additional_links?:
+          | {
+              /**
+               * e.g., CSIR-UGC NET JRF, INSPIRE, etc.
+               */
+              link_name: string;
+              link_url: string;
+              /**
+               * Brief description of what this link provides
+               */
+              link_description?: string | null;
+              id?: string | null;
+            }[]
+          | null;
         id?: string | null;
       }[]
     | null;
-  brochure_link_phd: string;
-  /**
-   * For details, refer to the respective PhD brochures and fellowship links.
-   */
-  admission_process_phd: string;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -1250,17 +1292,6 @@ export interface AboutSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "btech-admissions_select".
- */
-export interface BtechAdmissionsSelect<T extends boolean = true> {
-  admission_process_btech?: T;
-  link_to_jee_website?: T;
-  updatedAt?: T;
-  createdAt?: T;
-  globalType?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "mtech-admissions_select".
  */
 export interface MtechAdmissionsSelect<T extends boolean = true> {
@@ -1291,18 +1322,42 @@ export interface MtechAdmissionsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "btech-admissions_select".
+ */
+export interface BtechAdmissionsSelect<T extends boolean = true> {
+  admission_process_btech?: T;
+  link_to_jee_website?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "phd-admissions_select".
  */
 export interface PhdAdmissionsSelect<T extends boolean = true> {
-  fellowships_phd_root?:
+  fellowships_phd?:
     | T
     | {
-        fellowship_phd?: T;
-        fellowship_phd_link?: T;
+        fellowship_type?: T;
+        fellowship_description?: T;
+        brochure_links?:
+          | T
+          | {
+              link_text?: T;
+              link_url?: T;
+              id?: T;
+            };
+        additional_links?:
+          | T
+          | {
+              link_name?: T;
+              link_url?: T;
+              link_description?: T;
+              id?: T;
+            };
         id?: T;
       };
-  brochure_link_phd?: T;
-  admission_process_phd?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

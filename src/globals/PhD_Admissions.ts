@@ -2,43 +2,90 @@ import { GlobalConfig } from 'payload';
 
 const PhDAdmission: GlobalConfig = {
   slug: 'phd-admissions',
+  label: 'PhD Admissions',
   fields: [
     {
-      name: 'fellowships_phd_root',
+      name: 'fellowships_phd',
       type: 'array',
-      label: 'Fellowships',
+      label: 'PhD Fellowships',
       fields: [
         {
-          name: 'fellowship_phd',
+          name: 'fellowship_type',
           type: 'text',
-          label: 'Fellowship Name',
+          label: 'Fellowship Type',
           required: true,
+          admin: {
+            description: 'e.g., MoE, Project sponsored Fellowships, etc.'
+          }
         },
         {
-          name: 'fellowship_phd_link',
-          type: 'text',
-          label: 'Fellowship Link',
-          required: true,
+          name: 'fellowship_description',
+          type: 'richText',
+          label: 'Fellowship Description',
+          admin: {
+            description: 'Details about the fellowship including eligibility, requirements, etc.'
+          }
         },
-      ],
+        {
+          name: 'brochure_links',
+
+          type: 'array',
+          label: 'Brochure Links',
+          fields: [
+            {
+              name: 'link_text',
+              type: 'text',
+              label: 'Link Text',
+              required: true,
+              admin: {
+                description: 'e.g., "Check brochure for details (PDF link)"'
+              }
+            },
+            {
+              name: 'link_url',
+              type: 'text',
+              label: 'Link URL',
+              required: true,
+              admin: {
+                description: 'Full URL to the PDF or webpage'
+              }
+            }
+          ]
+        },
+        {
+          name: 'additional_links',
+          type: 'array',
+          label: 'Additional Links',
+          fields: [
+            {
+              name: 'link_name',
+              type: 'text',
+              label: 'Link Name',
+              required: true,
+              admin: {
+                description: 'e.g., CSIR-UGC NET JRF, INSPIRE, etc.'
+              }
+            },
+            {
+              name: 'link_url',
+              type: 'text',
+              label: 'Link URL',
+              required: true
+            },
+            {
+              name: 'link_description',
+              type: 'text',
+              label: 'Link Description',
+              admin: {
+                description: 'Brief description of what this link provides'
+              }
+            }
+          ]
+        }
+      ]
     },
-    {
-      name: 'brochure_link_phd',
-      type: 'text',
-      label: 'PhD Brochure Link',
-      required: true,
-    },
-    {
-      name: 'admission_process_phd',
-      type: 'textarea',
-      label: 'Admission Process',
-      required: true,
-      admin: {
-        description:
-          'For details, refer to the respective PhD brochures and fellowship links.',
-      },
-    },
-  ],
+
+  ]
 };
 
 export default PhDAdmission;
