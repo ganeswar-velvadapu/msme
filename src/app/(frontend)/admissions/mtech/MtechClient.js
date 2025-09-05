@@ -19,7 +19,7 @@ export default function MTechClient({ mtech }) {
           <button
             key={spec.id}
             onClick={() => setActiveSpecializationIndex(index)}
-            className={`px-5 py-2 rounded-lg font-medium transition ${index === activeSpecializationIndex
+            className={`px-5 py-2 rounded-lg font-medium transition cursor-pointer ${index === activeSpecializationIndex
                 ? "bg-black text-white"
                 : "bg-gray-100 text-gray-800 hover:bg-gray-200"
               }`}

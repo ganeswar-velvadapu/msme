@@ -23,7 +23,7 @@ export default function PhDClient({ phdData }) {
               <button
                 key={fellowship.id || index}
                 onClick={() => setActiveFellowshipIndex(index)}
-                className={`px-6 py-3 rounded-lg font-medium transition ${
+                className={`px-6 py-3 rounded-lg font-medium transition cursor-pointer ${
                   index === activeFellowshipIndex
                     ? "bg-black text-white shadow-lg"
                     : "bg-gray-100 text-gray-800 hover:bg-gray-200"

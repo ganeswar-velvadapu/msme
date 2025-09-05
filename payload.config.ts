@@ -1,5 +1,5 @@
 // storage-adapter-import-placeholder
-import { postgresAdapter } from '@payloadcms/db-postgres'
+import { vercelPostgresAdapter } from '@payloadcms/db-vercel-postgres'
 import { payloadCloudPlugin } from '@payloadcms/payload-cloud'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import path from 'path'
@@ -47,13 +47,13 @@ export default buildConfig({
 
   },
   collections: [Users, Media, Placements, News, Events, ResearchAreas, ResearchFacilities, ResearchFacilitiesCarousel, Projects, Collaborations, Faculty, Staff, BTech, MTech, PhD, Alumni, BTech_P, MTech_P, PhD_P],
-  globals: [HomeCarousel, About,MTechAdmission,BTechAdmission,PhDAdmission],
+  globals: [HomeCarousel, About, MTechAdmission, BTechAdmission, PhDAdmission],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
-  db: postgresAdapter({
+  db: vercelPostgresAdapter({
     pool: {
       connectionString: process.env.DATABASE_URI || '',
     },
