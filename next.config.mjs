@@ -1,28 +1,17 @@
-import { withPayload } from "@payloadcms/next/withPayload";
+import { withPayload } from '@payloadcms/next/withPayload'
+
+// Always set this explicitly for production
+const NEXT_PUBLIC_SERVER_URL = 'https://msme.iith.ac.in'
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  webpack: (config, { isServer, webpack }) => {
-    // Suppress Prettier dynamic dependency warning
-    config.plugins.push(
-      new webpack.ContextReplacementPlugin(
-        /prettier[\/\\]standalone/,
-        (data) => {
-          delete data.dependencies[0].critical;
-          return data;
-        }
-      )
-    );
-
-    if (isServer) {
-      config.ignoreWarnings = [
-        { module: /opentelemetry/ },
-        { module: /prettier/ }, 
-      ];
-    }
-
-    return config;
+  images: {
+    domains: ['msme.iith.ac.in'],
   },
-};
+  reactStrictMode: true,
+  env: {
+    NEXT_PUBLIC_SERVER_URL,
+  },
+}
 
-export default withPayload(nextConfig);
+export default withPayload(nextConfig, { devBundleServerPackages: false })
