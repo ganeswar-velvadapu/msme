@@ -412,6 +412,12 @@ export interface Staff {
         id?: string | null;
       }[]
     | null;
+  fic_staff?:
+    | {
+        fic_staff_option?: string | null;
+        id?: string | null;
+      }[]
+    | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -914,6 +920,12 @@ export interface StaffSelect<T extends boolean = true> {
     | T
     | {
         research_interest_staff?: T;
+        id?: T;
+      };
+  fic_staff?:
+    | T
+    | {
+        fic_staff_option?: T;
         id?: T;
       };
   updatedAt?: T;

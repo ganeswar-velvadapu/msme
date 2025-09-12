@@ -8,25 +8,24 @@ export const Staff: CollectionConfig = {
             name: "staff_image",
             type: "upload",
             relationTo: "media",
-     
-            label: "Upload staff Image"
+
+            label: "Upload Staff Image"
         },
         {
             name: "staff_name",
             type: "text",
-            label: "Enter staff Name"
+            label: "Enter Staff Name"
         },
         {
             name: "staff_designation",
             type: "text",
-
-            label: "staff Designation"
+            label: "Staff Designation"
         },
         {
             name: "staff_email",
             type: "email",
 
-            label: "Enter staff Email"
+            label: "Enter Staff Email"
         },
         {
             name: "staff_education",
@@ -38,7 +37,7 @@ export const Staff: CollectionConfig = {
             name: "staff_office",
             type: "text",
 
-            label: "Enter staff Office"
+            label: "Enter Staff Office"
         },
         {
             name: "staff_research_interests",
@@ -48,6 +47,18 @@ export const Staff: CollectionConfig = {
                     name: "research_interest_staff",
                     type: "text",
                     label: "Enter Research Interest"
+                }
+            ],
+        },
+        {
+            name: "fic_staff",
+            type: "array",
+            label : "FIC ",
+            fields: [
+                {
+                    name: "fic_staff_option",
+                    type: "text",
+                    label: "Facility in charge"
                 }
             ],
         }

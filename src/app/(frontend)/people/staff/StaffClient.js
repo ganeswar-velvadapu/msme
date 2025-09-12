@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import FacultyCard from "../../../../components/people/FacultyCard";
 import {
     Search, X, Mail, MapPin, GraduationCap, BookOpen,
-    FileText, BookOpen as CourseIcon
 } from "lucide-react";
 
 export default function StaffClient({ staffList }) {
@@ -80,7 +79,7 @@ export default function StaffClient({ staffList }) {
                             <h2 className="text-xl font-semibold text-gray-900">Staff Profile</h2>
                             <button
                                 onClick={closeModal}
-                                className="p-1 rounded-full hover:bg-gray-100 transition-colors"
+                                className="p-1 cursor-pointer rounded-full hover:bg-gray-100 transition-colors"
                             >
                                 <X size={20} className="text-gray-500" />
                             </button>
@@ -90,7 +89,7 @@ export default function StaffClient({ staffList }) {
                             <div className="flex flex-col md:flex-row gap-8">
                                 <div className="w-full md:w-1/3 flex-shrink-0">
                                     <img
-                                        src={selectedStaff.staff_image || "/api/placeholder/300/300"}
+                                        src={selectedStaff.staff_image.url || "/api/placeholder/300/300"}
                                         alt={selectedStaff.staff_name}
                                         className="w-full aspect-square object-cover rounded-lg shadow-sm"
                                     />
@@ -135,6 +134,24 @@ export default function StaffClient({ staffList }) {
                                             </div>
                                         </div>
                                     </div>
+                                    <div className="mb-6">
+                                        <div className="flex items-center gap-2 mb-2">
+                                            <h4 className="font-semibold text-gray-900">Faculty In Charge</h4>
+                                        </div>
+                                        <div className="pl-6">
+                                            <div className="flex flex-wrap gap-2">
+                                                {selectedStaff.fic_staff?.map((staff_option, index) => (
+                                                    <span
+                                                        key={index}
+                                                        className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm"
+                                                    >
+                                                        {staff_option.fic_staff_option}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
