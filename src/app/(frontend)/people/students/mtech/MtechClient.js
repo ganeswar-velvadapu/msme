@@ -41,7 +41,7 @@ export default function PgStudentsClient({students}) {
               <th className="py-3 px-4 text-left">Name</th>
               <th className="py-3 px-4 text-left">Roll No</th>
               <th className="py-3 px-4 text-left">Batch</th>
-              <th className="py-3 px-4 text-left">Spcialization</th>
+              <th className="py-3 px-4 text-left">Specialization</th>
             </tr>
           </thead>
           <tbody>
