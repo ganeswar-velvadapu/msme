@@ -41,6 +41,9 @@ importers:
       next:
         specifier: 15.5.0
         version: 15.5.0(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(sass@1.77.4)
+      nodemailer:
+        specifier: ^7.0.6
+        version: 7.0.6
       payload:
         specifier: ^3.53.0
         version: 3.53.0(bufferutil@4.0.9)(graphql@16.11.0)(typescript@5.8.3)(utf-8-validate@6.0.5)
@@ -3378,6 +3381,10 @@ packages:
 
   nodemailer@6.9.16:
     resolution: {integrity: sha512-psAuZdTIRN08HKVd/E8ObdV6NO7NTBY3KsC30F7M4H1OnmLCUNaS56FpYxyb26zWLSyYF9Ozch9KYHhHegsiOQ==}
+    engines: {node: '>=6.0.0'}
+
+  nodemailer@7.0.6:
+    resolution: {integrity: sha512-F44uVzgwo49xboqbFgBGkRaiMgtoBrBEWCVincJPK9+S9Adkzt/wXCLKbf7dxucmxfTI5gHGB+bEmdyzN6QKjw==}
     engines: {node: '>=6.0.0'}
 
   normalize-path@3.0.0:
@@ -8412,6 +8419,8 @@ snapshots:
   node-gyp-build@4.8.4: {}
 
   nodemailer@6.9.16: {}
+
+  nodemailer@7.0.6: {}
 
   normalize-path@3.0.0: {}
 
