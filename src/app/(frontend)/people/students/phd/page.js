@@ -12,7 +12,7 @@ export default async function PhD() {
     limit: 1000000000,
   });
 
-  console.log(phdStudents.docs)
+  // console.log(phdStudents.docs)
 
   return <PhDClient phdStudents={phdStudents.docs} />;
 }

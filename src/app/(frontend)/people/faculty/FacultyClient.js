@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import FacultyCard from "../../../../components/people/FacultyCard";
-import { Search, X, Mail, MapPin, GraduationCap, BookOpen, FileText, BookOpen as CourseIcon } from "lucide-react";
+import { Search, X, Mail, MapPin, GraduationCap, BookOpen, FileText, BookOpen as CourseIcon, GraduationCap as  Users } from "lucide-react";
 
 export default function FacultyClient({ facultyList }) {
     const [searchTerm, setSearchTerm] = useState("");
@@ -77,7 +77,7 @@ export default function FacultyClient({ facultyList }) {
                             <h2 className="text-xl font-semibold text-gray-900">Faculty Profile</h2>
                             <button
                                 onClick={closeModal}
-                                className="p-1 rounded-full hover:bg-gray-100 transition-colors"
+                                className="p-1 rounded-full hover:bg-gray-100 transition-colors cursor-pointer"
                             >
                                 <X size={20} className="text-gray-500" />
                             </button>
@@ -87,59 +87,59 @@ export default function FacultyClient({ facultyList }) {
                             <div className="flex flex-col md:flex-row gap-8">
                                 <div className="w-full md:w-1/3 flex-shrink-0">
                                     <img
-                                        src={selectedFaculty.faculty_image || "/api/placeholder/300/300"}
+                                        src={selectedFaculty.faculty_image.url || "/api/placeholder/300/300"}
                                         alt={selectedFaculty.faculty_name}
                                         className="w-full aspect-square object-cover rounded-lg shadow-sm"
                                     />
-                                    <div className="mt-4">
-                                        {/* LinkedIn URL */}
-                                        {selectedFaculty.linked_in_faculty && (
-                                            <div className="mb-2">
+                                </div>
+
+                                <div className="w-full md:w-2/3">
+                                    <div className="flex justify-between items-start mb-4">
+                                        <div>
+                                            <h3 className="text-2xl font-bold text-gray-900 mb-1">{selectedFaculty.faculty_name}</h3>
+                                            <p className="text-lg text-gray-600 mb-4">{selectedFaculty.faculty_designation}</p>
+                                        </div>
+                                        
+                                        {/* Links moved to the right side */}
+                                        <div className="flex gap-3">
+                                            {selectedFaculty.linked_in_faculty && (
                                                 <a
                                                     href={selectedFaculty.linked_in_faculty}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
-                                                    className="text-gray-600 hover:underline"
+                                                    className="p-2 rounded-full bg-blue-100 hover:bg-blue-200 transition-colors"
+                                                    title="LinkedIn Profile"
                                                 >
-                                                    LinkedIn Profile
+                                                    
+                                                    <img src="/linked_in_logo.webp" height={30} width={30} alt="Google Scholar" />
                                                 </a>
-                                            </div>
-                                        )}
+                                            )}
 
-                                        {/* Google Scholar URL */}
-                                        {selectedFaculty.google_scholar_url && (
-                                            <div className="mb-2">
+                                            {selectedFaculty.google_scholar_url && (
                                                 <a
                                                     href={selectedFaculty.google_scholar_url}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
-                                                    className="text-gray-600 hover:underline"
+                                                    className="p-2 rounded-full transition-colors"
+                                                    title="Google Scholar"
                                                 >
-                                                    Google Scholar
+                                                    <img src="/google_scholar.png" height={30} width={30} alt="Google Scholar" />
                                                 </a>
-                                            </div>
-                                        )}
+                                            )}
 
-                                        {/* Faculty Group Web Page URL */}
-                                        {selectedFaculty.faculty_group_web_page && (
-                                            <div className="mb-2">
+                                            {selectedFaculty.faculty_group_web_page && (
                                                 <a
                                                     href={selectedFaculty.faculty_group_web_page}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
-                                                    className="text-gray-600 hover:underline"
+                                                    className="p-2 "
+                                                    title="Faculty Group Web Page"
                                                 >
-                                                    Faculty Group Web Page
+                                                    {selectedFaculty.faculty_group_web_page}
                                                 </a>
-                                            </div>
-                                        )}
+                                            )}
+                                        </div>
                                     </div>
-
-                                </div>
-
-                                <div className="w-full md:w-2/3">
-                                    <h3 className="text-2xl font-bold text-gray-900 mb-1">{selectedFaculty.faculty_name}</h3>
-                                    <p className="text-lg text-gray-600 mb-4">{selectedFaculty.faculty_designation}</p>
 
                                     <div className="space-y-4 mb-6">
                                         <div className="flex items-center gap-2">
@@ -157,8 +157,6 @@ export default function FacultyClient({ facultyList }) {
                                             <span className="text-gray-700">Office: {selectedFaculty.faculty_office}</span>
                                         </div>
                                     </div>
-
-
 
                                     <div className="mb-6">
                                         <div className="flex items-center gap-2 mb-2">
