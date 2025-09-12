@@ -32,6 +32,7 @@ import PhD_P from '@/collections/Acad_Phd'
 import MTechAdmission from '@/globals/MTech_Admission'
 import BTechAdmission from '@/globals/BTech_Admission'
 import PhDAdmission from '@/globals/PhD_Admissions'
+import { TimeTable } from '@/globals/Timetable'
 
 
 
@@ -47,7 +48,7 @@ export default buildConfig({
 
   },
   collections: [Users, Media, Placements, News, Events, ResearchAreas, ResearchFacilities, ResearchFacilitiesCarousel, Projects, Collaborations, Faculty, Staff, BTech, MTech, PhD, Alumni, BTech_P, MTech_P, PhD_P],
-  globals: [HomeCarousel, About, MTechAdmission, BTechAdmission, PhDAdmission],
+  globals: [HomeCarousel, About, MTechAdmission, BTechAdmission, PhDAdmission, TimeTable],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

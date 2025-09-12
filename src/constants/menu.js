@@ -94,7 +94,7 @@ const main = [
             },
             {
                 "name": "Time Table",
-                "url": ""
+                "url": "/academia/timetable"
             }
         ]
     },

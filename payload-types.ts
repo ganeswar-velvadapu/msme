@@ -124,6 +124,7 @@ export interface Config {
     'mtech-admissions': MtechAdmission;
     'btech-admissions': BtechAdmission;
     'phd-admissions': PhdAdmission;
+    timetable: Timetable;
   };
   globalsSelect: {
     homecarousel: HomecarouselSelect<false> | HomecarouselSelect<true>;
@@ -131,6 +132,7 @@ export interface Config {
     'mtech-admissions': MtechAdmissionsSelect<false> | MtechAdmissionsSelect<true>;
     'btech-admissions': BtechAdmissionsSelect<false> | BtechAdmissionsSelect<true>;
     'phd-admissions': PhdAdmissionsSelect<false> | PhdAdmissionsSelect<true>;
+    timetable: TimetableSelect<false> | TimetableSelect<true>;
   };
   locale: null;
   user: User & {
@@ -1240,6 +1242,22 @@ export interface PhdAdmission {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "timetable".
+ */
+export interface Timetable {
+  id: number;
+  time_table?:
+    | {
+        time_table_year?: string | null;
+        time_table_link?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "homecarousel_select".
  */
 export interface HomecarouselSelect<T extends boolean = true> {
@@ -1356,6 +1374,22 @@ export interface PhdAdmissionsSelect<T extends boolean = true> {
               link_description?: T;
               id?: T;
             };
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "timetable_select".
+ */
+export interface TimetableSelect<T extends boolean = true> {
+  time_table?:
+    | T
+    | {
+        time_table_year?: T;
+        time_table_link?: T;
         id?: T;
       };
   updatedAt?: T;
