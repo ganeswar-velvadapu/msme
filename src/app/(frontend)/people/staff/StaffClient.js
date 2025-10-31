@@ -1,9 +1,9 @@
 "use client";
 import { useState, useEffect } from "react";
-import FacultyCard from "../../../../components/people/FacultyCard";
 import {
     Search, X, Mail, MapPin, GraduationCap, BookOpen,
 } from "lucide-react";
+import StaffCard from "../../../../components/people/StaffCard";
 
 export default function StaffClient({ staffList }) {
     const [searchTerm, setSearchTerm] = useState("");
@@ -54,7 +54,7 @@ export default function StaffClient({ staffList }) {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {filteredStaff.length > 0 ? (
                     filteredStaff.map((member, index) => (
-                        <FacultyCard
+                        <StaffCard
                             key={index}
                             name={member.staff_name}
                             designation={member.staff_designation}
@@ -89,7 +89,7 @@ export default function StaffClient({ staffList }) {
                             <div className="flex flex-col md:flex-row gap-8">
                                 <div className="w-full md:w-1/3 flex-shrink-0">
                                     <img
-                                        src={selectedStaff.staff_image.url || "/api/placeholder/300/300"}
+                                        src={selectedStaff.staff_image?.url || "/api/placeholder/300/300"}
                                         alt={selectedStaff.staff_name}
                                         className="w-full aspect-square object-cover rounded-lg shadow-sm"
                                     />

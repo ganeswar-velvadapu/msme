@@ -12,7 +12,7 @@ export default async function ResearchAreas() {
     limit: 1000000000, 
   });
 
-  console.log(researchAreas.docs)
+  // console.log(researchAreas.docs)
 
   return <ResearchAreasClient researchAreas={researchAreas.docs} />;
 }
