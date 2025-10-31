@@ -1,4 +1,4 @@
-import { CollectionConfig, createClientCollectionConfig } from "payload";
+import { CollectionConfig } from "payload";
 
 export const ResearchAreas: CollectionConfig = {
     slug: "researchareas",
@@ -40,15 +40,14 @@ export const ResearchAreas: CollectionConfig = {
         },
         {
             name: "research_areas_associated_faculty",
-            type: "array",
-            label: "Research Areas associated faculty",
-            fields: [
-                {
-                    name: "research_area_faculty_name",
-                    type: "text",
-                    label: "Research Area Faculty Name"
-                }
-            ]
-        },
+            type: "relationship",
+            label: "Associated Faculty Members",
+            relationTo: "faculty",
+            hasMany: true, 
+            admin: {
+                allowCreate: false,
+                isSortable: true
+            }
+        }
     ]
 }

@@ -288,9 +288,42 @@ export interface Researcharea {
       }[]
     | null;
   about_research_area?: string | null;
-  research_areas_associated_faculty?:
+  research_areas_associated_faculty?: (number | Faculty)[] | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "faculty".
+ */
+export interface Faculty {
+  id: number;
+  faculty_image?: (number | null) | Media;
+  faculty_group_web_page?: string | null;
+  linked_in_faculty?: string | null;
+  google_scholar_url?: string | null;
+  scopus_id?: string | null;
+  faculty_name?: string | null;
+  faculty_designation?: string | null;
+  faculty_email?: string | null;
+  faculty_phd_detail?: string | null;
+  faculty_office?: string | null;
+  faculty_research_interests?:
     | {
-        research_area_faculty_name?: string | null;
+        research_interest_faculty?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  faculty_publications?:
+    | {
+        faculty_publication?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  faculty_course_taught?:
+    | {
+        faculty_course_code?: string | null;
+        faculty_course_name?: string | null;
         id?: string | null;
       }[]
     | null;
@@ -353,44 +386,6 @@ export interface Collaboration {
   id: number;
   logo?: (number | null) | Media;
   collaboration_type?: ('Industrial Collaboration' | 'Institutional Collaboration') | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "faculty".
- */
-export interface Faculty {
-  id: number;
-  faculty_image?: (number | null) | Media;
-  faculty_group_web_page?: string | null;
-  linked_in_faculty?: string | null;
-  google_scholar_url?: string | null;
-  scopus_id?: string | null;
-  faculty_name?: string | null;
-  faculty_designation?: string | null;
-  faculty_email?: string | null;
-  faculty_phd_detail?: string | null;
-  faculty_office?: string | null;
-  faculty_research_interests?:
-    | {
-        research_interest_faculty?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  faculty_publications?:
-    | {
-        faculty_publication?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  faculty_course_taught?:
-    | {
-        faculty_course_code?: string | null;
-        faculty_course_name?: string | null;
-        id?: string | null;
-      }[]
-    | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -804,12 +799,7 @@ export interface ResearchareasSelect<T extends boolean = true> {
         id?: T;
       };
   about_research_area?: T;
-  research_areas_associated_faculty?:
-    | T
-    | {
-        research_area_faculty_name?: T;
-        id?: T;
-      };
+  research_areas_associated_faculty?: T;
   updatedAt?: T;
   createdAt?: T;
 }
