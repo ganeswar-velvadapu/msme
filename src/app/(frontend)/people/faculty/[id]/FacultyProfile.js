@@ -1,5 +1,5 @@
 "use client";
-import { Mail, MapPin, GraduationCap, BookOpen, FileText, BookOpen as CourseIcon, Users,ArrowLeft } from "lucide-react";
+import { Mail, MapPin, GraduationCap, BookOpen, FileText, BookOpen as CourseIcon, Users, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
 export default function FacultyProfile({ faculty }) {
@@ -7,7 +7,7 @@ export default function FacultyProfile({ faculty }) {
         <div className="min-h-screen bg-gray-50 py-8">
             <div className="max-w-6xl mx-auto px-4">
                 {/* Back Button */}
-                <Link 
+                <Link
                     href="/people/faculty"
                     className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-6 transition-colors"
                 >
@@ -26,7 +26,7 @@ export default function FacultyProfile({ faculty }) {
                                     alt={faculty.faculty_name}
                                     className="w-full aspect-square object-cover rounded-lg shadow-md"
                                 />
-                                
+
                                 {/* Social Links */}
                                 <div className="mt-6 flex justify-center gap-4">
                                     {faculty.linked_in_faculty && (
@@ -72,7 +72,7 @@ export default function FacultyProfile({ faculty }) {
                                 <div className="mb-6">
                                     <h1 className="text-3xl font-bold text-gray-900 mb-2">{faculty.faculty_name}</h1>
                                     <p className="text-xl text-gray-600 mb-6">{faculty.faculty_designation}</p>
-                                    
+
                                     <div className="space-y-3">
                                         <div className="flex items-center gap-3">
                                             <Mail size={18} className="text-gray-500" />
@@ -136,9 +136,10 @@ export default function FacultyProfile({ faculty }) {
                             <div className="space-y-3">
                                 {faculty.faculty_course_taught?.map((course, index) => (
                                     <div key={index} className="flex items-start gap-4">
-                                        <span className="font-mono text-gray-600 bg-gray-100 px-2 py-1 rounded text-sm min-w-16">
-                                            {course.faculty_course_code}
-                                        </span>
+                                        {course?.faculty_course_code ? <span className="font-mono text-gray-600 bg-gray-100 px-2 py-1 rounded text-sm min-w-16">
+                                            {course?.faculty_course_code}
+                                        </span> : <></>}
+
                                         <span className="text-gray-700">{course.faculty_course_name}</span>
                                     </div>
                                 ))}
