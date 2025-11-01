@@ -2,6 +2,7 @@
 import { useState } from "react";
 
 export default function CollaborationsClient({ collaborations }) {
+  // console.log(collaborations)
   const [activeTab, setActiveTab] = useState("institutional");
 
   const filteredCollaborations = collaborations.filter((collab) =>
@@ -9,6 +10,8 @@ export default function CollaborationsClient({ collaborations }) {
       ? collab.collaboration_type === "Industrial Collaboration"
       : collab.collaboration_type === "Institutional Collaboration"
   );
+
+  // console.log(filteredCollaborations)
 
   return (
     <div className="p-8">
@@ -19,21 +22,19 @@ export default function CollaborationsClient({ collaborations }) {
         <div className="flex justify-center mb-8">
           <div className="bg-white rounded-lg shadow-md overflow-hidden flex">
             <button
-              className={`px-6 py-3 font-medium ${
-                activeTab === "institutional"
+              className={`px-6 py-3 font-medium ${activeTab === "institutional"
                   ? "bg-black text-white"
                   : "bg-white text-black hover:bg-gray-200"
-              } transition-colors duration-200`}
+                } transition-colors duration-200`}
               onClick={() => setActiveTab("institutional")}
             >
               Institutional
             </button>
             <button
-              className={`px-6 py-3 font-medium ${
-                activeTab === "industrial"
+              className={`px-6 py-3 font-medium ${activeTab === "industrial"
                   ? "bg-black text-white"
                   : "bg-white text-black hover:bg-gray-200"
-              } transition-colors duration-200`}
+                } transition-colors duration-200`}
               onClick={() => setActiveTab("industrial")}
             >
               Industrial
@@ -48,9 +49,9 @@ export default function CollaborationsClient({ collaborations }) {
               key={collab.id}
               className="bg-white w-36 rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-200 flex items-center justify-center"
             >
-              {collab.collaboration_image?.url && (
+              {collab.logo?.url && (
                 <img
-                  src={collab.collaboration_image.url}
+                  src={collab.logo?.url}
                   alt="Collaboration Logo"
                   className="w-32 h-auto object-contain"
                 />

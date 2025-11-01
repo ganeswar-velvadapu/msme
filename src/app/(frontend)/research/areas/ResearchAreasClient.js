@@ -1,4 +1,5 @@
 "use client";
+import Link from 'next/link';
 import { useState } from 'react';
 
 export default function ResearchAreasClient({ researchAreas }) {
@@ -51,34 +52,28 @@ export default function ResearchAreasClient({ researchAreas }) {
                 <h2 className="text-2xl font-bold text-gray-900 mb-4 border-b-2 border-gray-200 pb-2">
                   {area.research_area_name}
                 </h2>
-
-
-
                 {/* Description */}
                 <div className="mb-8">
                   <p className="text-gray-700 text-base leading-relaxed text-justify">
                     {area.about_research_area}
                   </p>
                 </div>
-
                 {/* Research Icons */}
                 {getResearchIcon(area.research_area_photo)}
-
-
-                <h3 className='mb-4 font-bold text-xl'>Faculty Memebers</h3>
+                <h3 className='mb-4 font-bold text-xl'>Faculty Members</h3>
                 {/* Faculty Members Tags */}
                 <div className="flex flex-wrap gap-3">
-
-
-                  {area.research_areas_associated_faculty?.map((faculty, index) => (
-                    <button
+                  {area.research_areas_associated_faculty?.map((faculty) => (
+                    <Link
+                      href={`/people/faculty/${faculty.id}`}
                       key={faculty.id}
                       className="cursor-pointer px-4 py-2 bg-gray-100 text-gray-800 rounded-full text-sm font-medium border border-gray-300 hover:bg-gray-200 transition-colors duration-200"
                     >
                       {faculty.faculty_name}
-                    </button>
+                    </Link>
                   ))}
                 </div>
+
               </div>
             </div>
           ))}

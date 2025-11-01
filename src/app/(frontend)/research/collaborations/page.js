@@ -12,5 +12,7 @@ export default async function Collaborations() {
     limit: 1000000000,
   });
 
+  // console.log(collaborations.docs)
+
   return <CollaborationsClient collaborations={collaborations.docs} />;
 }
