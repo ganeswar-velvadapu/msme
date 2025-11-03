@@ -136,7 +136,7 @@ export default function StaffClient({ staffList }) {
                                     </div>
                                     <div className="mb-6">
                                         <div className="flex items-center gap-2 mb-2">
-                                            <h4 className="font-semibold text-gray-900">Faculty In Charge</h4>
+                                            <h4 className="font-semibold text-gray-900">Facility In Charge</h4>
                                         </div>
                                         <div className="pl-6">
                                             <div className="flex flex-wrap gap-2">
