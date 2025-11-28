@@ -86,6 +86,8 @@ export interface Config {
     'btech-p': BtechP;
     'mtech-p': MtechP;
     'phd-p': PhdP;
+    'adjunct-faculty': AdjunctFaculty;
+    'professors-in-practice': ProfessorsInPractice;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -111,6 +113,8 @@ export interface Config {
     'btech-p': BtechPSelect<false> | BtechPSelect<true>;
     'mtech-p': MtechPSelect<false> | MtechPSelect<true>;
     'phd-p': PhdPSelect<false> | PhdPSelect<true>;
+    'adjunct-faculty': AdjunctFacultySelect<false> | AdjunctFacultySelect<true>;
+    'professors-in-practice': ProfessorsInPracticeSelect<false> | ProfessorsInPracticeSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -550,6 +554,82 @@ export interface PhdP {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "adjunct-faculty".
+ */
+export interface AdjunctFaculty {
+  id: number;
+  adjunct_faculty_image?: (number | null) | Media;
+  adjunct_faculty_group_web_page?: string | null;
+  adjunct_linked_in_faculty?: string | null;
+  adjunct_google_scholar_url?: string | null;
+  adjunct_scopus_id?: string | null;
+  adjunct_faculty_name?: string | null;
+  adjunct_faculty_designation?: string | null;
+  adjunct_faculty_email?: string | null;
+  adjunct_faculty_phd_detail?: string | null;
+  adjunct_faculty_office?: string | null;
+  adjunct_faculty_research_interests?:
+    | {
+        research_interest_faculty?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  adjunct_faculty_publications?:
+    | {
+        faculty_publication?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  adjunct_faculty_course_taught?:
+    | {
+        faculty_course_code?: string | null;
+        faculty_course_name?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "professors-in-practice".
+ */
+export interface ProfessorsInPractice {
+  id: number;
+  pop_faculty_image?: (number | null) | Media;
+  pop_faculty_group_web_page?: string | null;
+  pop_linked_in_faculty?: string | null;
+  pop_google_scholar_url?: string | null;
+  pop_scopus_id?: string | null;
+  pop_faculty_name?: string | null;
+  pop_faculty_designation?: string | null;
+  pop_faculty_email?: string | null;
+  pop_faculty_phd_detail?: string | null;
+  pop_faculty_office?: string | null;
+  pop_faculty_research_interests?:
+    | {
+        research_interest_faculty?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  pop_faculty_publications?:
+    | {
+        faculty_publication?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  pop_faculty_course_taught?:
+    | {
+        faculty_course_code?: string | null;
+        faculty_course_name?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -630,6 +710,14 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'phd-p';
         value: number | PhdP;
+      } | null)
+    | ({
+        relationTo: 'adjunct-faculty';
+        value: number | AdjunctFaculty;
+      } | null)
+    | ({
+        relationTo: 'professors-in-practice';
+        value: number | ProfessorsInPractice;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -1049,6 +1137,80 @@ export interface PhdPSelect<T extends boolean = true> {
   brochure_link?: T;
   course_and_thesis?: T;
   eligibility_and_admissions?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "adjunct-faculty_select".
+ */
+export interface AdjunctFacultySelect<T extends boolean = true> {
+  adjunct_faculty_image?: T;
+  adjunct_faculty_group_web_page?: T;
+  adjunct_linked_in_faculty?: T;
+  adjunct_google_scholar_url?: T;
+  adjunct_scopus_id?: T;
+  adjunct_faculty_name?: T;
+  adjunct_faculty_designation?: T;
+  adjunct_faculty_email?: T;
+  adjunct_faculty_phd_detail?: T;
+  adjunct_faculty_office?: T;
+  adjunct_faculty_research_interests?:
+    | T
+    | {
+        research_interest_faculty?: T;
+        id?: T;
+      };
+  adjunct_faculty_publications?:
+    | T
+    | {
+        faculty_publication?: T;
+        id?: T;
+      };
+  adjunct_faculty_course_taught?:
+    | T
+    | {
+        faculty_course_code?: T;
+        faculty_course_name?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "professors-in-practice_select".
+ */
+export interface ProfessorsInPracticeSelect<T extends boolean = true> {
+  pop_faculty_image?: T;
+  pop_faculty_group_web_page?: T;
+  pop_linked_in_faculty?: T;
+  pop_google_scholar_url?: T;
+  pop_scopus_id?: T;
+  pop_faculty_name?: T;
+  pop_faculty_designation?: T;
+  pop_faculty_email?: T;
+  pop_faculty_phd_detail?: T;
+  pop_faculty_office?: T;
+  pop_faculty_research_interests?:
+    | T
+    | {
+        research_interest_faculty?: T;
+        id?: T;
+      };
+  pop_faculty_publications?:
+    | T
+    | {
+        faculty_publication?: T;
+        id?: T;
+      };
+  pop_faculty_course_taught?:
+    | T
+    | {
+        faculty_course_code?: T;
+        faculty_course_name?: T;
+        id?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
 }

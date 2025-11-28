@@ -40,6 +40,14 @@ const main = [
                 "url": "/people/faculty"
             },
             {
+                "name": "Adjunct Professors",
+                "url": "/people/adjunct"
+            },
+            {
+                "name": "Professors of Practice",
+                "url": "/people/pop"
+            },
+            {
                 "name": "Staff",
                 "url": "/people/staff"
             },
