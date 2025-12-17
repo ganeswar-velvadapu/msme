@@ -10,22 +10,22 @@ export default function Footer() {
 
     const footerLinks = {
         about: [
-            { name: "Department", url: "/about/department" },
-            { name: "History", url: "/about/history" },
+            { name: "Department", url: "/about" },
+            { name: "History", url: "/about" },
             // { name: "Vision & Mission", url: "/about/vision" },
-            { name: "Infrastructure", url: "/about/infrastructure" }
+            { name: "History", url: "/about" }
         ],
         academics: [
-            { name: "Programs", url: "/academics/programs" },
-            { name: "Curriculum", url: "/academics/curriculum" },
-            { name: "Calendar", url: "/academics/calendar" },
-            { name: "Student Resources", url: "/academics/resources" }
+            { name: "Programs", url: "/academia/programs/btech" },
+            //{ name: "Curriculum", url: "/academics/curriculum" },
+            { name: "TimeTable", url: "/academia/timetable" },
+            //{ name: "Student Resources", url: "/academics/resources" }
         ],
         research: [
             { name: "Areas", url: "/research/areas" },
-            { name: "Labs", url: "/research/labs" },
-            { name: "Publications", url: "/research/publications" },
-            { name: "Projects", url: "/research/projects" }
+            { name: "Facilities", url: "/research/facilities" },
+            { name: "Projects", url: "/research/projects" },
+            { name: "Collaborations", url: "/research/collaborations" },
         ],
         quickLinks: [
             { name: "IITH Home", url: "https://iith.ac.in" },
