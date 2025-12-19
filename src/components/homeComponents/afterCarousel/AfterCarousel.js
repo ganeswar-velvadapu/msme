@@ -13,7 +13,6 @@ export default function AfterCarousel() {
           </div>
         </div>
       </div>
-      /
       <div className="bg-gray-100 py-8">
         <div className="container mx-auto px-4 sm:px-6 mb-8">
           <div className="max-w-7xl mx-auto">
