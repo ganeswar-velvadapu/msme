@@ -21,7 +21,7 @@
     "@types/passport-google-oauth20": "^2.0.16",
     "graphql": "^16.11.0",
     "lucide-react": "^0.541.0",
-    "next": "15.5.7",
+    "next": "15.5.9",
     "nodemailer": "^7.0.6",
     "payload": "^3.53.0",
     "payload-auth-plugin": "0.7.4",
