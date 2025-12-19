@@ -20,11 +20,11 @@ export default function FacultyProfile({ faculty }) {
                     <div className="p-8">
                         <div className="flex flex-col md:flex-row gap-8">
                             {/* Faculty Image */}
-                            <div className="w-full md:w-1/3 flex-shrink-0 object-contain">
+                            <div className="w-full md:w-1/3 flex-shrink-0">
                                 <img
                                     src={faculty.faculty_image?.url || "/api/placeholder/400/400"}
                                     alt={faculty.faculty_name}
-                                    className="w-full aspect-square object-cover rounded-lg shadow-md"
+                                    className="w-full aspect-square object-contain rounded-lg shadow-md"
                                 />
 
                                 {/* Social Links */}
