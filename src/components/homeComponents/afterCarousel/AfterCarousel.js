@@ -27,7 +27,7 @@ export default function AfterCarousel() {
             </div>
 
             <div className="w-full">
-              <LatestNews limit={6} />
+              <LatestNews />
             </div>
 
           </div>
