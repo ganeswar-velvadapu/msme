@@ -91,7 +91,7 @@ export default function StaffClient({ staffList }) {
                                     <img
                                         src={selectedStaff.staff_image?.url || "/api/placeholder/300/300"}
                                         alt={selectedStaff.staff_name}
-                                        className="w-full aspect-square object-cover rounded-lg shadow-sm"
+                                        className="w-full aspect-square object-contain rounded-lg shadow-sm"
                                     />
                                 </div>
 
