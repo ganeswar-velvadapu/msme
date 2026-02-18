@@ -455,7 +455,9 @@ export interface Phd {
   phd_name?: string | null;
   phd_roll_no?: string | null;
   phd_email?: string | null;
-  phd_education?: string | null;
+  phd_masters?: string | null;
+  phd_lab?: string | null;
+  phd_bachelors?: string | null;
   phd_advisor?: string | null;
   phd_research_topic?: string | null;
   phd_research_interest?:
@@ -1041,7 +1043,9 @@ export interface PhdSelect<T extends boolean = true> {
   phd_name?: T;
   phd_roll_no?: T;
   phd_email?: T;
-  phd_education?: T;
+  phd_masters?: T;
+  phd_lab?: T;
+  phd_bachelors?: T;
   phd_advisor?: T;
   phd_research_topic?: T;
   phd_research_interest?:
