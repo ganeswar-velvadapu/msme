@@ -27,7 +27,7 @@ export default function Contact() {
     setError(null);
 
     try {
-      const response = await fetch("http://localhost:3000/api/contact", {
+      const response = await fetch("https://msme-website.vercel.app/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
