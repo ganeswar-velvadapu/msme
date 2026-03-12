@@ -1,3 +1,2 @@
 Todo - 
-- check for `&apos;` 
-- add force-dynamic to dynamically fetch from database
+- Write CI/CD using jenkins
