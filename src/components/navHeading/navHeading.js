@@ -39,14 +39,14 @@ export default function NavHeading() {
                             </div>
                         </Link>
 
-                        {/* Title — shown on all screen sizes, hidden only when truly tiny */}
-                        <div className="flex flex-col text-left min-w-0">
+                        {/* Title — md and above only */}
+                        <div className="hidden md:flex flex-col text-left min-w-0">
                             <style jsx global>{`
                                 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
                             `}</style>
                             <Link href="/" className="group transition-all duration-300">
                                 <h1
-                                    className="font-['Montserrat'] text-sm sm:text-lg md:text-2xl lg:text-3xl font-bold leading-tight break-words"
+                                    className="font-['Montserrat'] md:text-2xl lg:text-3xl font-bold leading-tight break-words"
                                     style={{ textShadow: "0px 1px 2px rgba(0,0,0,0.1)" }}
                                 >
                                     Materials Science and Metallurgical Engineering
