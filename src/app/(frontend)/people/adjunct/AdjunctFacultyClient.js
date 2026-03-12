@@ -23,6 +23,8 @@ export default function AdjinctFacultyClient({ facultyList }) {
         };
     }, []);
 
+    // console.log(filteredFaculty)
+
     return (
         <div className="py-12 px-4 max-w-7xl mx-auto">
             <h1 className="text-3xl font-bold mb-8 text-gray-900">Faculty Members</h1>
@@ -49,6 +51,7 @@ export default function AdjinctFacultyClient({ facultyList }) {
                             phdFrom={member.adjunct_faculty_phd_detail}
                             office={member.adjunct_faculty_office}
                             id={member.id}
+                            image_url={member?.adjunct_faculty_image?.url}
                         />
                     ))
                 ) : (

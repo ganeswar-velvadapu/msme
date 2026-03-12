@@ -2,7 +2,7 @@
 
 import { getPayload } from "payload";
 import config from "@payload-config";
-import AdjinctFacultyClient from "./AdjunctFacultyClinet";
+import AdjinctFacultyClient from "./AdjunctFacultyClient";
 
 export default async function AdjunctFaculty() {
   const payload = await getPayload({ config });

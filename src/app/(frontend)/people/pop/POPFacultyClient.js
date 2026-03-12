@@ -54,6 +54,7 @@ export default function POPFacultyClient({ facultyList }) {
               phdFrom={member.pop_faculty_phd_detail}
               office={member.pop_faculty_office}
               id={member.id}
+              image_url={member?.pop_faculty_image?.url}
             />
           ))
         ) : (

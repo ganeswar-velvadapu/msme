@@ -33,6 +33,7 @@ export default function FacultyClient({ facultyList }) {
     };
   }, []);
 
+
   return (
     <div className="py-12 px-4 max-w-7xl mx-auto">
       <h1 className="text-3xl font-bold mb-8 text-gray-900">
@@ -64,6 +65,7 @@ export default function FacultyClient({ facultyList }) {
               email={member?.faculty_email ?? ""}
               phdFrom={member?.faculty_phd_detail ?? ""}
               office={member?.faculty_office ?? ""}
+              image_url={member?.faculty_image?.url}
             />
           ))
         ) : (
