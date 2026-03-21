@@ -128,11 +128,7 @@ export default function ResearchFacilitiesClient({ facilities, carousel }) {
                                             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{facility.research_facility_staff_incharge}</td>
                                             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{facility.research_facility_usage_charges}</td>
                                             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{facility.research_facility_forms}</td>
-                                            <td className="px-6 py-4 whitespace-nowrap text-sm">
-                                                <button className="px-3 py-1 bg-black text-white rounded hover:bg-gray-800 transition-colors duration-200 text-xs">
-                                                    Request Access
-                                                </button>
-                                            </td>
+                                          
                                         </tr>
                                     ))}
                                 </tbody>
