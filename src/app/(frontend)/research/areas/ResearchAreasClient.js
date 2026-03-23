@@ -19,7 +19,7 @@ export default function ResearchAreasClient({ researchAreas }) {
                 <img
                   src={icon.image.url}
                   alt={`Icon ${index + 1}`}
-                  className="w-30 h-30 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200"
+                  className="w-30 h-30 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 mb-4"
                 />
               </div>
             ))}

@@ -340,10 +340,10 @@ export interface Faculty {
  */
 export interface Researchfacility {
   id: number;
+  research_facility_no?: string | null;
   research_facility_name?: string | null;
   research_facility_location?: string | null;
   research_facility_fic?: string | null;
-  research_facility_fic_email?: string | null;
   research_facility_staff_incharge?: string | null;
   research_facility_usage_charges?: string | null;
   research_facility_forms?: string | null;
@@ -898,10 +898,10 @@ export interface ResearchareasSelect<T extends boolean = true> {
  * via the `definition` "researchfacilities_select".
  */
 export interface ResearchfacilitiesSelect<T extends boolean = true> {
+  research_facility_no?: T;
   research_facility_name?: T;
   research_facility_location?: T;
   research_facility_fic?: T;
-  research_facility_fic_email?: T;
   research_facility_staff_incharge?: T;
   research_facility_usage_charges?: T;
   research_facility_forms?: T;
