@@ -15,7 +15,7 @@ export default function FacultyCard({
                 <img
                     src={image_url || "/api/placeholder/400/400"}
                     alt={name}
-                    className="w-full h-[200px] object-cover"
+                    className="w-full h-[250px] object-cover"
                 />
 
                <div className="m-4">
