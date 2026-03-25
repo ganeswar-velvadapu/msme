@@ -40,7 +40,7 @@ export default function AdjinctFacultyClient({ facultyList }) {
                 />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
                 {filteredFaculty.length > 0 ? (
                     filteredFaculty.map((member) => (
                         <AdjunctFacultyCard

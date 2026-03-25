@@ -18,7 +18,7 @@ export default function POPFacultyCard({
                     className="w-full h-[250px] object-cover"
                 />
                 <div className="m-4">
-                    <Link href={`/people/pop/${id}`} className="text-xl font-semibold text-gray-900 mb-2">{name}</Link>
+                    <Link href={`/people/pop/${id}`} className="text-xl font-semibold text-gray-900 mb-2 hover:text-blue-600">{name}</Link>
                     <p className="text-gray-600 mb-3">{designation}</p>
                 </div>
             </div>
