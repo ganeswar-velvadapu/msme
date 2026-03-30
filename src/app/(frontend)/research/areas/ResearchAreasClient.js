@@ -1,36 +1,32 @@
 "use client";
 import Link from 'next/link';
-import { useState } from 'react';
 
 export default function ResearchAreasClient({ researchAreas }) {
-
-
-
-  const dataToUse = researchAreas || sampleResearchAreas;
+  const dataToUse = researchAreas;
 
   const getResearchIcon = (icons) => {
-
     return (
-      <>
-        <div className="p-4">
-          <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
-            {icons.map((icon, index) => (
-              <div key={icon.id || index} className="flex justify-center">
-                <img
-                  src={icon.image.url}
-                  alt={`Icon ${index + 1}`}
-                  className="w-30 h-30 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 mb-4"
-                />
-              </div>
-            ))}
-          </div>
+      <div className="p-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+          {icons.map((icon, index) => (
+            <div
+              key={icon.id || index}
+              className="flex flex-col items-center text-center gap-2"
+            >
+              <img
+                src={icon.image.url}
+                alt={icon.image.alt || `Research icon ${index + 1}`}
+                className="w-30 h-30 object-fit"
+              />
+            </div>
+          ))}
         </div>
-      </>
-    )
+      </div>
+    );
   };
 
   return (
-    <div className=" py-12 px-4 sm:px-6 lg:px-8">
+    <div className="py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         {/* Header Section */}
         <div className="text-center mb-12">
@@ -46,22 +42,24 @@ export default function ResearchAreasClient({ researchAreas }) {
               key={area.id || areaIndex}
               className="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden"
             >
-              {/* Card Content */}
               <div className="p-8">
                 {/* Title */}
                 <h2 className="text-2xl font-bold text-gray-900 mb-4 border-b-2 border-gray-200 pb-2">
                   {area.research_area_name}
                 </h2>
+
                 {/* Description */}
                 <div className="mb-8">
                   <p className="text-gray-700 text-base leading-relaxed text-justify">
                     {area.about_research_area}
                   </p>
                 </div>
+
                 {/* Research Icons */}
                 {getResearchIcon(area.research_area_photo)}
-                <h3 className='mb-4 font-bold text-xl'>Faculty Members</h3>
-                {/* Faculty Members Tags */}
+
+                {/* Faculty Members */}
+                <h3 className="mb-4 font-bold text-xl">Faculty Members</h3>
                 <div className="flex flex-wrap gap-3">
                   {area.research_areas_associated_faculty?.map((faculty) => (
                     <Link
@@ -73,7 +71,6 @@ export default function ResearchAreasClient({ researchAreas }) {
                     </Link>
                   ))}
                 </div>
-
               </div>
             </div>
           ))}

@@ -131,20 +131,8 @@ const main = [
         "hasChildren" : true,
         children : [
             {
-                "name" : "Join as Faculty",
+                "name" : "Join Us",
                 "url" : "https://www.iith.ac.in/careers/"
-            },
-            {
-                "name" : "Join as Post Doc",
-                "url" : "https://www.iith.ac.in/careers/"
-            },
-            {
-                "name" : "Join as Staff",
-                "url" : "https://www.iith.ac.in/careers/"
-            },
-            {
-                "name" : "Where do MSME graduates go after graduation?",
-                "url" : "/careers/where_to_go"
             },
             {
                 "name" : "Placements",

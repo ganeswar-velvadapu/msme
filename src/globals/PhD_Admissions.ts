@@ -3,87 +3,89 @@ import { GlobalConfig } from 'payload';
 const PhDAdmission: GlobalConfig = {
   slug: 'phd-admissions',
   label: 'PhD Admissions',
+
   fields: [
+
+    // GLOBAL WRITE-UP
     {
-      name: 'fellowships_phd',
+      name: 'general_writeup',
+      type: 'textarea',
+      label: 'General Write-up',
+      admin: {
+        description: 'General PhD programme description'
+      }
+    },
+
+    // GLOBAL EXTERNAL FELLOWSHIPS
+    {
+      name: 'external_fellowships',
       type: 'array',
-      label: 'PhD Fellowships',
+      label: 'External Fellowships',
+
       fields: [
         {
-          name: 'fellowship_type',
+          name: 'link_name',
           type: 'text',
-          label: 'Fellowship Type',
-          required: true,
-          admin: {
-            description: 'e.g., MoE, Project sponsored Fellowships, etc.'
-          }
+          label: 'Fellowship Name'
         },
         {
-          name: 'fellowship_description',
-          type: 'richText',
-          label: 'Fellowship Description',
+          name: 'link_url',
+          type: 'text',
+          label: 'Fellowship URL'
+        }
+      ]
+    },
+
+    // PhD TYPES (MoE, Project Sponsored etc.)
+    {
+      name: 'phd_types',
+      type: 'array',
+      label: 'PhD Types',
+
+      fields: [
+
+        {
+          name: 'phd_type_name',
+          type: 'text',
+          label: 'PhD Type Name',
           admin: {
-            description: 'Details about the fellowship including eligibility, requirements, etc.'
+            description: 'e.g., MoE, Project Sponsored'
           }
         },
+
+        {
+          name: 'eligibility',
+          type: 'textarea',
+          label: 'Eligibility Criteria'
+        },
+
+        {
+          name: 'admission_process',
+          type: 'textarea',
+          label: 'Admission Process'
+        },
+
         {
           name: 'brochure_links',
-
           type: 'array',
           label: 'Brochure Links',
+
           fields: [
             {
               name: 'link_text',
               type: 'text',
-              label: 'Link Text',
-              required: true,
-              admin: {
-                description: 'e.g., "Check brochure for details (PDF link)"'
-              }
+              label: 'Link Text'
             },
             {
               name: 'link_url',
               type: 'text',
-              label: 'Link URL',
-              required: true,
-              admin: {
-                description: 'Full URL to the PDF or webpage'
-              }
-            }
-          ]
-        },
-        {
-          name: 'additional_links',
-          type: 'array',
-          label: 'Additional Links',
-          fields: [
-            {
-              name: 'link_name',
-              type: 'text',
-              label: 'Link Name',
-              required: true,
-              admin: {
-                description: 'e.g., CSIR-UGC NET JRF, INSPIRE, etc.'
-              }
-            },
-            {
-              name: 'link_url',
-              type: 'text',
-              label: 'Link URL',
-              required: true
-            },
-            {
-              name: 'link_description',
-              type: 'text',
-              label: 'Link Description',
-              admin: {
-                description: 'Brief description of what this link provides'
-              }
+              label: 'Link URL'
             }
           ]
         }
+
       ]
-    },
+    }
 
   ]
 };

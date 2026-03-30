@@ -1351,54 +1351,29 @@ export interface BtechAdmission {
  */
 export interface PhdAdmission {
   id: number;
-  fellowships_phd?:
+  /**
+   * General PhD programme description
+   */
+  general_writeup?: string | null;
+  external_fellowships?:
+    | {
+        link_name?: string | null;
+        link_url?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  phd_types?:
     | {
         /**
-         * e.g., MoE, Project sponsored Fellowships, etc.
+         * e.g., MoE, Project Sponsored
          */
-        fellowship_type: string;
-        /**
-         * Details about the fellowship including eligibility, requirements, etc.
-         */
-        fellowship_description?: {
-          root: {
-            type: string;
-            children: {
-              type: string;
-              version: number;
-              [k: string]: unknown;
-            }[];
-            direction: ('ltr' | 'rtl') | null;
-            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-            indent: number;
-            version: number;
-          };
-          [k: string]: unknown;
-        } | null;
+        phd_type_name?: string | null;
+        eligibility?: string | null;
+        admission_process?: string | null;
         brochure_links?:
           | {
-              /**
-               * e.g., "Check brochure for details (PDF link)"
-               */
-              link_text: string;
-              /**
-               * Full URL to the PDF or webpage
-               */
-              link_url: string;
-              id?: string | null;
-            }[]
-          | null;
-        additional_links?:
-          | {
-              /**
-               * e.g., CSIR-UGC NET JRF, INSPIRE, etc.
-               */
-              link_name: string;
-              link_url: string;
-              /**
-               * Brief description of what this link provides
-               */
-              link_description?: string | null;
+              link_text?: string | null;
+              link_url?: string | null;
               id?: string | null;
             }[]
           | null;
@@ -1522,24 +1497,25 @@ export interface BtechAdmissionsSelect<T extends boolean = true> {
  * via the `definition` "phd-admissions_select".
  */
 export interface PhdAdmissionsSelect<T extends boolean = true> {
-  fellowships_phd?:
+  general_writeup?: T;
+  external_fellowships?:
     | T
     | {
-        fellowship_type?: T;
-        fellowship_description?: T;
+        link_name?: T;
+        link_url?: T;
+        id?: T;
+      };
+  phd_types?:
+    | T
+    | {
+        phd_type_name?: T;
+        eligibility?: T;
+        admission_process?: T;
         brochure_links?:
           | T
           | {
               link_text?: T;
               link_url?: T;
-              id?: T;
-            };
-        additional_links?:
-          | T
-          | {
-              link_name?: T;
-              link_url?: T;
-              link_description?: T;
               id?: T;
             };
         id?: T;
