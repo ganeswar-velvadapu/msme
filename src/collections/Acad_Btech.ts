@@ -62,10 +62,5 @@ export const BTech_P: CollectionConfig = {
                 },
             ]
         },
-        {
-            name:"admission",
-            type:"textarea",
-            label:"Enter Admission Description"
-        },
     ],
 }

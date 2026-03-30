@@ -511,7 +511,6 @@ export interface BtechP {
       | null;
     msme_curriculum_link?: string | null;
   };
-  admission?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -1103,7 +1102,6 @@ export interface BtechPSelect<T extends boolean = true> {
             };
         msme_curriculum_link?: T;
       };
-  admission?: T;
   updatedAt?: T;
   createdAt?: T;
 }

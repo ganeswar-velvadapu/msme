@@ -18,6 +18,18 @@ const Header = () => {
     const pathname = usePathname();
     const asPath = pathname;
 
+    // Lock body scroll when mobile menu is open
+    useEffect(() => {
+        if (showMenu) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "";
+        }
+        return () => {
+            document.body.style.overflow = "";
+        };
+    }, [showMenu]);
+
     // Measure header height so the sentinel spacer can match it exactly
     useEffect(() => {
         const updateHeight = () => {
