@@ -18,6 +18,11 @@ const PhD_P: CollectionConfig = {
       label: 'Brochure PDF Link',
     },
     {
+      name: 'curriculum_link',
+      type: 'text',
+      label: 'Curriculum Link',
+    },
+    {
       name: 'course_and_thesis',
       type: 'textarea',
       label: 'Course and Thesis Requirements',

@@ -542,6 +542,7 @@ export interface PhdP {
   id: number;
   about?: string | null;
   brochure_link?: string | null;
+  curriculum_link?: string | null;
   course_and_thesis?: string | null;
   updatedAt: string;
   createdAt: string;
@@ -1124,6 +1125,7 @@ export interface MtechPSelect<T extends boolean = true> {
 export interface PhdPSelect<T extends boolean = true> {
   about?: T;
   brochure_link?: T;
+  curriculum_link?: T;
   course_and_thesis?: T;
   updatedAt?: T;
   createdAt?: T;

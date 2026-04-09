@@ -9,7 +9,7 @@ export default function PhDClient({ phdList }) {
   const {
     about = '',
     course_and_thesis = '',
-    eligibility_and_admissions = '',
+    curriculum_link = '',
     brochure_link = '',
   } = phdContent;
 
@@ -24,7 +24,15 @@ export default function PhDClient({ phdList }) {
       case 'about':
         return <div>{about}</div>;
       case 'course_and_thesis':
-        return <div>{course_and_thesis}</div>;
+        return (
+          <>
+            <div>{course_and_thesis}
+            </div>
+            <a href={curriculum_link} target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 hover:underline mt-2 inline-block">Curriculum Link</a>
+          </>
+        );
       case 'eligibility_and_admissions':
         return (<div className='flex w-full justify-center'>
           <a href='/admissions/phd' target="_blank"
@@ -70,7 +78,7 @@ export default function PhDClient({ phdList }) {
             rel="noopener noreferrer"
             className="text-blue-600 hover:underline"
           >
-            View Brochure (PDF)
+            View Brochure
           </a>
         </div>
       )}
