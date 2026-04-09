@@ -526,6 +526,7 @@ export interface MtechP {
         name?: string | null;
         description?: string | null;
         brochure_link?: string | null;
+        curriculum_link?: string | null;
         course_and_thesis?: string | null;
         id?: string | null;
       }[]
@@ -1109,6 +1110,7 @@ export interface MtechPSelect<T extends boolean = true> {
         name?: T;
         description?: T;
         brochure_link?: T;
+        curriculum_link?: T;
         course_and_thesis?: T;
         id?: T;
       };

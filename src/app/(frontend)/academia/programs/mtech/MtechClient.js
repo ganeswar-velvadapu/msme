@@ -81,9 +81,14 @@ export default function MTechClient({ mtechList }) {
         {activeSubTab === "course_and_thesis" && (
           <>
             <div className='flex w-full justify-center'>
+              <a href={activeSpecialization.curriculum_link} target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 hover:underline mt-2 inline-block">Curriculum Link</a>
+            </div>
+            <div className='flex w-full justify-center'>
               <a href={activeSpecialization.course_and_thesis} target="_blank"
                 rel="noopener noreferrer"
-                className="text-blue-600 hover:underline mt-2 inline-block">Click Here</a>
+                className="text-blue-600 hover:underline mt-2 inline-block">View More</a>
             </div>
           </>
         )}
