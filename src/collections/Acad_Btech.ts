@@ -36,7 +36,7 @@ export const BTech_P: CollectionConfig = {
                 {
                     name:"academic_handbook_link",
                     type:"text",
-                    label:"Enter Redirect link"
+                    label:"Enter academic handbook link"
                 }
             ]
         },
@@ -58,7 +58,7 @@ export const BTech_P: CollectionConfig = {
                 {
                     name:"msme_curriculum_link",
                     type:"text",
-                    label:"Enter Redirect link"
+                    label:"Enter curriculum link"
                 },
             ]
         },

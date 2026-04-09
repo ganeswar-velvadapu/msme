@@ -12,7 +12,7 @@ export default function MTechClient({ mtechList }) {
   const subTabs = [
     { key: "about", label: "About" },
     { key: "course_and_thesis", label: "Course and Thesis Requirements" },
-    { key: "eligibility_and_admissions", label: "Eligibility and Admissions" }, 
+    { key: "eligibility_and_admissions", label: "Eligibility and Admissions" },
   ];
 
   return (
@@ -34,11 +34,10 @@ export default function MTechClient({ mtechList }) {
               setActiveSpecializationIndex(index);
               setActiveSubTab("about");
             }}
-            className={`px-5 py-2 rounded-lg font-medium transition ${
-              index === activeSpecializationIndex
-                ? "bg-black text-white"
-                : "bg-gray-100 text-gray-800 hover:bg-gray-200"
-            }`}
+            className={`px-5 py-2 rounded-lg font-medium transition ${index === activeSpecializationIndex
+              ? "bg-black text-white"
+              : "bg-gray-100 text-gray-800 hover:bg-gray-200"
+              }`}
           >
             {spec.short_name || spec.name || `Specialization ${index + 1}`}
           </button>
@@ -46,16 +45,16 @@ export default function MTechClient({ mtechList }) {
       </div>
 
       {/* Sub Tabs */}
-      <div className="border-b flex justify-center gap-6 mb-6">
+      {/* Sub Tabs — Same Style as B.Tech */}
+      <div className="flex flex-wrap justify-center gap-4 mb-8 border-b pb-4">
         {subTabs.map((tab) => (
           <button
             key={tab.key}
             onClick={() => setActiveSubTab(tab.key)}
-            className={`py-2 px-3 font-semibold transition ${
-              activeSubTab === tab.key
-                ? "border-b-2 border-black text-black"
-                : "text-gray-600 hover:text-black"
-            }`}
+            className={`px-5 py-2 text-base font-semibold rounded-md transition ${activeSubTab === tab.key
+              ? "bg-black text-white hover:cursor-pointer"
+              : "bg-gray-100 text-gray-800 hover:bg-gray-200 hover:cursor-pointer"
+              }`}
           >
             {tab.label}
           </button>
@@ -80,20 +79,19 @@ export default function MTechClient({ mtechList }) {
           </div>
         )}
         {activeSubTab === "course_and_thesis" && (
-          <p>{activeSpecialization.course_and_thesis || "No information available."}</p>
+          <>
+            <div className='flex w-full justify-center'>
+              <a href={activeSpecialization.course_and_thesis} target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 hover:underline mt-2 inline-block">Click Here</a>
+            </div>
+          </>
         )}
         {activeSubTab === "eligibility_and_admissions" && (
-          <div>
-            {activeSpecialization.eligibility_and_admissions && activeSpecialization.eligibility_and_admissions.length > 0 ? (
-              activeSpecialization.eligibility_and_admissions.map((section, index) => (
-                <div key={index} className="mb-4">
-                  {section.heading && <h3 className="text-lg font-semibold">{section.heading} : </h3>}
-                   <p>{section.content || "No content available."}</p>
-                </div>
-              ))
-            ) : (
-              <p>No eligibility and admissions information available.</p>
-            )}
+          <div className='flex w-full justify-center'>
+            <a href='/admissions/mtech' target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 hover:underline mt-2 inline-block">Click Here</a>
           </div>
         )}
       </div>

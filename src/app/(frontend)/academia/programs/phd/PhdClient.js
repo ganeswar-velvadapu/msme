@@ -26,7 +26,11 @@ export default function PhDClient({ phdList }) {
       case 'course_and_thesis':
         return <div>{course_and_thesis}</div>;
       case 'eligibility_and_admissions':
-        return <div>{eligibility_and_admissions}</div>;
+        return (<div className='flex w-full justify-center'>
+          <a href='/admissions/phd' target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 hover:underline mt-2 inline-block">Click Here</a>
+        </div>);
       default:
         return null;
     }
@@ -37,16 +41,15 @@ export default function PhDClient({ phdList }) {
       <h1 className="text-4xl font-bold text-center mb-8">PhD Programme</h1>
 
       {/* Sub Tabs */}
-      <div className="flex flex-wrap justify-center gap-4 mb-6">
+      <div className="flex flex-wrap justify-center gap-4 mb-6 border-b pb-4">
         {subTabs.map((tab) => (
           <button
             key={tab.key}
             onClick={() => setActiveSubTab(tab.key)}
-            className={`px-5 py-2 rounded-lg text-sm font-medium transition ${
-              activeSubTab === tab.key
-                ? 'bg-black text-white shadow-md'
-                : 'bg-gray-100 text-gray-800 hover:bg-gray-200'
-            }`}
+            className={`px-5 py-2 rounded-lg text-sm font-medium transition ${activeSubTab === tab.key
+              ? 'bg-black text-white shadow-md hover:cursor-pointer'
+              : 'bg-gray-100 text-gray-800 hover:bg-gray-200 hover:cursor-pointer'
+              }`}
           >
             {tab.label}
           </button>

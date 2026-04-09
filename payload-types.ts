@@ -527,13 +527,6 @@ export interface MtechP {
         description?: string | null;
         brochure_link?: string | null;
         course_and_thesis?: string | null;
-        eligibility_and_admissions?:
-          | {
-              heading?: string | null;
-              content?: string | null;
-              id?: string | null;
-            }[]
-          | null;
         id?: string | null;
       }[]
     | null;
@@ -549,7 +542,6 @@ export interface PhdP {
   about?: string | null;
   brochure_link?: string | null;
   course_and_thesis?: string | null;
-  eligibility_and_admissions?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -1118,13 +1110,6 @@ export interface MtechPSelect<T extends boolean = true> {
         description?: T;
         brochure_link?: T;
         course_and_thesis?: T;
-        eligibility_and_admissions?:
-          | T
-          | {
-              heading?: T;
-              content?: T;
-              id?: T;
-            };
         id?: T;
       };
   updatedAt?: T;
@@ -1138,7 +1123,6 @@ export interface PhdPSelect<T extends boolean = true> {
   about?: T;
   brochure_link?: T;
   course_and_thesis?: T;
-  eligibility_and_admissions?: T;
   updatedAt?: T;
   createdAt?: T;
 }

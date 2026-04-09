@@ -8,7 +8,6 @@ export default function BTechClient({ btechList }) {
 
   const {
     about = {},
-    admission = "",
     curriculum = {},
   } = btechContent;
 
@@ -31,31 +30,28 @@ export default function BTechClient({ btechList }) {
       <div className="flex flex-wrap justify-center gap-4 mb-8 border-b pb-4">
         <button
           onClick={() => setActiveTab("about")}
-          className={`px-5 py-2 text-base font-semibold rounded-md transition ${
-            activeTab === "about"
-              ? "bg-black text-white"
-              : "bg-gray-100 text-gray-800 hover:bg-gray-200"
-          }`}
+          className={`px-5 py-2 text-base font-semibold rounded-md transition ${activeTab === "about"
+            ? "bg-black text-white hover:cursor-pointer"
+            : "bg-gray-100 text-gray-800 hover:bg-gray-200 hover:cursor-pointer"
+            }`}
         >
           About
         </button>
         <button
           onClick={() => setActiveTab("curriculum")}
-          className={`px-5 py-2 text-base font-semibold rounded-md transition ${
-            activeTab === "curriculum"
-              ? "bg-black text-white"
-              : "bg-gray-100 text-gray-800 hover:bg-gray-200"
-          }`}
+          className={`px-5 py-2 text-base font-semibold rounded-md transition ${activeTab === "curriculum"
+            ? "bg-black text-white hover:cursor-pointer"
+            : "bg-gray-100 text-gray-800 hover:bg-gray-200 hover:cursor-pointer"
+            }`}
         >
           Curriculum & Courses
         </button>
         <button
           onClick={() => setActiveTab("admission")}
-          className={`px-5 py-2 text-base font-semibold rounded-md transition ${
-            activeTab === "admission"
-              ? "bg-black text-white"
-              : "bg-gray-100 text-gray-800 hover:bg-gray-200"
-          }`}
+          className={`px-5 py-2 text-base font-semibold rounded-md transition ${activeTab === "admission"
+            ? "bg-black text-white hover:cursor-pointer"
+            : "bg-gray-100 text-gray-800 hover:bg-gray-200 hover:cursor-pointer"
+            }`}
         >
           Admissions Requirements
         </button>
@@ -118,9 +114,10 @@ export default function BTechClient({ btechList }) {
 
       {/* Admission Section */}
       {activeTab === "admission" && (
-        <div className="space-y-4">
-          <h3 className="text-2xl font-semibold">Admissions</h3>
-          <p className="text-gray-800 text-base leading-relaxed">{admission}</p>
+        <div className='flex w-full justify-center'>
+          <a href='/admissions/btech' target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 hover:underline mt-2 inline-block">Click Here</a>
         </div>
       )}
     </div>

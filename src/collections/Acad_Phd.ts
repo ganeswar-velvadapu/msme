@@ -22,11 +22,6 @@ const PhD_P: CollectionConfig = {
       type: 'textarea',
       label: 'Course and Thesis Requirements',
     },
-    {
-      name: 'eligibility_and_admissions',
-      type: 'textarea',
-      label: 'Eligibility and Admissions',
-    },
   ],
 };
 
