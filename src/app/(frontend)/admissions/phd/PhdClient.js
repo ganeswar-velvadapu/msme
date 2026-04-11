@@ -24,10 +24,6 @@ export default function PhDClient({ phdData }) {
 
         <div className="bg-gray-50 p-6 rounded-lg mb-8">
 
-          <h2 className="text-2xl font-semibold mb-4">
-            General Information
-          </h2>
-
           <p className="text-gray-700 leading-relaxed whitespace-pre-line">
             {phdData.general_writeup}
           </p>
