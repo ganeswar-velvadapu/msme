@@ -1366,6 +1366,18 @@ export interface PhdAdmission {
         id?: string | null;
       }[]
     | null;
+  faculty_research?:
+    | {
+        faculty_name: string;
+        research_topics?:
+          | {
+              topic: string;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -1502,6 +1514,18 @@ export interface PhdAdmissionsSelect<T extends boolean = true> {
           | {
               link_text?: T;
               link_url?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  faculty_research?:
+    | T
+    | {
+        faculty_name?: T;
+        research_topics?:
+          | T
+          | {
+              topic?: T;
               id?: T;
             };
         id?: T;

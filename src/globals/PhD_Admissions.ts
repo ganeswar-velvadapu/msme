@@ -82,10 +82,39 @@ const PhDAdmission: GlobalConfig = {
               label: 'Link URL'
             }
           ]
-        }
-
+        },
       ]
-    }
+    },
+
+    {
+      name: 'faculty_research',
+      type: 'array',
+      label: 'Faculty Research Areas',
+
+      fields: [
+        {
+          name: 'faculty_name',
+          type: 'text',
+          label: 'Faculty Name',
+          required: true,
+        },
+
+        {
+          name: 'research_topics',
+          type: 'array',
+          label: 'Research Topics',
+
+          fields: [
+            {
+              name: 'topic',
+              type: 'text',
+              label: 'Research Topic',
+              required: true,
+            },
+          ],
+        },
+      ],
+    },
 
   ]
 };
