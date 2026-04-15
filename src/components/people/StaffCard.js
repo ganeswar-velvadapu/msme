@@ -1,34 +1,46 @@
-
 import { GraduationCap, Mail, MapPin } from "lucide-react"
 import Link from "next/link"
-export default function StaffCard({ name, designation, email, phdFrom, office, onClick }) {
+
+export default function StaffCard({ name, designation, image_url, onClick }) {
     return (
-        <div
-            className="bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-all p-6 flex flex-col h-full cursor-pointer"
-            onClick={onClick}
-        >
-            <h3 className="text-3xl font-semibold text-gray-900 mb-1">{name}</h3>
-            <p className="text-gray-600 mb-4 text-xl">{designation}</p>
-            <div className="space-y-2 mt-auto">
-                <div className="flex items-center gap-2">
-                    <Mail size={16} className="text-gray-400" />
-                    <span className="text-lg text-gray-700 truncate">{email}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                    <GraduationCap size={16} className="text-gray-400" />
-                    <span className="text-lg text-gray-700 truncate">{phdFrom}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                    <MapPin size={16} className="text-gray-400" />
-                    <span className="text-lg text-gray-700 truncate">{office}</span>
-                </div>
+        <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer border border-gray-100 flex flex-col">
+
+            <img
+                src={image_url || "/api/placeholder/400/400"}
+                alt={name}
+                className="w-full h-[250px] object-cover"
+            />
+
+            {/* Content */}
+            <div className="m-4 flex flex-col flex-grow">
+
+                <p className="text-gray-600 mb-3">
+                    {designation}
+                </p>
+
+                {/* Push button to bottom */}
+                <button
+                    className="mt-auto text-sm font-medium text-gray-900 hover:text-gray-700 inline-flex items-center transition-colors hover:cursor-pointer"
+                    onClick={onClick}
+                >
+                    Know more
+                    <svg
+                        className="ml-1 w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                    >
+                        <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M9 5l7 7-7 7"
+                        />
+                    </svg>
+                </button>
+
             </div>
-            <button className="mt-5 text-sm font-medium text-gray-900 hover:text-gray-700 inline-flex items-center transition-colors hover:cursor-pointer">
-                Know more
-                <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
-                </svg>
-            </button>
+
         </div>
     )
 }

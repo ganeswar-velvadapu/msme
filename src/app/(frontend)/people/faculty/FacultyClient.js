@@ -62,9 +62,6 @@ export default function FacultyClient({ facultyList }) {
               id={member?.id}
               name={member?.faculty_name ?? "N/A"}
               designation={member?.faculty_designation ?? ""}
-              email={member?.faculty_email ?? ""}
-              phdFrom={member?.faculty_phd_detail ?? ""}
-              office={member?.faculty_office ?? ""}
               image_url={member?.faculty_image?.url}
             />
           ))

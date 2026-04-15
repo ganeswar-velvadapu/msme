@@ -52,6 +52,8 @@ export default function StaffClient({ staffList }) {
     };
   }, []);
 
+  console.log(sortedAndFilteredStaff)
+
   return (
     <div className="py-12 px-4 max-w-7xl mx-auto">
       <h1 className="text-3xl font-bold mb-8 text-gray-900">
@@ -72,16 +74,14 @@ export default function StaffClient({ staffList }) {
         />
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
         {sortedAndFilteredStaff.length > 0 ? (
           sortedAndFilteredStaff.map((member, index) => (
             <StaffCard
               key={member?.id ?? index}
               name={member?.staff_name ?? "N/A"}
               designation={member?.staff_designation ?? ""}
-              email={member?.staff_email ?? ""}
-              phdFrom={member?.staff_education ?? ""}
-              office={member?.staff_office ?? ""}
+              image_url={member?.staff_image.url ?? ""}
               onClick={() => openModal(member)}
             />
           ))

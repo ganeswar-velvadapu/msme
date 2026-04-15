@@ -4,9 +4,6 @@ export default function FacultyCard({
     name,
     image_url,
     designation,
-    email,
-    phdFrom,
-    office,
     id
 }) {
     return (
