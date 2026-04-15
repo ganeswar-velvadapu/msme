@@ -56,7 +56,7 @@ export default function ResearchAreasClient({ researchAreas }) {
                 </div>
 
                 {/* Research Icons */}
-                {getResearchIcon(area.research_area_photo)}
+                {/* {getResearchIcon(area.research_area_photo)} */}
 
                 {/* Faculty Members */}
                 <h3 className="mb-4 font-bold text-xl">Faculty Members</h3>
