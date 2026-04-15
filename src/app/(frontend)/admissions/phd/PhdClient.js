@@ -22,7 +22,7 @@ function AccordionItem({ faculty, index, isOpen, onToggle }) {
           <span className="font-semibold text-sm sm:text-base truncate">
             {faculty.faculty_name}
           </span>
-  
+
         </div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -105,7 +105,10 @@ export default function PhDClient({ phdData }) {
 
   const mainTabs = [
     { label: 'Programme Info' },
-    ...(facultyList.length > 0 ? [{ label: 'Faculty Research' }] : []),
+    ...(facultyList.length > 0 ? [{ label: 'Research Topics' }] : []),
+    ...(phdData?.external_fellowships?.length > 0
+      ? [{ label: 'Other Fellowships' }]
+      : []),
   ];
 
   const handleToggle = (index) => {
@@ -127,11 +130,10 @@ export default function PhDClient({ phdData }) {
             <button
               key={i}
               onClick={() => setMainTab(i)}
-              className={`px-6 py-2.5 rounded-lg font-medium transition-colors duration-200 cursor-pointer ${
-                mainTab === i
-                  ? 'bg-black text-white shadow'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-              }`}
+              className={`px-6 py-2.5 rounded-lg font-medium transition-colors duration-200 cursor-pointer ${mainTab === i
+                ? 'bg-black text-white shadow'
+                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                }`}
             >
               {tab.label}
             </button>
@@ -159,11 +161,10 @@ export default function PhDClient({ phdData }) {
                     <button
                       key={index}
                       onClick={() => setActiveIndex(index)}
-                      className={`px-5 py-2.5 rounded-lg font-medium transition-colors duration-200 cursor-pointer ${
-                        index === activeIndex
-                          ? 'bg-black text-white shadow'
-                          : 'bg-gray-100 text-gray-800 hover:bg-gray-200'
-                      }`}
+                      className={`px-5 py-2.5 rounded-lg font-medium transition-colors duration-200 cursor-pointer ${index === activeIndex
+                        ? 'bg-black text-white shadow'
+                        : 'bg-gray-100 text-gray-800 hover:bg-gray-200'
+                        }`}
                     >
                       {type.phd_type_name || `Type ${index + 1}`}
                     </button>
@@ -214,28 +215,6 @@ export default function PhDClient({ phdData }) {
               </div>
             )}
 
-            {phdData?.external_fellowships && phdData.external_fellowships.length > 0 && (
-              <div className="bg-gray-50 p-5 sm:p-6 rounded-lg mb-4">
-                <h4 className="text-lg sm:text-xl font-semibold mb-3">External Fellowships</h4>
-                <div className="grid gap-3 sm:grid-cols-2">
-                  {phdData.external_fellowships.map((link, index) => (
-                    <div
-                      key={index}
-                      className="p-4 bg-white rounded-lg border border-gray-200 hover:border-gray-400 transition-colors duration-200"
-                    >
-                      <a
-                        href={link.link_url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="font-medium underline underline-offset-2 hover:text-gray-600 text-sm sm:text-base"
-                      >
-                        {link.link_name}
-                      </a>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
 
             {phdTypes.length === 0 && (
               <div className="text-center py-8 text-gray-500">
@@ -258,7 +237,7 @@ export default function PhDClient({ phdData }) {
               />
             </div>
 
-       
+
 
             <div className="space-y-2">
               {filteredFaculty.length > 0 ? (
@@ -276,6 +255,35 @@ export default function PhDClient({ phdData }) {
                   <p>No results found for &quot;{searchQuery}&quot;</p>
                 </div>
               )}
+            </div>
+          </div>
+        )}
+
+        {/* TAB 2 (or dynamic): OTHER FELLOWSHIPS */}
+        {mainTabs[mainTab]?.label === 'Other Fellowships' && (
+          <div>
+            <div className="bg-gray-50 p-5 sm:p-6 rounded-lg">
+              <h4 className="text-lg sm:text-xl font-semibold mb-4">
+                Other Fellowships
+              </h4>
+
+              <div className="grid gap-3 sm:grid-cols-2">
+                {phdData.external_fellowships.map((link, index) => (
+                  <div
+                    key={index}
+                    className="p-4 bg-white rounded-lg border border-gray-200 hover:border-gray-400 transition-colors duration-200"
+                  >
+                    <a
+                      href={link.link_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-medium underline underline-offset-2 hover:text-gray-600 text-sm sm:text-base"
+                    >
+                      {link.link_name}
+                    </a>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         )}

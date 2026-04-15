@@ -20,7 +20,7 @@ const PhDAdmission: GlobalConfig = {
     {
       name: 'external_fellowships',
       type: 'array',
-      label: 'External Fellowships',
+      label: 'Other Fellowships',
 
       fields: [
         {
