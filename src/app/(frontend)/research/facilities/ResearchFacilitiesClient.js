@@ -111,11 +111,8 @@ export default function ResearchFacilitiesClient({ facilities, carousel }) {
                                     <tr>
                                         <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Facility Number</th>
                                          <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Facility Name</th>
-                                        <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Location</th>
                                         <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Faculty In Charge</th>
                                         <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Staff In Charge</th>
-                                        <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Usage Fee</th>
-                                        <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Form</th>
                                     </tr>
                                 </thead>
                                 <tbody className="bg-white divide-y divide-gray-200">
@@ -123,12 +120,8 @@ export default function ResearchFacilitiesClient({ facilities, carousel }) {
                                         <tr key={facility.id} className="hover:bg-gray-50">
                                             <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-black">{facility.research_facility_no}</td>
                                             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{facility.research_facility_name}</td>
-                                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{facility.research_facility_location}</td>
                                             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{facility.research_facility_fic}</td>
-                                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{facility.research_facility_staff_incharge}</td>
-                                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{facility.research_facility_usage_charges}</td>
-                                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{facility.research_facility_forms}</td>
-                                          
+                                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{facility.research_facility_staff_incharge}</td>                                          
                                         </tr>
                                     ))}
                                 </tbody>
