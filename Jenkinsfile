@@ -5,7 +5,7 @@ pipeline {
         APP_DIR = "/home/msmeadmin/msme"
         SERVICE_NAME = "msme.service"
 
-        PNPM = "/home/msmeadmin/.nvm/versions/node/v24.4.1/bin/pnpm"
+        NODE_BIN = "/home/msmeadmin/.nvm/versions/node/v24.4.1/bin"
     }
 
     stages {
@@ -24,7 +24,12 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 sh '''
-                $PNPM install
+                export PATH=$NODE_BIN:$PATH
+
+                node -v
+                pnpm -v
+
+                pnpm install
                 '''
             }
         }
@@ -32,7 +37,9 @@ pipeline {
         stage('Build Test') {
             steps {
                 sh '''
-                $PNPM build
+                export PATH=$NODE_BIN:$PATH
+
+                pnpm build
                 '''
             }
         }
@@ -40,6 +47,8 @@ pipeline {
         stage('Deploy to Production') {
             steps {
                 sh '''
+                export PATH=$NODE_BIN:$PATH
+
                 echo "Deploying..."
 
                 cd $APP_DIR
@@ -47,8 +56,8 @@ pipeline {
                 git fetch origin
                 git reset --hard origin/main
 
-                $PNPM install
-                $PNPM build
+                pnpm install
+                pnpm build
 
                 sudo systemctl restart $SERVICE_NAME
                 '''
