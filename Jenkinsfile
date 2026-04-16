@@ -4,22 +4,17 @@ pipeline {
     environment {
         APP_DIR = "/home/msmeadmin/msme"
         SERVICE_NAME = "msme.service"
+
+        PATH = "/home/msmeadmin/.nvm/versions/node/v24.4.1/bin:/usr/bin:/bin"
     }
 
     stages {
-
-        stage('Checkout Repo') {
-            steps {
-                git branch: 'main',
-                url: 'git@github.com:ganeswar-velvadapu/msme.git'
-            }
-        }
 
         stage('Inject .env for Build') {
             steps {
                 withCredentials([file(credentialsId: 'msme-cicd-env', variable: 'ENV_FILE')]) {
                     sh '''
-                    echo "Injecting .env into workspace for build..."
+                    echo "Injecting .env into workspace..."
                     cp $ENV_FILE .env
                     '''
                 }
@@ -49,19 +44,12 @@ pipeline {
 
                 cd $APP_DIR
 
-                echo "Fetching latest code..."
                 git fetch origin
-
-                echo "Resetting to main..."
                 git reset --hard origin/main
 
-                echo "Installing dependencies..."
                 pnpm install
-
-                echo "Building production..."
                 pnpm build
 
-                echo "Restarting service..."
                 sudo systemctl restart $SERVICE_NAME
                 '''
             }
@@ -76,14 +64,12 @@ pipeline {
     }
 
     post {
-
         success {
-            echo 'Deployment Successful'
+            echo '✅ Deployment Successful 🚀'
         }
 
         failure {
-            echo 'Build Failed'
+            echo '❌ Build Failed'
         }
-
     }
 }
