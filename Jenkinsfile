@@ -5,7 +5,7 @@ pipeline {
         APP_DIR = "/home/msmeadmin/msme"
         SERVICE_NAME = "msme.service"
 
-        PATH = "/home/msmeadmin/.nvm/versions/node/v24.4.1/bin:/usr/bin:/bin"
+        PNPM = "/home/msmeadmin/.nvm/versions/node/v24.4.1/bin/pnpm"
     }
 
     stages {
@@ -14,7 +14,7 @@ pipeline {
             steps {
                 withCredentials([file(credentialsId: 'msme-cicd-env', variable: 'ENV_FILE')]) {
                     sh '''
-                    echo "Injecting .env into workspace..."
+                    echo "Injecting .env..."
                     cp $ENV_FILE .env
                     '''
                 }
@@ -24,7 +24,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 sh '''
-                pnpm install
+                $PNPM install
                 '''
             }
         }
@@ -32,7 +32,7 @@ pipeline {
         stage('Build Test') {
             steps {
                 sh '''
-                pnpm build
+                $PNPM build
                 '''
             }
         }
@@ -40,15 +40,15 @@ pipeline {
         stage('Deploy to Production') {
             steps {
                 sh '''
-                echo "Deploying to production..."
+                echo "Deploying..."
 
                 cd $APP_DIR
 
                 git fetch origin
                 git reset --hard origin/main
 
-                pnpm install
-                pnpm build
+                $PNPM install
+                $PNPM build
 
                 sudo systemctl restart $SERVICE_NAME
                 '''
@@ -65,7 +65,7 @@ pipeline {
 
     post {
         success {
-            echo '✅ Deployment Successful 🚀'
+            echo '✅ Deployment Successful'
         }
 
         failure {
