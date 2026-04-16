@@ -28,30 +28,6 @@ export default function ProjectsClient({projects}) {
           <h1 className="text-4xl font-bold text-black mb-4">Research Projects</h1>
         </div>
 
-        {/* Stats Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mb-10">
-          <div className="bg-white p-6 rounded-lg shadow-md text-center">
-            <h3 className="text-gray-500 text-sm font-medium uppercase">Total Projects</h3>
-            <p className="text-3xl font-bold text-black mt-2">{projectStats.total}</p>
-          </div>
-          <div className="bg-white p-6 rounded-lg shadow-md text-center">
-            <h3 className="text-gray-500 text-sm font-medium uppercase">Research</h3>
-            <p className="text-3xl font-bold text-black mt-2">{projectStats.research}</p>
-          </div>
-          <div className="bg-white p-6 rounded-lg shadow-md text-center">
-            <h3 className="text-gray-500 text-sm font-medium uppercase">Consultancy</h3>
-            <p className="text-3xl font-bold text-black mt-2">{projectStats.consultancy}</p>
-          </div>
-          <div className="bg-white p-6 rounded-lg shadow-md text-center">
-            <h3 className="text-gray-500 text-sm font-medium uppercase">Ongoing</h3>
-            <p className="text-3xl font-bold text-black mt-2">{projectStats.ongoing}</p>
-          </div>
-          <div className="bg-white p-6 rounded-lg shadow-md text-center">
-            <h3 className="text-gray-500 text-sm font-medium uppercase">Completed</h3>
-            <p className="text-3xl font-bold text-black mt-2">{projectStats.completed}</p>
-          </div>
-        </div>
-
         {/* Filters */}
         <div className="bg-white p-6 rounded-lg shadow-md mb-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
