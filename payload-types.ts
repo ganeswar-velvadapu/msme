@@ -123,7 +123,6 @@ export interface Config {
     defaultIDType: number;
   };
   globals: {
-    homecarousel: Homecarousel;
     about: About;
     'mtech-admissions': MtechAdmission;
     'btech-admissions': BtechAdmission;
@@ -131,7 +130,6 @@ export interface Config {
     timetable: Timetable;
   };
   globalsSelect: {
-    homecarousel: HomecarouselSelect<false> | HomecarouselSelect<true>;
     about: AboutSelect<false> | AboutSelect<true>;
     'mtech-admissions': MtechAdmissionsSelect<false> | MtechAdmissionsSelect<true>;
     'btech-admissions': BtechAdmissionsSelect<false> | BtechAdmissionsSelect<true>;
@@ -1238,21 +1236,6 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "homecarousel".
- */
-export interface Homecarousel {
-  id: number;
-  home_carousel_images?:
-    | {
-        carousel_image?: (number | null) | Media;
-        id?: string | null;
-      }[]
-    | null;
-  updatedAt?: string | null;
-  createdAt?: string | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "about".
  */
 export interface About {
@@ -1396,21 +1379,6 @@ export interface Timetable {
     | null;
   updatedAt?: string | null;
   createdAt?: string | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "homecarousel_select".
- */
-export interface HomecarouselSelect<T extends boolean = true> {
-  home_carousel_images?:
-    | T
-    | {
-        carousel_image?: T;
-        id?: T;
-      };
-  updatedAt?: T;
-  createdAt?: T;
-  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

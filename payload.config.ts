@@ -9,7 +9,6 @@ import sharp from 'sharp'
 import { Users } from '@/collections/Users'
 import { Media } from '@/collections/Media'
 import { Placements } from '@/collections/Placements'
-import { HomeCarousel } from '@/globals/HomeCarousel'
 import { News } from '@/collections/News'
 import { Events } from '@/collections/Events'
 import { ResearchAreas } from '@/collections/ResearchAreas'
@@ -50,7 +49,7 @@ export default buildConfig({
 
   },
   collections: [Users, Media, Placements, News, Events, ResearchAreas, ResearchFacilities, ResearchFacilitiesCarousel, Projects, Collaborations, Faculty, Staff, BTech, MTech, PhD, Alumni, BTech_P, MTech_P, PhD_P,AdjunctFaculty,popFaculty],
-  globals: [HomeCarousel, About, MTechAdmission, BTechAdmission, PhDAdmission, TimeTable, ],
+  globals: [ About, MTechAdmission, BTechAdmission, PhDAdmission, TimeTable, ],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
