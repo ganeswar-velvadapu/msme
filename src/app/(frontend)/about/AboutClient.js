@@ -20,7 +20,7 @@ export default function AboutClient({ aboutList }) {
 
       {/* Navigation Tabs */}
       <div className="flex flex-wrap justify-center mb-8 gap-2">
-        {["about", "department", "vision", "history", "explore"].map((tab) => (
+        {["about", "department",  "history", "explore"].map((tab) => (
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
@@ -73,13 +73,13 @@ export default function AboutClient({ aboutList }) {
         </div>
       )}
 
-      {/* Vision */}
+      {/* Vision
       {activeTab === "vision" && vision && (
         <div className="bg-white rounded-lg shadow-lg p-6 mb-8">
           <h2 className="text-2xl font-bold mb-4 text-black">Department Vision</h2>
           <p className="text-gray-700 whitespace-pre-line max-w-3xl">{vision}</p>
         </div>
-      )}
+      )} */}
 
       {/* Timeline */}
       {activeTab === "history" && timeline_at_iith.length > 0 && (
