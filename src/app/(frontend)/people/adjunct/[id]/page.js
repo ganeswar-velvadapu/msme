@@ -12,7 +12,7 @@ export default async function AdjunctFacultyPage({ params }) {
       id: id,
     });
 
-    // console.log(faculty)
+    console.log(faculty)
 
     return <AdjunctFacultyProfile faculty={faculty} />;
   } catch (error) {
