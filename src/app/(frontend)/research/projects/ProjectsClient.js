@@ -86,7 +86,7 @@ export default function ProjectsClient({projects}) {
             <div key={project.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
               <div className="p-6">
                 <div className="flex justify-between items-start mb-4">
-                  <h2 className="text-xl font-bold text-black line-clamp-2">{project.project_title}</h2>
+                  <h2 className="text-xl font-bold text-black">{project.project_title}</h2>
                   <span className={`text-xs font-medium px-2 py-1 rounded-full ${
                     project.project_status === 'Ongoing' ? 'bg-gray-200 text-gray-800' : 'bg-black text-white'
                   }`}>
