@@ -5,7 +5,6 @@ export default function Footer() {
     const headEmail = `head@msme.iith.ac.in`;
     const officeEmail = `office@msme.iith.ac.in`
     const location = "MSME Block, IIT Hyderabad, Kandi, Sangareddy, Hyderabad, Telangana, India";
-    const phone = "+91 12 3456789";
     const copyright = "© 2025 Department of Materials Science and Metallurgical Engineering, IIT Hyderabad. All rights reserved.";
 
     const footerLinks = {
@@ -68,12 +67,6 @@ export default function Footer() {
                             <div className="flex items-start">
                                 <FaMapMarkerAlt className="mr-3 text-black text-lg mt-1 flex-shrink-0" />
                                 <span className="text-gray-800">{location}</span>
-                            </div>
-                            <div className="flex items-center">
-                                <FaPhone className="mr-3 text-black text-lg flex-shrink-0" />
-                                <Link href={`tel:${phone}`} className="text-gray-800 hover:text-gray-600 transition-colors duration-300">
-                                    {phone}
-                                </Link>
                             </div>
                             <div className="flex items-center">
                                 <FaEnvelope className="mr-3 text-black text-lg flex-shrink-0" />
