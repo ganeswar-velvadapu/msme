@@ -2,21 +2,23 @@ pipeline {
     agent any
 
     environment {
-        APP_DIR = "/home/msmeadmin/msme"
-        SERVICE_NAME = "msme.service"
+        APP_DIR = '/home/msmeadmin/msme'
+        SERVICE_NAME = 'msme.service'
 
-        NODE_BIN = "/home/msmeadmin/.nvm/versions/node/v24.4.1/bin"
+        NODE_BIN = '/home/msmeadmin/.nvm/versions/node/v24.4.1/bin'
     }
 
     stages {
-
         stage('Inject .env for Build') {
             steps {
                 withCredentials([file(credentialsId: 'msme-cicd-env', variable: 'ENV_FILE')]) {
                     sh '''
-                    echo "Injecting .env..."
-                    cp $ENV_FILE .env
-                    '''
+            echo "Injecting .env..."
+
+            rm -f .env
+            cp $ENV_FILE .env
+            chmod 644 .env
+            '''
                 }
             }
         }
@@ -69,7 +71,6 @@ pipeline {
                 cleanWs()
             }
         }
-
     }
 
     post {
