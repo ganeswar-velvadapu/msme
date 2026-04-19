@@ -1,7 +1,7 @@
 "use client";
 import { useState, useRef } from "react";
 
-export default function EventsClient({ materialsScienceEvents }) {
+export default function EventsClient({ materialsScienceEvents, isHome }) {
   const scrollRef = useRef(null);
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -37,30 +37,31 @@ export default function EventsClient({ materialsScienceEvents }) {
     if (!selectedEvent) return null;
 
     return (
-      <div className="fixed inset-0 z-50 flex items-center justify-center bg-opacity-20 backdrop-blur-sm p-4">
+      <div className="fixed inset-0 z-[200] flex items-center justify-center bg-black/60 backdrop-blur-md p-4">
         <div 
-          className="bg-white rounded-xl w-full max-w-3xl max-h-[90vh] shadow-2xl transform transition-all overflow-hidden"
+          className="bg-white rounded-2xl w-full max-w-2xl max-h-[90vh] shadow-2xl transform transition-all overflow-hidden"
           onClick={(e) => e.stopPropagation()}
         >
-          <div className="relative h-64 md:h-80 w-full overflow-hidden">
-            <img 
-              src={getImageUrl(selectedEvent)}
-              alt={selectedEvent.events_title}
-              className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
-            />
-            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black/60 to-transparent"></div>
+          <div className="relative">
+            <div className="h-72 w-full bg-gray-100 flex items-center justify-center overflow-hidden">
+              <img 
+                src={getImageUrl(selectedEvent)} 
+                alt={selectedEvent.events_title}
+                className="max-w-full max-h-full object-contain"
+              />
+            </div>
             
             <button 
               onClick={closeEventModal}
-              className="absolute top-4 right-4 bg-white rounded-full p-2 shadow-md hover:bg-gray-100 transition-colors"
+              className="absolute top-4 right-4 bg-white/80 backdrop-blur-sm rounded-full p-2 shadow-lg hover:bg-white transition-all z-10"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
             
-            <div className="absolute bottom-4 left-4 text-white">
-              <span className="text-sm font-medium px-3 py-1 rounded-full bg-indigo-500 bg-opacity-80 text-white">
+            <div className="absolute bottom-4 left-4">
+              <span className="text-xs font-bold px-3 py-1 rounded-full bg-black text-white uppercase tracking-wider">
                 {selectedEvent.events_tag}
               </span>
             </div>
@@ -145,6 +146,87 @@ export default function EventsClient({ materialsScienceEvents }) {
     );
   };
 
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const nextSlide = (e) => {
+    if (e) e.stopPropagation();
+    setCurrentIndex((prev) => (prev + 1) % materialsScienceEvents.length);
+  };
+
+  const prevSlide = (e) => {
+    if (e) e.stopPropagation();
+    setCurrentIndex((prev) => (prev - 1 + materialsScienceEvents.length) % materialsScienceEvents.length);
+  };
+
+  if (isHome) {
+    const event = materialsScienceEvents[currentIndex];
+    if (!event) return null;
+
+    return (
+      <div className="relative group w-full max-w-lg mx-auto px-4">
+        <div 
+          className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl border border-gray-100 transition-all duration-300 cursor-pointer transform hover:-translate-y-1"
+          onClick={() => openEventModal(event)}
+        >
+          <div className="h-52 relative overflow-hidden bg-gray-50 flex items-center justify-center">
+            <img
+              src={getImageUrl(event)}
+              alt={event.events_title}
+              className="max-w-full max-h-full object-contain transition-transform duration-500 hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none"></div>
+            
+            <div className="absolute top-3 left-3">
+              <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-black text-white uppercase tracking-wider">
+                {event.events_tag}
+              </span>
+            </div>
+            
+            <div className="absolute bottom-3 left-3 text-white">
+              <div className="text-[11px] font-medium flex items-center opacity-90">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                {formatDate(event.events_date)}
+              </div>
+            </div>
+          </div>
+          
+          <div className="p-6 text-center">
+            <h3 className="font-bold text-lg text-gray-900 mb-3 line-clamp-2 leading-tight">
+              {event.events_title}
+            </h3>
+            <p className="text-gray-600 text-sm line-clamp-3 leading-relaxed">
+              {event.events_description}
+            </p>
+          </div>
+        </div>
+
+        {/* Navigation Buttons */}
+        <button 
+          onClick={prevSlide}
+          className="absolute -left-6 lg:-left-12 top-1/2 -translate-y-1/2 bg-white shadow-xl rounded-full p-3 hover:bg-gray-50 hover:scale-110 transition-all z-10 border border-gray-100"
+          aria-label="Previous event"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+        <button 
+          onClick={nextSlide}
+          className="absolute -right-6 lg:-right-12 top-1/2 -translate-y-1/2 bg-white shadow-xl rounded-full p-3 hover:bg-gray-50 hover:scale-110 transition-all z-10 border border-gray-100"
+          aria-label="Next event"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+
+        {isModalOpen && <EventModal />}
+      </div>
+    );
+  }
+
   return (
     <div className="w-full">
       <div className="">
@@ -159,14 +241,14 @@ export default function EventsClient({ materialsScienceEvents }) {
                 className="event-card bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md border border-gray-100 hover:border-indigo-200 transition-all duration-300 cursor-pointer"
                 onClick={() => openEventModal(event)}
               >
-                <div className="relative h-40 overflow-hidden">
+                <div className="relative h-40 overflow-hidden bg-gray-50 flex items-center justify-center">
                   <img 
                     src={getImageUrl(event)} 
                     alt={event.events_title}
-                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                    className="max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105"
                   />
                   <div className="absolute top-3 left-3">
-                    <span className="text-xs font-medium px-3 py-1 rounded-full bg-indigo-100 text-indigo-800 border border-indigo-200">
+                    <span className="text-xs font-medium px-3 py-1 rounded-full bg-black text-white">
                       {event.events_tag}
                     </span>
                   </div>
@@ -214,7 +296,7 @@ export default function EventsClient({ materialsScienceEvents }) {
                   </div>
                   
                   <button 
-                    className="mt-4 text-sm text-indigo-600 hover:text-indigo-800 flex items-center transition-colors duration-200"
+                    className="mt-4 text-sm text-slate-800 font-bold hover:text-black flex items-center transition-colors duration-200"
                   >
                     See details
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
