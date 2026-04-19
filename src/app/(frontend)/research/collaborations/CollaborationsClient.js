@@ -16,7 +16,6 @@ export default function CollaborationsClient({ collaborations }) {
   return (
     <div className="p-8">
       <div className="max-w-6xl mx-auto">
-        <h1 className="text-3xl font-bold text-black mb-8 text-center">Our Collaborations</h1>
 
         {/* Tabs */}
         <div className="flex justify-center mb-8">

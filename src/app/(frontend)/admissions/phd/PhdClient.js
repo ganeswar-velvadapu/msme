@@ -119,11 +119,6 @@ export default function PhDClient({ phdData }) {
     <div className="w-full flex justify-center px-4 py-8">
       <div className="bg-white text-black p-6 sm:p-10 rounded-xl shadow-lg w-full max-w-4xl">
 
-        {/* Title */}
-        <h1 className="text-3xl sm:text-4xl font-bold text-center mb-8">
-          PhD Programme
-        </h1>
-
         {/* TOP-LEVEL TABS — centered */}
         <div className="flex flex-wrap justify-center gap-3 mb-8">
           {mainTabs.map((tab, i) => (

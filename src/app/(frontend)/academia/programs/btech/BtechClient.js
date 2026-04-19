@@ -24,7 +24,6 @@ export default function BTechClient({ btechList }) {
 
   return (
     <div className="bg-white m-8 text-black p-8 rounded-xl shadow-lg max-w-6xl mx-auto">
-      <h1 className="text-4xl font-bold text-center mb-8">B.Tech Programme</h1>
 
       {/* Tabs */}
       <div className="flex flex-wrap justify-center gap-4 mb-8 border-b pb-4">

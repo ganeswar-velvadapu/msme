@@ -28,13 +28,6 @@ export default function ResearchAreasClient({ researchAreas }) {
   return (
     <div className="py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
-        {/* Header Section */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Research Areas
-          </h1>
-        </div>
-
         {/* Research Areas Cards */}
         <div className="space-y-6">
           {dataToUse.map((area, areaIndex) => (

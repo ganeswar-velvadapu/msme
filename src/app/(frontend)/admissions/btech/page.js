@@ -3,6 +3,7 @@
 import { getPayload } from "payload";
 import config from "@payload-config";
 import BtechClient from "./BtechClient";
+import PageBanner from "@/components/PageBanner";
 
 export default async function Btech() {
   const payload = await getPayload({ config });
@@ -13,5 +14,10 @@ export default async function Btech() {
 
   // console.log(btech)
 
-  return <BtechClient btech={btech} />;
+  return (
+    <>
+      <PageBanner title="B.Tech Admissions" />
+      <BtechClient btech={btech} />
+    </>
+  );
 }

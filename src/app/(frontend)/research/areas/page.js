@@ -3,6 +3,7 @@
 import { getPayload } from "payload";
 import config from "@payload-config";
 import ResearchAreasClient from "./ResearchAreasClient";
+import PageBanner from "@/components/PageBanner";
 
 export default async function ResearchAreas() {
   const payload = await getPayload({ config });
@@ -14,5 +15,10 @@ export default async function ResearchAreas() {
 
   // console.log(researchAreas.docs)
 
-  return <ResearchAreasClient researchAreas={researchAreas.docs} />;
+  return (
+    <>
+      <PageBanner title="Research Areas" />
+      <ResearchAreasClient researchAreas={researchAreas.docs} />
+    </>
+  );
 }

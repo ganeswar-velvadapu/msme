@@ -46,7 +46,6 @@ export default function PhDClient({ phdList }) {
 
   return (
     <div className="bg-white m-8 text-black p-8 rounded-xl shadow-lg max-w-5xl mx-auto">
-      <h1 className="text-4xl font-bold text-center mb-8">PhD Programme</h1>
 
       {/* Sub Tabs */}
       <div className="flex flex-wrap justify-center gap-4 mb-6 border-b pb-4">

@@ -6,7 +6,6 @@ export default function BTechClient({ btech }) {
 
   return (
     <div className="bg-white m-8 text-black p-8 rounded-xl shadow-lg max-w-6xl mx-auto">
-      <h1 className="text-4xl font-bold text-center mb-8">B.Tech Admission</h1>
 
 
       <div className="space-y-4">

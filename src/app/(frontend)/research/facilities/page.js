@@ -3,6 +3,7 @@
 import { getPayload } from "payload";
 import config from "@payload-config";
 import ResearchFacilitiesClient from "./ResearchFacilitiesClient.js";
+import PageBanner from "@/components/PageBanner";
 
 export default async function ResearchFacilities() {
   const payload = await getPayload({ config });
@@ -18,9 +19,12 @@ export default async function ResearchFacilities() {
   });
 
   return (
-    <ResearchFacilitiesClient
-      facilities={facilities.docs}
-      carousel={carousel.docs}
-    />
+    <>
+      <PageBanner title="Research Facilities" />
+      <ResearchFacilitiesClient
+        facilities={facilities.docs}
+        carousel={carousel.docs}
+      />
+    </>
   );
 }

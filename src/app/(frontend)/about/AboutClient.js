@@ -16,7 +16,6 @@ export default function AboutClient({ aboutList }) {
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-12">
-      <h1 className="text-4xl font-bold text-center mb-8 text-black">About MSME</h1>
 
       {/* Navigation Tabs */}
       <div className="flex flex-wrap justify-center mb-8 gap-2">

@@ -3,6 +3,7 @@
 import { getPayload } from "payload";
 import config from "@payload-config";
 import MtechClient from "./MtechClient";
+import PageBanner from "@/components/PageBanner";
 
 export default async function Mtech() {
   const payload = await getPayload({ config });
@@ -12,5 +13,10 @@ export default async function Mtech() {
     limit: 1000000000,
   });
 
-  return <MtechClient mtechList={mtech.docs} />;
+  return (
+    <>
+      <PageBanner title="M.Tech Programme" />
+      <MtechClient mtechList={mtech.docs} />
+    </>
+  );
 }

@@ -17,7 +17,6 @@ export default function MTechClient({ mtechList }) {
 
   return (
     <div className="bg-white m-8 text-black p-8 rounded-xl shadow-lg max-w-6xl mx-auto">
-      <h1 className="text-4xl font-bold text-center mb-8">M.Tech Programme</h1>
 
       <div className="text-center text-lg text-gray-700 mb-8 leading-relaxed max-w-3xl mx-auto">
         {about}

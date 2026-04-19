@@ -3,6 +3,7 @@
 import { getPayload } from "payload";
 import config from "@payload-config";
 import CollaborationsClient from "./CollaborationsClient.js";
+import PageBanner from "@/components/PageBanner";
 
 export default async function Collaborations() {
   const payload = await getPayload({ config });
@@ -14,5 +15,10 @@ export default async function Collaborations() {
 
   // console.log(collaborations.docs)
 
-  return <CollaborationsClient collaborations={collaborations.docs} />;
+  return (
+    <>
+      <PageBanner title="Collaborations" />
+      <CollaborationsClient collaborations={collaborations.docs} />
+    </>
+  );
 }

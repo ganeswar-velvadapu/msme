@@ -25,10 +25,6 @@ export default function ResearchFacilitiesClient({ facilities, carousel }) {
     return (
         <div className="">
             <div className="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
-                <div className="text-center mb-12">
-                    <h1 className="text-4xl font-bold text-black mb-4">Research Facilities</h1>
-                </div>
-
                 {/* Carousel Section */}
                 <div className="mb-16 relative">
                     <h2 className="text-2xl font-bold text-black mb-6">Featured Facilities</h2>

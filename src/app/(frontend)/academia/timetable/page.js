@@ -1,6 +1,7 @@
 "use server"
 import { getPayload } from "payload";
 import config from "@payload-config";
+import PageBanner from "@/components/PageBanner";
 
 export default async function TimeTable() {
     const payload = await getPayload({ config });
@@ -20,12 +21,10 @@ export default async function TimeTable() {
     };
 
     return (
-        <div className="bg-white p-6">
-            <div className="max-w-4xl mx-auto">
-                {/* Header */}
-                <div className="mb-8">
-                    <h1 className="text-2xl text-black font-bold mb-2 text-center">Time Table</h1>
-                </div>
+        <>
+            <PageBanner title="Time Table" />
+            <div className="bg-white p-6">
+                <div className="max-w-4xl mx-auto">
 
                 {/* Main Table */}
                 <div className="bg-white rounded-lg overflow-hidden">
@@ -69,5 +68,6 @@ export default async function TimeTable() {
                 </div>
             </div>
         </div>
+        </>
     );
 };

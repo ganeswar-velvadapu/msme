@@ -10,7 +10,6 @@ export default function MTechClient({ mtech }) {
 
   return (
     <div className="bg-white m-8 text-black p-8 rounded-xl shadow-lg max-w-6xl mx-auto">
-      <h1 className="text-4xl font-bold text-center mb-8">M.Tech Admission</h1>
       <h2 className="text-2xl font-semibold text-center mb-4">Specializations</h2>
 
       {/* Specialization Buttons */}

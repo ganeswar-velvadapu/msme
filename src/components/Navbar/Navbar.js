@@ -113,9 +113,9 @@ const Header = () => {
             <header
                 ref={headerRef}
                 className={`
-                    bg-gray-100 shadow-lg transition-shadow duration-300
+                    bg-gray-100 shadow-lg transition-shadow duration-300 z-[100]
                     ${sticky
-                        ? "fixed top-0 left-0 w-full shadow-xl z-50 animate-slideDown"
+                        ? "fixed top-0 left-0 w-full shadow-xl animate-slideDown"
                         : "relative"
                     }
                 `}
