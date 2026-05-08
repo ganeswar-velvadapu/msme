@@ -1,5 +1,5 @@
 "use client";
-import { Mail, MapPin, GraduationCap, BookOpen, FileText, BookOpen as CourseIcon, Users, ArrowLeft } from "lucide-react";
+import { Mail, MapPin, GraduationCap, BookOpen, FileText, BookOpen as CourseIcon, Users, ArrowLeft, Globe } from "lucide-react";
 import Link from "next/link";
 
 export default function FacultyProfile({ faculty }) {
@@ -53,15 +53,39 @@ export default function FacultyProfile({ faculty }) {
                                         </a>
                                     )}
 
+                                    {faculty.scopus_id && (
+                                        <a
+                                            href={faculty.scopus_id.startsWith('http') ? faculty.scopus_id : `https://www.scopus.com/authid/detail.uri?authorId=${faculty.scopus_id}`}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="p-3 rounded-full bg-blue-50 hover:bg-blue-100 transition-colors"
+                                            title="Scopus Profile"
+                                        >
+                                            <img src="/scopus.png" height={24} width={24} alt="Scopus" />
+                                        </a>
+                                    )}
+
+                                    {faculty.orcid_id && (
+                                        <a
+                                            href={faculty.orcid_id.startsWith('http') ? faculty.orcid_id : `https://orcid.org/${faculty.orcid_id}`}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="p-3 rounded-full bg-green-50 hover:bg-green-100 transition-colors"
+                                            title="ORCID Profile"
+                                        >
+                                            <img src="/orcid.png" height={24} width={24} alt="ORCID" />
+                                        </a>
+                                    )}
+
                                     {faculty.faculty_group_web_page && (
                                         <a
                                             href={faculty.faculty_group_web_page}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="p-3 rounded-full bg-green-100 hover:bg-green-200 transition-colors"
+                                            className="p-3 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
                                             title="Faculty Group Web Page"
                                         >
-                                            <Users size={24} className="text-green-700" />
+                                            <Globe size={24} className="text-gray-700" />
                                         </a>
                                     )}
                                 </div>

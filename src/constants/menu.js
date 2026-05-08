@@ -6,6 +6,21 @@ const main = [
     {
         "name": "About",
         "url": "/about",
+        "hasChildren": true,
+        "children": [
+            {
+                "name": "Message from HOD",
+                "url": "/about/message",
+            },
+            {  
+                "name": "Books",
+                "url": "/about/books",
+            },
+            {
+                "name": "NPTEL Lectures",
+                "url": "/about/nptel",
+            },
+        ]
     },
     {
         "name": "Research",
@@ -40,7 +55,11 @@ const main = [
                 "url": "/people/faculty"
             },
             {
-                "name": "Adjunct Professors",
+                "name": "Distinguished Faculty",
+                "url": "/people/distinguished"
+            },
+            {
+                "name": "Adjunct Faculty",
                 "url": "/people/adjunct"
             },
             {
@@ -98,6 +117,10 @@ const main = [
                         "name": "PhD",
                         "url": "/academia/programs/phd"
                     },
+                    {
+                        "name": "Interdisciplinary",
+                        "url": "https://www.cip.iith.ac.in/programs"
+                    },
                 ]
             },
             {
@@ -110,33 +133,33 @@ const main = [
         "name": "Admissions",
         "url": "/admissions/btech",
         "hasChildren": true,
-                "children": [
-                    {
-                        "name": "B.Tech",
-                        "url": "/admissions/btech"
-                    },
-                    {
-                        "name": "M.Tech",
-                        "url": "/admissions/mtech"
-                    },
-                    {
-                        "name": "PhD",
-                        "url": "/admissions/phd"
-                    },
-                ]
+        "children": [
+            {
+                "name": "B.Tech",
+                "url": "/admissions/btech"
+            },
+            {
+                "name": "M.Tech",
+                "url": "/admissions/mtech"
+            },
+            {
+                "name": "PhD",
+                "url": "/admissions/phd"
+            },
+        ]
     },
     {
         "name": "Careers",
         "url": "https://www.iith.ac.in/careers/",
-        "hasChildren" : true,
-        children : [
+        "hasChildren": true,
+        children: [
             {
-                "name" : "Join Us",
-                "url" : "https://www.iith.ac.in/careers/"
+                "name": "Join Us",
+                "url": "https://www.iith.ac.in/careers/"
             },
             {
-                "name" : "Placements",
-                "url" : "/careers/placements"
+                "name": "Placements",
+                "url": "/careers/placements"
             },
         ]
     },

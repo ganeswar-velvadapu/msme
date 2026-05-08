@@ -3,16 +3,22 @@
 import { getPayload } from "payload";
 import config from "@payload-config";
 import PhDClient from "./PhDClient";
+import PageBanner from "@/components/PageBanner";
 
 export default async function PhD() {
   const payload = await getPayload({ config });
 
   const phdStudents = await payload.find({
     collection: "phd",
-    limit: 1000000000,
+    limit: 100, 
   });
 
-  // console.log(phdStudents.docs)
-
-  return <PhDClient phdStudents={phdStudents.docs} />;
+  return (
+    <>
+      <PageBanner title="PhD Students" />
+      <div className="container mx-auto px-4 py-12">
+        <PhDClient phdStudents={phdStudents.docs} />
+      </div>
+    </>
+  );
 }

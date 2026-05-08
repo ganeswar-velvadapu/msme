@@ -90,7 +90,11 @@ export default function PhDClient({ phdData }) {
   const [openFaculty, setOpenFaculty] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
 
-  const phdTypes = phdData?.phd_types || [];
+  const phdTypes = [
+    ...(phdData?.phd_types || []),
+    { phd_type_name: "External", isMock: true },
+    { phd_type_name: "Interdisciplinary", isMock: true },
+  ];
   const activeType = phdTypes[activeIndex] || {};
   const facultyList = phdData?.faculty_research || [];
 
@@ -168,46 +172,54 @@ export default function PhDClient({ phdData }) {
               </div>
             )}
 
-            {activeType?.eligibility && (
-              <div className="bg-gray-50 p-5 sm:p-6 rounded-lg mb-4">
-                <h4 className="text-lg sm:text-xl font-semibold mb-3">Eligibility Criteria</h4>
-                <p className="text-gray-700 leading-relaxed whitespace-pre-line">
-                  {activeType.eligibility}
-                </p>
+            {activeType?.isMock ? (
+              <div className="bg-gray-50 p-5 sm:p-6 rounded-lg mb-4 text-center text-gray-500">
+                No content available currently
               </div>
-            )}
+            ) : (
+              <>
+                {activeType?.eligibility && (
+                  <div className="bg-gray-50 p-5 sm:p-6 rounded-lg mb-4">
+                    <h4 className="text-lg sm:text-xl font-semibold mb-3">Eligibility Criteria</h4>
+                    <p className="text-gray-700 leading-relaxed whitespace-pre-line">
+                      {activeType.eligibility}
+                    </p>
+                  </div>
+                )}
 
-            {activeType?.admission_process && (
-              <div className="bg-gray-50 p-5 sm:p-6 rounded-lg mb-4">
-                <h4 className="text-lg sm:text-xl font-semibold mb-3">Admission Process</h4>
-                <p className="text-gray-700 leading-relaxed whitespace-pre-line">
-                  {activeType.admission_process}
-                </p>
-              </div>
-            )}
+                {activeType?.admission_process && (
+                  <div className="bg-gray-50 p-5 sm:p-6 rounded-lg mb-4">
+                    <h4 className="text-lg sm:text-xl font-semibold mb-3">Admission Process</h4>
+                    <p className="text-gray-700 leading-relaxed whitespace-pre-line">
+                      {activeType.admission_process}
+                    </p>
+                  </div>
+                )}
 
-            {activeType?.brochure_links && activeType.brochure_links.length > 0 && (
-              <div className="bg-gray-50 p-5 sm:p-6 rounded-lg mb-4">
-                <h4 className="text-lg sm:text-xl font-semibold mb-3">Brochures &amp; Documents</h4>
-                <div className="space-y-3">
-                  {activeType.brochure_links.map((brochure, index) => (
-                    <div
-                      key={index}
-                      className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-3 bg-white rounded-lg border border-gray-200"
-                    >
-                      <span className="text-gray-700 text-sm sm:text-base">{brochure.link_text}</span>
-                      <a
-                        href={brochure.link_url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="bg-black text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-800 transition-colors duration-200 text-center whitespace-nowrap"
-                      >
-                        Download PDF
-                      </a>
+                {activeType?.brochure_links && activeType.brochure_links.length > 0 && (
+                  <div className="bg-gray-50 p-5 sm:p-6 rounded-lg mb-4">
+                    <h4 className="text-lg sm:text-xl font-semibold mb-3">Brochures &amp; Documents</h4>
+                    <div className="space-y-3">
+                      {activeType.brochure_links.map((brochure, index) => (
+                        <div
+                          key={index}
+                          className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-3 bg-white rounded-lg border border-gray-200"
+                        >
+                          <span className="text-gray-700 text-sm sm:text-base">{brochure.link_text}</span>
+                          <a
+                            href={brochure.link_url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="bg-black text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-800 transition-colors duration-200 text-center whitespace-nowrap"
+                          >
+                            Download PDF
+                          </a>
+                        </div>
+                      ))}
                     </div>
-                  ))}
-                </div>
-              </div>
+                  </div>
+                )}
+              </>
             )}
 
 

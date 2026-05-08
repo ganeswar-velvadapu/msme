@@ -27,7 +27,7 @@ export default function AdjinctFacultyClient({ facultyList }) {
 
     return (
         <div className="py-12 px-4 max-w-7xl mx-auto">
-            <h1 className="text-3xl font-bold mb-8 text-gray-900">Faculty Members</h1>
+            <h1 className="text-3xl font-bold mb-8 text-gray-900">Adjunct Faculty</h1>
 
             <div className="relative max-w-md mb-10">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />

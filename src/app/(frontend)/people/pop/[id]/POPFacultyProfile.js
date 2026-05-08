@@ -1,8 +1,14 @@
 "use client";
-import { Mail, MapPin, GraduationCap, BookOpen, FileText, BookOpen as CourseIcon, Users, ArrowLeft } from "lucide-react";
+import { Mail, MapPin, GraduationCap, BookOpen, FileText, BookOpen as CourseIcon, Users, ArrowLeft, Globe } from "lucide-react";
 import Link from "next/link";
 
 export default function POPFacultyProfile({ faculty }) {
+    const linkedIn = faculty.pop_linked_in_faculty || faculty.linked_in_faculty;
+    const googleScholar = faculty.pop_google_scholar_url || faculty.google_scholar_url;
+    const scopus = faculty.pop_scopus_id || faculty.scopus_id;
+    const orcid = faculty.pop_orcid_id || faculty.orcid_id;
+    const groupWebPage = faculty.pop_faculty_group_web_page || faculty.faculty_group_web_page;
+
     return (
         <div className="min-h-screen bg-gray-50 py-8">
             <div className="max-w-6xl mx-auto px-4">
@@ -29,9 +35,9 @@ export default function POPFacultyProfile({ faculty }) {
 
                                 {/* Social Links */}
                                 <div className="mt-6 flex justify-center gap-4">
-                                    {faculty.linked_in_faculty && (
+                                    {linkedIn && (
                                         <a
-                                            href={faculty.linked_in_faculty}
+                                            href={linkedIn}
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className="p-3 rounded-full bg-blue-100 hover:bg-blue-200 transition-colors"
@@ -41,9 +47,9 @@ export default function POPFacultyProfile({ faculty }) {
                                         </a>
                                     )}
 
-                                    {faculty.google_scholar_url && (
+                                    {googleScholar && (
                                         <a
-                                            href={faculty.google_scholar_url}
+                                            href={googleScholar}
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className="p-3 rounded-full bg-orange-100 hover:bg-orange-200 transition-colors"
@@ -53,15 +59,39 @@ export default function POPFacultyProfile({ faculty }) {
                                         </a>
                                     )}
 
-                                    {faculty.pop_faculty_group_web_page && (
+                                    {scopus && (
                                         <a
-                                            href={faculty.pop_faculty_group_web_page}
+                                            href={scopus.startsWith('http') ? scopus : `https://www.scopus.com/authid/detail.uri?authorId=${scopus}`}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="p-3 rounded-full bg-green-100 hover:bg-green-200 transition-colors"
+                                            className="p-3 rounded-full bg-blue-50 hover:bg-blue-100 transition-colors"
+                                            title="Scopus Profile"
+                                        >
+                                            <img src="/scopus.png" height={24} width={24} alt="Scopus" />
+                                        </a>
+                                    )}
+
+                                    {orcid && (
+                                        <a
+                                            href={orcid.startsWith('http') ? orcid : `https://orcid.org/${orcid}`}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="p-3 rounded-full bg-green-50 hover:bg-green-100 transition-colors"
+                                            title="ORCID Profile"
+                                        >
+                                            <img src="/orcid.png" height={24} width={24} alt="ORCID" />
+                                        </a>
+                                    )}
+
+                                    {groupWebPage && (
+                                        <a
+                                            href={groupWebPage}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="p-3 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
                                             title="Faculty Group Web Page"
                                         >
-                                            <Users size={24} className="text-green-700" />
+                                            <Globe size={24} className="text-gray-700" />
                                         </a>
                                     )}
                                 </div>

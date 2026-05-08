@@ -1,7 +1,7 @@
 "use server";
 
 import { getPayload } from "payload";
-import config from "@payload-config";;
+import config from "@payload-config";
 import AboutClient from "./AboutClient";
 import PageBanner from "@/components/PageBanner";
 

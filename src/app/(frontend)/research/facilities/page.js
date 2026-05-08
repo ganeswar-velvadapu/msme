@@ -13,17 +13,11 @@ export default async function ResearchFacilities() {
     limit: 1000000000,
   });
 
-  const carousel = await payload.find({
-    collection: "researchfacilitiescarousel",
-    limit: 1000000000,
-  });
-
   return (
     <>
       <PageBanner title="Research Facilities" />
       <ResearchFacilitiesClient
         facilities={facilities.docs}
-        carousel={carousel.docs}
       />
     </>
   );

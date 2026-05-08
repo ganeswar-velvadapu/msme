@@ -34,6 +34,11 @@
                 label: "Scopus ID"
             },
             {
+                name: "orcid_id",
+                type: "text",
+                label: "ORCID ID"
+            },
+            {
                 name: "faculty_name",
                 type: "text",
 

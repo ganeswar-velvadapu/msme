@@ -34,6 +34,11 @@ export const AdjunctFaculty: CollectionConfig = {
       label: "Scopus ID",
     },
     {
+      name: "adjunct_orcid_id",
+      type: "text",
+      label: "ORCID ID",
+    },
+    {
       name: "adjunct_faculty_name",
       type: "text",
 

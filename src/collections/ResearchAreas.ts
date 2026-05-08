@@ -43,7 +43,7 @@ export const ResearchAreas: CollectionConfig = {
             type: "relationship",
             label: "Associated Faculty Members",
             relationTo: "faculty",
-            hasMany: true, 
+            hasMany: true,
             admin: {
                 allowCreate: false,
                 isSortable: true

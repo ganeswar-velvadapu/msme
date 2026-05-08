@@ -1,212 +1,198 @@
 "use client";
-import { useState, useMemo } from "react";
-
+import { useState, useMemo, useEffect } from "react";
+import { Search, X, Mail, GraduationCap, BookOpen, Microscope } from "lucide-react";
+import PhdCard from "../../../../../components/people/PhDCard";
 export default function PhDClient({ phdStudents }) {
+  const [searchTerm, setSearchTerm] = useState("");
   const [selectedStudent, setSelectedStudent] = useState(null);
 
-  const sortedStudents = useMemo(() => {
+  const filteredStudents = useMemo(() => {
     if (!Array.isArray(phdStudents)) return [];
-    return [...phdStudents].sort((a, b) =>
-      (a?.phd_name || "").localeCompare(b?.phd_name || "")
-    );
-  }, [phdStudents]);
-
-  const handleViewDetails = (student) => {
-    setSelectedStudent(student ?? null);
-  };
+    return phdStudents
+      .filter((student) =>
+        student?.phd_name?.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+      .sort((a, b) =>
+        (a?.phd_name || "").localeCompare(b?.phd_name || "")
+      );
+  }, [phdStudents, searchTerm]);
 
   const closeModal = () => {
     setSelectedStudent(null);
+    document.body.style.overflow = "auto";
   };
 
+  const openModal = (student) => {
+    setSelectedStudent(student);
+    document.body.style.overflow = "hidden";
+  };
+
+  useEffect(() => {
+    const handleEsc = (event) => {
+      if (event.keyCode === 27) closeModal();
+    };
+    window.addEventListener("keydown", handleEsc);
+    return () => {
+      window.removeEventListener("keydown", handleEsc);
+      document.body.style.overflow = "auto";
+    };
+  }, []);
+
   return (
-    <div className="bg-white p-4 md:p-6 lg:p-8">
-      <div className="max-w-7xl mx-auto">
-        <h1 className="text-3xl md:text-4xl font-bold text-black mb-8 text-center">
-          PhD
-        </h1>
-
-        {sortedStudents.length === 0 ? (
-          <div className="flex flex-col items-center justify-center py-16 bg-gray-100 rounded-lg">
-            <h2 className="text-xl font-medium text-black mb-2">
-              No Data Found
-            </h2>
-            <p className="text-gray-700 text-center max-w-md">
-              There are currently no PhD students available in the database.
-            </p>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {sortedStudents.map((student, index) => (
-              <div
-                key={student?.id ?? index}
-                className="rounded-lg p-6 shadow hover:shadow-md transition-shadow duration-300"
-              >
-                <div className="flex flex-col items-center mb-4">
-                  {student?.phd_image?.url ? (
-                    <img
-                      src={student.phd_image.url}
-                      alt={student?.phd_name ?? "PhD Student"}
-                      className="w-32 h-32 object-cover mb-4 rounded"
-                    />
-                  ) : (
-                    <div className="w-32 h-32 mb-4 bg-gray-200 flex items-center justify-center text-gray-500">
-                      No Image
-                    </div>
-                  )}
-
-                  <h2 className="text-xl font-semibold text-black text-center">
-                    {student?.phd_name ?? "N/A"}
-                  </h2>
-                  <p className="text-gray-700 mt-1">
-                    {student?.phd_roll_no ?? ""}
-                  </p>
-                </div>
-
-                <div className="space-y-2 mb-4">
-                  <p className="text-sm text-gray-700">
-                    <span className="font-medium">Research Topic:</span>{" "}
-                    {student?.phd_research_topic ?? "N/A"}
-                  </p>
-                  <p className="text-sm text-gray-700">
-                    <span className="font-medium">Advisor:</span>{" "}
-                    {student?.phd_advisor ?? "N/A"}
-                  </p>
-                </div>
-
-                <button
-                  onClick={() => handleViewDetails(student)}
-                  className="w-full cursor-pointer bg-black text-white py-2 rounded hover:bg-gray-800 transition-colors duration-300"
-                >
-                  View Details
-                </button>
-              </div>
-            ))}
-          </div>
-        )}
+    <div className="max-w-7xl mx-auto">
+      <div className="mb-12">
+        <h1 className="text-3xl font-bold text-black mb-6">PhD Students</h1>
       </div>
 
-      {/* MODAL */}
+      {/* Search Bar */}
+      <div className="relative max-w-md mb-12">
+        <Search
+          className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+          size={18}
+        />
+        <input
+          type="text"
+          placeholder="Search scholars by name..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="pl-10 pr-4 py-2 w-full rounded-md border border-gray-200 focus:outline-none focus:ring-1 focus:ring-black bg-white text-black placeholder-gray-400 transition-all"
+        />
+      </div>
+
+      {/* Students Grid */}
+      {filteredStudents.length > 0 ? (
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
+          {filteredStudents.map((student) => (
+            <PhdCard
+              key={student.id}
+              name={student.phd_name}
+              roll_no={student.phd_roll_no}
+              image_url={student.phd_image?.url}
+              onClick={() => openModal(student)}
+            />
+          ))}
+        </div>
+      ) : (
+        <div className="text-center py-20 bg-gray-50 rounded-xl border border-dashed border-gray-200">
+          <p className="text-gray-500">No scholars found matching your search.</p>
+        </div>
+      )}
+
+      {/* Profile Modal */}
       {selectedStudent && (
-        <div className="fixed inset-0 backdrop-blur-md bg-black/60 z-50 flex items-center justify-center p-6">
-          <div className="bg-white p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto rounded">
-            <div className="flex justify-between items-start mb-4">
-              <h2 className="text-2xl font-bold text-black">
-                {selectedStudent?.phd_name ?? "N/A"}
+        <div className="fixed inset-0 backdrop-blur-md bg-black/60 z-50 flex items-center justify-center p-4 md:p-6">
+          <div className="bg-white rounded-xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden flex flex-col">
+            <div className="p-4 border-b border-gray-100 flex justify-between items-center bg-white sticky top-0 z-10">
+              <h2 className="text-lg font-bold text-black uppercase tracking-wider">
+                Scholar Profile
               </h2>
-            </div>
-
-            <div className="flex flex-col md:flex-row gap-6">
-              <div className="md:w-1/3 flex flex-col items-center">
-                {selectedStudent?.phd_image?.url ? (
-                  <img
-                    src={selectedStudent.phd_image.url}
-                    alt={selectedStudent?.phd_name ?? "PhD Student"}
-                    className="w-40 h-40 object-cover mb-4 rounded"
-                  />
-                ) : (
-                  <div className="w-40 h-40 mb-4 bg-gray-200 flex items-center justify-center text-gray-500">
-                    No Image
-                  </div>
-                )}
-
-                <p className="text-gray-700 font-medium mb-1">
-                  {selectedStudent?.phd_roll_no ?? ""}
-                </p>
-                <p className="text-gray-700 mb-4">
-                  {selectedStudent?.phd_email ?? ""}
-                </p>
-              </div>
-
-              <div className="md:w-2/3">
-                <div className="mb-4">
-                  <h3 className="text-lg font-semibold text-black mb-2">
-                    Education
-                  </h3>
-                  <p className="text-gray-700">
-                    <strong>Bachelors:</strong>{" "}
-                    {selectedStudent?.phd_bachelors ?? "N/A"}
-                  </p>
-                  <p className="text-gray-700">
-                    <strong>Masters:</strong>{" "}
-                    {selectedStudent?.phd_masters ?? "N/A"}
-                  </p>
-                </div>
-
-                <div className="mb-4">
-                  <h3 className="text-lg font-semibold text-black mb-2">
-                    Research Topic
-                  </h3>
-                  <p className="text-gray-700">
-                    {selectedStudent?.phd_research_topic ?? "N/A"}
-                  </p>
-                </div>
-
-                <div className="mb-4">
-                  <h3 className="text-lg font-semibold text-black mb-2">
-                    Research Interests
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {Array.isArray(
-                      selectedStudent?.phd_research_interest
-                    ) && selectedStudent.phd_research_interest.length > 0 ? (
-                      selectedStudent.phd_research_interest.map(
-                        (interest, idx) => (
-                          <span
-                            key={idx}
-                            className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm"
-                          >
-                            {interest?.research_interest_phd ?? "N/A"}
-                          </span>
-                        )
-                      )
-                    ) : (
-                      <p className="text-gray-500 text-sm">
-                        No research interests listed
-                      </p>
-                    )}
-                  </div>
-                </div>
-
-                <div>
-                  <h3 className="text-lg font-semibold text-black mb-2">
-                    Teaching Assistant for Courses
-                  </h3>
-                  <div className="bg-gray-100 rounded p-3">
-                    {Array.isArray(selectedStudent?.phd_course_ta) &&
-                    selectedStudent.phd_course_ta.length > 0 ? (
-                      selectedStudent.phd_course_ta.map((course, idx) => (
-                        <div
-                          key={idx}
-                          className={
-                            idx > 0
-                              ? "mt-2 pt-2 border-t border-gray-200"
-                              : ""
-                          }
-                        >
-                          <p className="font-medium text-black">
-                            {course?.phd_course_code ?? "N/A"} —{" "}
-                            {course?.phd_course_name ?? "N/A"}
-                          </p>
-                        </div>
-                      ))
-                    ) : (
-                      <p className="text-gray-500 text-sm">
-                        No courses assigned
-                      </p>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-6 text-right">
               <button
                 onClick={closeModal}
-                className="bg-black cursor-pointer text-white px-4 py-2 rounded hover:bg-gray-800 transition-colors duration-300"
+                className="p-2 cursor-pointer rounded-full hover:bg-gray-100 transition-colors"
               >
-                Close
+                <X size={20} className="text-gray-500" />
               </button>
+            </div>
+
+            <div className="overflow-y-auto p-6 lg:p-10">
+              <div className="flex flex-col md:flex-row gap-8 lg:gap-12">
+                <div className="w-full md:w-1/3 flex-shrink-0">
+                  <div className="relative group rounded-lg overflow-hidden bg-gray-50 shadow-inner">
+                    <img
+                      src={selectedStudent?.phd_image?.url || "/api/placeholder/400/400"}
+                      alt={selectedStudent?.phd_name}
+                      className="w-full aspect-square object-cover  transition-all duration-500"
+                    />
+                  </div>
+                  
+                  <div className="mt-6 space-y-4">
+                    <div className="flex items-center gap-3 text-gray-700">
+                      <Mail size={18} className="text-gray-400" />
+                      <span className="text-sm font-medium break-all">{selectedStudent.phd_email || "N/A"}</span>
+                    </div>
+                    {selectedStudent.phd_lab && (
+                      <div className="flex items-center gap-3 text-gray-700">
+                        <Microscope size={18} className="text-gray-400" />
+                        <span className="text-sm font-medium">{selectedStudent.phd_lab}</span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                <div className="w-full md:w-2/3">
+                  <div className="mb-8 pb-6 border-b border-gray-100">
+                    <h3 className="text-3xl font-bold text-black mb-2">
+                      {selectedStudent.phd_name}
+                    </h3>
+                    <p className="text-lg text-gray-500 font-medium tracking-tight">
+                      Roll No: {selectedStudent.phd_roll_no}
+                    </p>
+                  </div>
+
+                  <div className="space-y-8">
+                    {/* Advisor & Research */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                      <div>
+                        <h4 className="text-xs uppercase tracking-widest text-gray-400 font-bold mb-3">Advisor</h4>
+                        <p className="text-gray-800 font-semibold">{selectedStudent.phd_advisor || "N/A"}</p>
+                      </div>
+                      <div>
+                        <h4 className="text-xs uppercase tracking-widest text-gray-400 font-bold mb-3">Research Topic</h4>
+                        <p className="text-gray-800 font-semibold leading-snug">{selectedStudent.phd_research_topic || "N/A"}</p>
+                      </div>
+                    </div>
+
+                    {/* Education */}
+                    <div>
+                      <h4 className="text-xs uppercase tracking-widest text-gray-400 font-bold mb-4 flex items-center gap-2">
+                        <GraduationCap size={16} /> Education
+                      </h4>
+                      <div className="space-y-3 bg-gray-50 p-4 rounded-lg">
+                        <p className="text-sm text-gray-700">
+                          <span className="text-gray-400 font-medium">Masters:</span> {selectedStudent.phd_masters || "N/A"}
+                        </p>
+                        <p className="text-sm text-gray-700">
+                          <span className="text-gray-400 font-medium">Bachelors:</span> {selectedStudent.phd_bachelors || "N/A"}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Research Interests */}
+                    {selectedStudent.phd_research_interest?.length > 0 && (
+                      <div>
+                        <h4 className="text-xs uppercase tracking-widest text-gray-400 font-bold mb-4 flex items-center gap-2">
+                          <BookOpen size={16} /> Research Interests
+                        </h4>
+                        <div className="flex flex-wrap gap-2">
+                          {selectedStudent.phd_research_interest.map((interest, idx) => (
+                            <span
+                              key={idx}
+                              className="px-3 py-1 bg-white border border-gray-200 text-gray-700 rounded-md text-xs font-medium hover:border-black transition-colors"
+                            >
+                              {interest.research_interest_phd}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* TA Duties */}
+                    {selectedStudent.phd_course_ta?.length > 0 && (
+                      <div className="pt-6 border-t border-gray-100">
+                        <h4 className="text-xs uppercase tracking-widest text-gray-400 font-bold mb-4">Teaching Assistant Duties</h4>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          {selectedStudent.phd_course_ta.map((course, idx) => (
+                            <div key={idx} className="p-3 border border-gray-100 rounded-lg bg-white shadow-sm">
+                              <p className="text-xs font-bold text-black">{course.phd_course_code}</p>
+                              <p className="text-sm text-gray-600 line-clamp-1">{course.phd_course_name}</p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

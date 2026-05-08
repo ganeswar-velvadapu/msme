@@ -74,7 +74,6 @@ export interface Config {
     events: Event;
     researchareas: Researcharea;
     researchfacilities: Researchfacility;
-    researchfacilitiescarousel: Researchfacilitiescarousel;
     projects: Project;
     collaborations: Collaboration;
     faculty: Faculty;
@@ -88,6 +87,9 @@ export interface Config {
     'phd-p': PhdP;
     'adjunct-faculty': AdjunctFaculty;
     'professors-in-practice': ProfessorsInPractice;
+    books: Book;
+    'nptel-lectures': NptelLecture;
+    'distinguished-faculty': DistinguishedFaculty;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -101,7 +103,6 @@ export interface Config {
     events: EventsSelect<false> | EventsSelect<true>;
     researchareas: ResearchareasSelect<false> | ResearchareasSelect<true>;
     researchfacilities: ResearchfacilitiesSelect<false> | ResearchfacilitiesSelect<true>;
-    researchfacilitiescarousel: ResearchfacilitiescarouselSelect<false> | ResearchfacilitiescarouselSelect<true>;
     projects: ProjectsSelect<false> | ProjectsSelect<true>;
     collaborations: CollaborationsSelect<false> | CollaborationsSelect<true>;
     faculty: FacultySelect<false> | FacultySelect<true>;
@@ -115,6 +116,9 @@ export interface Config {
     'phd-p': PhdPSelect<false> | PhdPSelect<true>;
     'adjunct-faculty': AdjunctFacultySelect<false> | AdjunctFacultySelect<true>;
     'professors-in-practice': ProfessorsInPracticeSelect<false> | ProfessorsInPracticeSelect<true>;
+    books: BooksSelect<false> | BooksSelect<true>;
+    'nptel-lectures': NptelLecturesSelect<false> | NptelLecturesSelect<true>;
+    'distinguished-faculty': DistinguishedFacultySelect<false> | DistinguishedFacultySelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -128,6 +132,7 @@ export interface Config {
     'btech-admissions': BtechAdmission;
     'phd-admissions': PhdAdmission;
     timetable: Timetable;
+    'hod-message': HodMessage;
   };
   globalsSelect: {
     about: AboutSelect<false> | AboutSelect<true>;
@@ -135,6 +140,7 @@ export interface Config {
     'btech-admissions': BtechAdmissionsSelect<false> | BtechAdmissionsSelect<true>;
     'phd-admissions': PhdAdmissionsSelect<false> | PhdAdmissionsSelect<true>;
     timetable: TimetableSelect<false> | TimetableSelect<true>;
+    'hod-message': HodMessageSelect<false> | HodMessageSelect<true>;
   };
   locale: null;
   user: User & {
@@ -305,6 +311,7 @@ export interface Faculty {
   linked_in_faculty?: string | null;
   google_scholar_url?: string | null;
   scopus_id?: string | null;
+  orcid_id?: string | null;
   faculty_name?: string | null;
   faculty_designation?: string | null;
   faculty_email?: string | null;
@@ -338,23 +345,7 @@ export interface Faculty {
  */
 export interface Researchfacility {
   id: number;
-  research_facility_no?: string | null;
-  research_facility_name?: string | null;
-  research_facility_location?: string | null;
-  research_facility_fic?: string | null;
-  research_facility_staff_incharge?: string | null;
-  research_facility_usage_charges?: string | null;
-  research_facility_forms?: string | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "researchfacilitiescarousel".
- */
-export interface Researchfacilitiescarousel {
-  id: number;
-  research_facility_name?: string | null;
+  research_facility_name: string;
   research_facility_location?: string | null;
   research_facility_fic?: string | null;
   research_facility_fic_email?: string | null;
@@ -362,6 +353,7 @@ export interface Researchfacilitiescarousel {
   research_facility_usage_charges?: string | null;
   research_facility_forms?: string | null;
   research_facility_image_url?: (number | null) | Media;
+  priority: 'high' | 'low';
   updatedAt: string;
   createdAt: string;
 }
@@ -556,6 +548,7 @@ export interface AdjunctFaculty {
   adjunct_linked_in_faculty?: string | null;
   adjunct_google_scholar_url?: string | null;
   adjunct_scopus_id?: string | null;
+  adjunct_orcid_id?: string | null;
   adjunct_faculty_name?: string | null;
   adjunct_faculty_designation?: string | null;
   adjunct_faculty_email?: string | null;
@@ -594,6 +587,7 @@ export interface ProfessorsInPractice {
   pop_linked_in_faculty?: string | null;
   pop_google_scholar_url?: string | null;
   pop_scopus_id?: string | null;
+  pop_orcid_id?: string | null;
   pop_faculty_name?: string | null;
   pop_faculty_designation?: string | null;
   pop_faculty_email?: string | null;
@@ -612,6 +606,69 @@ export interface ProfessorsInPractice {
       }[]
     | null;
   pop_faculty_course_taught?:
+    | {
+        faculty_course_code?: string | null;
+        faculty_course_name?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "books".
+ */
+export interface Book {
+  id: number;
+  book_name?: string | null;
+  book_associated_faculty?: (number | Faculty)[] | null;
+  book_cover_page?: (number | null) | Media;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "nptel-lectures".
+ */
+export interface NptelLecture {
+  id: number;
+  nptel_course_name?: string | null;
+  nptel_course_link?: string | null;
+  course_associated_faculty?: (number | Faculty)[] | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "distinguished-faculty".
+ */
+export interface DistinguishedFaculty {
+  id: number;
+  faculty_image?: (number | null) | Media;
+  faculty_group_web_page?: string | null;
+  linked_in_faculty?: string | null;
+  google_scholar_url?: string | null;
+  scopus_id?: string | null;
+  orcid_id?: string | null;
+  faculty_name?: string | null;
+  faculty_designation?: string | null;
+  faculty_email?: string | null;
+  faculty_phd_detail?: string | null;
+  faculty_office?: string | null;
+  faculty_research_interests?:
+    | {
+        research_interest_faculty?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  faculty_publications?:
+    | {
+        faculty_publication?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  faculty_course_taught?:
     | {
         faculty_course_code?: string | null;
         faculty_course_name?: string | null;
@@ -655,10 +712,6 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'researchfacilities';
         value: number | Researchfacility;
-      } | null)
-    | ({
-        relationTo: 'researchfacilitiescarousel';
-        value: number | Researchfacilitiescarousel;
       } | null)
     | ({
         relationTo: 'projects';
@@ -711,6 +764,18 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'professors-in-practice';
         value: number | ProfessorsInPractice;
+      } | null)
+    | ({
+        relationTo: 'books';
+        value: number | Book;
+      } | null)
+    | ({
+        relationTo: 'nptel-lectures';
+        value: number | NptelLecture;
+      } | null)
+    | ({
+        relationTo: 'distinguished-faculty';
+        value: number | DistinguishedFaculty;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -889,21 +954,6 @@ export interface ResearchareasSelect<T extends boolean = true> {
  * via the `definition` "researchfacilities_select".
  */
 export interface ResearchfacilitiesSelect<T extends boolean = true> {
-  research_facility_no?: T;
-  research_facility_name?: T;
-  research_facility_location?: T;
-  research_facility_fic?: T;
-  research_facility_staff_incharge?: T;
-  research_facility_usage_charges?: T;
-  research_facility_forms?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "researchfacilitiescarousel_select".
- */
-export interface ResearchfacilitiescarouselSelect<T extends boolean = true> {
   research_facility_name?: T;
   research_facility_location?: T;
   research_facility_fic?: T;
@@ -912,6 +962,7 @@ export interface ResearchfacilitiescarouselSelect<T extends boolean = true> {
   research_facility_usage_charges?: T;
   research_facility_forms?: T;
   research_facility_image_url?: T;
+  priority?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -949,6 +1000,7 @@ export interface FacultySelect<T extends boolean = true> {
   linked_in_faculty?: T;
   google_scholar_url?: T;
   scopus_id?: T;
+  orcid_id?: T;
   faculty_name?: T;
   faculty_designation?: T;
   faculty_email?: T;
@@ -1138,6 +1190,7 @@ export interface AdjunctFacultySelect<T extends boolean = true> {
   adjunct_linked_in_faculty?: T;
   adjunct_google_scholar_url?: T;
   adjunct_scopus_id?: T;
+  adjunct_orcid_id?: T;
   adjunct_faculty_name?: T;
   adjunct_faculty_designation?: T;
   adjunct_faculty_email?: T;
@@ -1175,6 +1228,7 @@ export interface ProfessorsInPracticeSelect<T extends boolean = true> {
   pop_linked_in_faculty?: T;
   pop_google_scholar_url?: T;
   pop_scopus_id?: T;
+  pop_orcid_id?: T;
   pop_faculty_name?: T;
   pop_faculty_designation?: T;
   pop_faculty_email?: T;
@@ -1193,6 +1247,66 @@ export interface ProfessorsInPracticeSelect<T extends boolean = true> {
         id?: T;
       };
   pop_faculty_course_taught?:
+    | T
+    | {
+        faculty_course_code?: T;
+        faculty_course_name?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "books_select".
+ */
+export interface BooksSelect<T extends boolean = true> {
+  book_name?: T;
+  book_associated_faculty?: T;
+  book_cover_page?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "nptel-lectures_select".
+ */
+export interface NptelLecturesSelect<T extends boolean = true> {
+  nptel_course_name?: T;
+  nptel_course_link?: T;
+  course_associated_faculty?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "distinguished-faculty_select".
+ */
+export interface DistinguishedFacultySelect<T extends boolean = true> {
+  faculty_image?: T;
+  faculty_group_web_page?: T;
+  linked_in_faculty?: T;
+  google_scholar_url?: T;
+  scopus_id?: T;
+  orcid_id?: T;
+  faculty_name?: T;
+  faculty_designation?: T;
+  faculty_email?: T;
+  faculty_phd_detail?: T;
+  faculty_office?: T;
+  faculty_research_interests?:
+    | T
+    | {
+        research_interest_faculty?: T;
+        id?: T;
+      };
+  faculty_publications?:
+    | T
+    | {
+        faculty_publication?: T;
+        id?: T;
+      };
+  faculty_course_taught?:
     | T
     | {
         faculty_course_code?: T;
@@ -1382,6 +1496,17 @@ export interface Timetable {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "hod-message".
+ */
+export interface HodMessage {
+  id: number;
+  hod_message?: string | null;
+  select_hod?: (number | null) | Faculty;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "about_select".
  */
 export interface AboutSelect<T extends boolean = true> {
@@ -1514,6 +1639,17 @@ export interface TimetableSelect<T extends boolean = true> {
         time_table_link?: T;
         id?: T;
       };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "hod-message_select".
+ */
+export interface HodMessageSelect<T extends boolean = true> {
+  hod_message?: T;
+  select_hod?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

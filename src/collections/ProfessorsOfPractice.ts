@@ -34,6 +34,11 @@ export const popFaculty: CollectionConfig = {
       label: "Scopus ID",
     },
     {
+      name: "pop_orcid_id",
+      type: "text",
+      label: "ORCID ID",
+    },
+    {
       name: "pop_faculty_name",
       type: "text",
 

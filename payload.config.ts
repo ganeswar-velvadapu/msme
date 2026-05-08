@@ -13,10 +13,10 @@ import { News } from '@/collections/News'
 import { Events } from '@/collections/Events'
 import { ResearchAreas } from '@/collections/ResearchAreas'
 import { ResearchFacilities } from '@/collections/ResearchFacilities'
-import { ResearchFacilitiesCarousel } from '@/collections/ResearchFacilitiesCarousel'
 import { Projects } from '@/collections/Projects'
 import { Collaborations } from '@/collections/Collaborations'
 import { Faculty } from '@/collections/Faculty'
+import { DistinguishedFaculty } from '@/collections/DistinguishedFaculty'
 import { Staff } from '@/collections/Staff'
 import { BTech } from '@/collections/BTech'
 import { MTech } from '@/collections/MTech'
@@ -34,6 +34,9 @@ import PhDAdmission from '@/globals/PhD_Admissions'
 import { TimeTable } from '@/globals/Timetable'
 import { AdjunctFaculty } from '@/collections/Adjunct_Faculty'
 import { popFaculty } from '@/collections/ProfessorsOfPractice'
+import { Books } from '@/collections/Books'
+import { NPTEL } from '@/collections/NPTEL'
+import HODMessage from '@/globals/HODMessage'
 
 
 
@@ -48,8 +51,8 @@ export default buildConfig({
     },
 
   },
-  collections: [Users, Media, Placements, News, Events, ResearchAreas, ResearchFacilities, ResearchFacilitiesCarousel, Projects, Collaborations, Faculty, Staff, BTech, MTech, PhD, Alumni, BTech_P, MTech_P, PhD_P,AdjunctFaculty,popFaculty],
-  globals: [ About, MTechAdmission, BTechAdmission, PhDAdmission, TimeTable, ],
+  collections: [Users, Media, Placements, News, Events, ResearchAreas, ResearchFacilities, Projects, Collaborations, Faculty, Staff, BTech, MTech, PhD, Alumni, BTech_P, MTech_P, PhD_P,AdjunctFaculty,popFaculty, Books, NPTEL, DistinguishedFaculty],
+  globals: [ About, MTechAdmission, BTechAdmission, PhDAdmission, TimeTable, HODMessage],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

@@ -1,131 +1,179 @@
 "use client"
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import { Mail, MapPin, User, CreditCard, FileText, Globe, X } from 'lucide-react';
 
-export default function ResearchFacilitiesClient({ facilities, carousel }) {
-    const [currentSlide, setCurrentSlide] = useState(0);
+export default function ResearchFacilitiesClient({ facilities }) {
+    const [selectedFacility, setSelectedFacility] = useState(null);
 
+    // Filter facilities by priority
+    const highPriority = facilities.filter(f => f.priority === 'high');
+    const lowPriority = facilities.filter(f => f.priority !== 'high'); // Default or low
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentSlide((prev) => (prev + 1) % carousel.length);
-        }, 5000); // Change slide every 5 seconds
-        return () => clearInterval(interval);
-    }, [carousel.length]);
-
-    // Next slide handler
-    const nextSlide = () => {
-        setCurrentSlide((prev) => (prev + 1) % carousel.length);
+    const openModal = (facility) => {
+        setSelectedFacility(facility);
+        document.body.style.overflow = 'hidden';
     };
 
-    // Previous slide handler
-    const prevSlide = () => {
-        setCurrentSlide((prev) => (prev - 1 + carousel.length) % carousel.length);
+    const closeModal = () => {
+        setSelectedFacility(null);
+        document.body.style.overflow = 'auto';
     };
 
     return (
-        <div className="">
-            <div className="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
-                {/* Carousel Section */}
-                <div className="mb-16 relative">
-                    <h2 className="text-2xl font-bold text-black mb-6">Featured Facilities</h2>
-
-                    <div className="relative rounded-xl overflow-hidden bg-white shadow-lg">
-                        {/* Carousel */}
-                        <div className="relative h-96">
-                            {carousel.map((facility, index) => (
-                                <div
-                                    key={facility.id}
-                                    className={`absolute inset-0 transition-opacity duration-500 ${index === currentSlide ? 'opacity-100' : 'opacity-0 pointer-events-none'
-                                        }`}
-                                >
-                                    <div className="grid grid-cols-1 md:grid-cols-2 h-full">
-                                        <div className="p-8 flex flex-col justify-center">
-                                            <h3 className="text-2xl font-bold text-black mb-4">{facility.research_facility_name}</h3>
-                                            <div className="space-y-3 text-gray-700">
-                                                <p><span className="font-medium">Location:</span> {facility.research_facility_location}</p>
-                                                <p><span className="font-medium">Faculty in Charge:</span> {facility.research_facility_fic}</p>
-                                                <p><span className="font-medium">Contact:</span> {facility.research_facility_fic_email}</p>
-                                                <p><span className="font-medium">Usage Fee:</span> {facility.research_facility_usage_charges}</p>
-                                                <button className="mt-4 px-4 py-2 bg-black text-white rounded-md hover:bg-gray-800 transition-colors duration-200">
-                                                    Request Access
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div className="relative h-full bg-gray-200">
-                                            <img
-                                                src={facility.research_facility_image_url}
-                                                alt={facility.research_facility_name}
-                                                className="w-full h-full object-cover"
-                                            />
-                                        </div>
-                                    </div>
+        <div className="py-12 px-4 max-w-7xl mx-auto sm:px-6 lg:px-8">
+            {/* High Priority Section - Grid */}
+            {highPriority.length > 0 && (
+                <div className="mb-16">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                        {highPriority.map((facility) => (
+                            <div
+                                key={facility.id}
+                                className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow cursor-pointer border border-gray-100 flex flex-col"
+                                onClick={() => openModal(facility)}
+                            >
+                                <div className="h-48 bg-gray-200 relative">
+                                    <img
+                                        src={facility.research_facility_image_url?.url || "/api/placeholder/400/300"}
+                                        alt={facility.research_facility_name}
+                                        className="w-full h-full object-cover"
+                                    />
                                 </div>
-                            ))}
-                        </div>
-
-                        {/* Carousel Controls */}
-                        <button
-                            onClick={prevSlide}
-                            className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors duration-200"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                            </svg>
-                        </button>
-                        <button
-                            onClick={nextSlide}
-                            className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors duration-200"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                            </svg>
-                        </button>
-
-                        {/* Carousel Indicators */}
-                        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
-                            {carousel.map((_, index) => (
-                                <button
-                                    key={index}
-                                    onClick={() => setCurrentSlide(index)}
-                                    className={`w-3 h-3 rounded-full transition-colors duration-200 ${index === currentSlide ? 'bg-black' : 'bg-gray-400'
-                                        }`}
-                                    aria-label={`Go to slide ${index + 1}`}
-                                />
-                            ))}
-                        </div>
+                                <div className="p-4 flex-grow flex flex-col justify-between">
+                                    <h3 className="text-lg font-semibold text-gray-900 line-clamp-2">{facility.research_facility_name}</h3>
+                                    <p className="text-sm text-gray-500 mt-1 flex items-center gap-1">
+                                        <MapPin size={14} />
+                                        <span className="truncate">{facility.research_facility_location}</span>
+                                    </p>
+                                </div>
+                            </div>
+                        ))}
                     </div>
                 </div>
+            )}
 
-                {/* Table Section */}
-                <div>
-                    <h2 className="text-2xl font-bold text-black mb-6">All Research Facilities</h2>
-
-                    <div className="bg-white shadow-md rounded-lg overflow-hidden">
-                        <div className="overflow-x-auto">
-                            <table className="min-w-full divide-y divide-gray-200">
-                                <thead className="bg-gray-50">
-                                    <tr>
-                                        <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Facility Number</th>
-                                         <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Facility Name</th>
-                                        <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Faculty In Charge</th>
-                                        <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Staff In Charge</th>
+            {/* Low Priority Section - Table */}
+            <div>
+                <div className="bg-white shadow-md rounded-lg overflow-hidden border border-gray-200">
+                    <div className="overflow-x-auto">
+                        <table className="min-w-full divide-y divide-gray-200">
+                            <thead className="bg-gray-50">
+                                <tr>
+                                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Facility Name</th>
+                                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Location</th>
+                                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Faculty In Charge</th>
+                                </tr>
+                            </thead>
+                            <tbody className="bg-white divide-y divide-gray-200">
+                                {lowPriority.map((facility) => (
+                                    <tr
+                                        key={facility.id}
+                                        className="hover:bg-gray-50 cursor-pointer transition-colors"
+                                        onClick={() => openModal(facility)}
+                                    >
+                                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{facility.research_facility_name}</td>
+                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">{facility.research_facility_location}</td>
+                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">{facility.research_facility_fic}</td>
                                     </tr>
-                                </thead>
-                                <tbody className="bg-white divide-y divide-gray-200">
-                                    {facilities.map((facility) => (
-                                        <tr key={facility.id} className="hover:bg-gray-50">
-                                            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-black">{facility.research_facility_no}</td>
-                                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{facility.research_facility_name}</td>
-                                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{facility.research_facility_fic}</td>
-                                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{facility.research_facility_staff_incharge}</td>                                          
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                        </div>
+                                ))}
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
+
+            {/* Modal for Details */}
+            {selectedFacility && (
+                <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[9999] flex items-center justify-center p-4" onClick={closeModal}>
+                    <div
+                        className="bg-white rounded-xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        {/* Header */}
+                        <div className="flex justify-between items-center p-6 border-b border-gray-100">
+                            <h3 className="text-xl font-bold text-gray-900">{selectedFacility.research_facility_name}</h3>
+                            <button
+                                onClick={closeModal}
+                                className="p-2 rounded-full hover:bg-gray-100 transition-colors"
+                            >
+                                <X size={20} className="text-gray-500" />
+                            </button>
+                        </div>
+
+                        {/* Content */}
+                        <div className="p-6">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                {/* Left Column - Image (if exists) */}
+                                {selectedFacility.research_facility_image_url && (
+                                    <div className="rounded-lg overflow-hidden bg-gray-100 h-64 md:h-full min-h-[250px]">
+                                        <img
+                                            src={selectedFacility.research_facility_image_url.url}
+                                            alt={selectedFacility.research_facility_name}
+                                            className="w-full h-full object-cover"
+                                        />
+                                    </div>
+                                )}
+
+                                {/* Right Column - Details */}
+                                <div className={`space-y-4 ${selectedFacility.research_facility_image_url ? '' : 'col-span-2'}`}>
+                                    <div className="flex items-start gap-3">
+                                        <MapPin className="text-gray-400 mt-1 flex-shrink-0" size={18} />
+                                        <div>
+                                            <p className="text-sm font-medium text-gray-500">Location</p>
+                                            <p className="text-gray-900">{selectedFacility.research_facility_location || "N/A"}</p>
+                                        </div>
+                                    </div>
+
+                                    <div className="flex items-start gap-3">
+                                        <User className="text-gray-400 mt-1 flex-shrink-0" size={18} />
+                                        <div>
+                                            <p className="text-sm font-medium text-gray-500">Faculty in Charge</p>
+                                            <p className="text-gray-900">{selectedFacility.research_facility_fic || "N/A"}</p>
+                                        </div>
+                                    </div>
+
+                                    {selectedFacility.research_facility_fic_email && (
+                                        <div className="flex items-start gap-3">
+                                            <Mail className="text-gray-400 mt-1 flex-shrink-0" size={18} />
+                                            <div>
+                                                <p className="text-sm font-medium text-gray-500">Email</p>
+                                                <a href={`mailto:${selectedFacility.research_facility_fic_email}`} className="text-blue-600 hover:underline">
+                                                    {selectedFacility.research_facility_fic_email}
+                                                </a>
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    <div className="flex items-start gap-3">
+                                        <User className="text-gray-400 mt-1 flex-shrink-0" size={18} />
+                                        <div>
+                                            <p className="text-sm font-medium text-gray-500">Staff in Charge</p>
+                                            <p className="text-gray-900">{selectedFacility.research_facility_staff_incharge || "N/A"}</p>
+                                        </div>
+                                    </div>
+
+                                    <div className="flex items-start gap-3">
+                                        <CreditCard className="text-gray-400 mt-1 flex-shrink-0" size={18} />
+                                        <div>
+                                            <p className="text-sm font-medium text-gray-500">Usage Charges</p>
+                                            <p className="text-gray-900">{selectedFacility.research_facility_usage_charges || "N/A"}</p>
+                                        </div>
+                                    </div>
+
+                                    {selectedFacility.research_facility_forms && (
+                                        <div className="flex items-start gap-3">
+                                            <FileText className="text-gray-400 mt-1 flex-shrink-0" size={18} />
+                                            <div>
+                                                <p className="text-sm font-medium text-gray-500">Forms</p>
+                                                <p className="text-gray-900">{selectedFacility.research_facility_forms}</p>
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
