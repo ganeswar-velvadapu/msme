@@ -6,21 +6,6 @@ const main = [
     {
         "name": "About",
         "url": "/about",
-        "hasChildren": true,
-        "children": [
-            {
-                "name": "Message from HOD",
-                "url": "/about/message",
-            },
-            {  
-                "name": "Books",
-                "url": "/about/books",
-            },
-            {
-                "name": "NPTEL Lectures",
-                "url": "/about/nptel",
-            },
-        ]
     },
     {
         "name": "Research",

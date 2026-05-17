@@ -218,27 +218,33 @@ export interface Media {
  */
 export interface Placement {
   id: number;
-  year: number;
-  btech_placements: {
-    registeredStudents: number;
-    placedStudents: number;
-    minCTC: number;
-    maxCTC: number;
-    medianCTC: number;
-    id?: string | null;
-  }[];
-  mtech_placements: {
-    registeredStudents: number;
-    placedStudents: number;
-    minCTC: number;
-    maxCTC: number;
-    medianCTC: number;
-    id?: string | null;
-  }[];
-  companiesHired: {
-    companyName: string;
-    id?: string | null;
-  }[];
+  year?: number | null;
+  btech_placements?:
+    | {
+        registeredStudents?: number | null;
+        placedStudents?: number | null;
+        minCTC?: number | null;
+        maxCTC?: number | null;
+        medianCTC?: number | null;
+        id?: string | null;
+      }[]
+    | null;
+  mtech_placements?:
+    | {
+        registeredStudents?: number | null;
+        placedStudents?: number | null;
+        minCTC?: number | null;
+        maxCTC?: number | null;
+        medianCTC?: number | null;
+        id?: string | null;
+      }[]
+    | null;
+  companiesHired?:
+    | {
+        companyName?: string | null;
+        id?: string | null;
+      }[]
+    | null;
   updatedAt: string;
   createdAt: string;
 }
