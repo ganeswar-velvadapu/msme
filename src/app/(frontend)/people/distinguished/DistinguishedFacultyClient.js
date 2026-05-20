@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect, useMemo } from "react";
-import FacultyCard from "../../../../components/people/FacultyCard";
 import { Search } from "lucide-react";
+import DistinguishedFacultyCard from "../../../../components/people/DistinguishedFacultyCard";
 
 export default function DistinguishedFacultyClient({ facultyList }) {
   const [searchTerm, setSearchTerm] = useState("");
@@ -57,12 +57,13 @@ export default function DistinguishedFacultyClient({ facultyList }) {
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
         {sortedAndFilteredFaculty.length > 0 ? (
           sortedAndFilteredFaculty.map((member) => (
-            <FacultyCard
+            <DistinguishedFacultyCard
               key={member?.id}
               id={member?.id}
               name={member?.faculty_name ?? "N/A"}
               designation={member?.faculty_designation ?? ""}
               image_url={member?.faculty_image?.url}
+              href={`/people/distinguished/${member?.id}`}
             />
           ))
         ) : (
