@@ -28,7 +28,7 @@ export default function ResearchAreasClient({ researchAreas }) {
                       <img
                         src={area.research_area_photo[0].image.url}
                         alt={area.research_area_photo[0].image.alt || area.research_area_name}
-                        className="w-full h-[250px] rounded-lg object-fit border border-gray-200"
+                        className="w-full h-auto rounded-lg object-fit border border-gray-200"
                       />
                     </div>
                   )}

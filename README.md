@@ -1,2 +1,5 @@
 Todo(client) -
-- Distinguished faculty bug 
+- change copy right year 
+- remove uneccesary tags in news and events and change color
+
+
