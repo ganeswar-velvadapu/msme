@@ -3,27 +3,7 @@ import Link from 'next/link';
 
 export default function ResearchAreasClient({ researchAreas }) {
   const dataToUse = researchAreas;
-
-  const getResearchIcon = (icons) => {
-    return (
-      <div className="p-4">
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-          {icons.map((icon, index) => (
-            <div
-              key={icon.id || index}
-              className="flex flex-col items-center text-center gap-2"
-            >
-              <img
-                src={icon.image.url}
-                alt={icon.image.alt || `Research icon ${index + 1}`}
-                className="w-30 h-30 object-fit"
-              />
-            </div>
-          ))}
-        </div>
-      </div>
-    );
-  };
+ 
 
   return (
     <div className="py-12 px-4 sm:px-6 lg:px-8">
@@ -41,15 +21,23 @@ export default function ResearchAreasClient({ researchAreas }) {
                   {area.research_area_name}
                 </h2>
 
-                {/* Description */}
-                <div className="mb-8">
-                  <p className="text-gray-700 text-base leading-relaxed text-justify">
-                    {area.about_research_area}
-                  </p>
+                {/* Description and Image */}
+                <div className="flex flex-col md:flex-row gap-6 mb-8 items-start">
+                  {area.research_area_photo?.[0]?.image?.url && (
+                    <div className="w-full md:w-1/3 flex-shrink-0">
+                      <img
+                        src={area.research_area_photo[0].image.url}
+                        alt={area.research_area_photo[0].image.alt || area.research_area_name}
+                        className="w-full h-[250px] rounded-lg object-fit border border-gray-200"
+                      />
+                    </div>
+                  )}
+                  <div className="flex-grow">
+                    <p className="text-gray-700 text-base leading-relaxed text-justify">
+                      {area.about_research_area}
+                    </p>
+                  </div>
                 </div>
-
-                {/* Research Icons */}
-                {/* {getResearchIcon(area.research_area_photo)} */}
 
                 {/* Faculty Members */}
                 <h3 className="mb-4 font-bold text-xl">Faculty Members</h3>
