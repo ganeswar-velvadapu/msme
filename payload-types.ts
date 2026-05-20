@@ -360,6 +360,7 @@ export interface Researchfacility {
   research_facility_forms?: string | null;
   research_facility_image_url?: (number | null) | Media;
   priority: 'high' | 'low';
+  writeup?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -969,6 +970,7 @@ export interface ResearchfacilitiesSelect<T extends boolean = true> {
   research_facility_forms?: T;
   research_facility_image_url?: T;
   priority?: T;
+  writeup?: T;
   updatedAt?: T;
   createdAt?: T;
 }

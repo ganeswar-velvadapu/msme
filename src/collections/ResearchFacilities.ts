@@ -59,5 +59,10 @@ export const ResearchFacilities: CollectionConfig = {
             defaultValue: "low",
             required: true,
         },
+        {
+            name: "writeup",
+            type: "textarea",
+            label: "Writeup / Description",
+        },
     ]
 }

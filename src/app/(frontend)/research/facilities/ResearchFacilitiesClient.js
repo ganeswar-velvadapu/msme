@@ -31,19 +31,15 @@ export default function ResearchFacilitiesClient({ facilities }) {
                                 className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow cursor-pointer border border-gray-100 flex flex-col"
                                 onClick={() => openModal(facility)}
                             >
-                                <div className="h-48 bg-gray-200 relative">
+                                <div className="h-90 bg-gray-200 relative">
                                     <img
                                         src={facility.research_facility_image_url?.url || "/api/placeholder/400/300"}
                                         alt={facility.research_facility_name}
                                         className="w-full h-full object-cover"
                                     />
                                 </div>
-                                <div className="p-4 flex-grow flex flex-col justify-between">
+                                <div className="p-4 flex-grow flex flex-col justify-center">
                                     <h3 className="text-lg font-semibold text-gray-900 line-clamp-2">{facility.research_facility_name}</h3>
-                                    <p className="text-sm text-gray-500 mt-1 flex items-center gap-1">
-                                        <MapPin size={14} />
-                                        <span className="truncate">{facility.research_facility_location}</span>
-                                    </p>
                                 </div>
                             </div>
                         ))}
@@ -169,6 +165,14 @@ export default function ResearchFacilitiesClient({ facilities }) {
                                         </div>
                                     )}
                                 </div>
+                            </div>
+
+                            {/* Writeup / Description Section */}
+                            <div className="mt-6 pt-6 border-t border-gray-100">
+                                <h4 className="text-sm font-semibold text-gray-500 mb-2">Description</h4>
+                                <p className="text-gray-700 text-sm leading-relaxed whitespace-pre-wrap">
+                                    {selectedFacility.writeup || "Description not available"}
+                                </p>
                             </div>
                         </div>
                     </div>
