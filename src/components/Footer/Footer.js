@@ -5,7 +5,7 @@ export default function Footer() {
     const headEmail = `head@msme.iith.ac.in`;
     const officeEmail = `office@msme.iith.ac.in`
     const location = "MSME Block, IIT Hyderabad, Kandi, Sangareddy, Hyderabad, Telangana, India";
-    const copyright = "© 2025 Department of Materials Science and Metallurgical Engineering, IIT Hyderabad. All rights reserved.";
+    const copyright = "© 2026 Department of Materials Science and Metallurgical Engineering, IIT Hyderabad. All rights reserved.";
 
     const footerLinks = {
         about: [
