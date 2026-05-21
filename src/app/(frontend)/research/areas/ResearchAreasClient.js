@@ -23,19 +23,21 @@ export default function ResearchAreasClient({ researchAreas }) {
                 </div>
 
                 {/* Description and Image */}
-                <div className="flow-root mb-6">
+                <div className="flex flex-col md:flex-row gap-6 mb-8 items-start">
                   {area.research_area_photo?.[0]?.image?.url && (
-                    <div className="w-full sm:w-48 md:w-56 lg:w-64 float-none sm:float-left mr-0 sm:mr-6 mb-4 overflow-hidden rounded-lg ">
+                    <div className="w-full md:w-48 lg:w-56 flex-shrink-0">
                       <img
                         src={area.research_area_photo[0].image.url}
                         alt={area.research_area_photo[0].image.alt || area.research_area_name}
-                        className="w-full h-auto object-cover transition-transform duration-300 hover:scale-105"
+                        className="w-full h-auto rounded-lg object-cover"
                       />
                     </div>
                   )}
-                  <p className="text-gray-700 text-base leading-relaxed text-justify">
-                    {area.about_research_area}
-                  </p>
+                  <div className="flex-grow">
+                    <p className="text-gray-700 text-base leading-relaxed text-justify">
+                      {area.about_research_area}
+                    </p>
+                  </div>
                 </div>
 
                 {/* Faculty Members Section */}
