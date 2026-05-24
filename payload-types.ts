@@ -497,7 +497,7 @@ export interface BtechP {
       btech_program?: string | null;
       btech_program_descriptiom?: string | null;
     };
-    academic_handbook_link?: string | null;
+    academic_handbook_link?: (number | null) | Media;
   };
   curriculum?: {
     about_curriculum?:
@@ -506,7 +506,7 @@ export interface BtechP {
           id?: string | null;
         }[]
       | null;
-    msme_curriculum_link?: string | null;
+    msme_curriculum_link?: (number | null) | Media;
   };
   updatedAt: string;
   createdAt: string;
@@ -522,8 +522,8 @@ export interface MtechP {
     | {
         name?: string | null;
         description?: string | null;
-        brochure_link?: string | null;
-        curriculum_link?: string | null;
+        brochure_link?: (number | null) | Media;
+        curriculum_link?: (number | null) | Media;
         course_and_thesis?: string | null;
         id?: string | null;
       }[]
@@ -538,8 +538,8 @@ export interface MtechP {
 export interface PhdP {
   id: number;
   about?: string | null;
-  brochure_link?: string | null;
-  curriculum_link?: string | null;
+  brochure_link?: (number | null) | Media;
+  curriculum_link?: (number | null) | Media;
   course_and_thesis?: string | null;
   updatedAt: string;
   createdAt: string;
@@ -1412,7 +1412,7 @@ export interface MtechAdmission {
               id?: string | null;
             }[]
           | null;
-        brochure_link_mtech?: string | null;
+        brochure_link_mtech?: (number | null) | Media;
         id?: string | null;
       }[]
     | null;
@@ -1464,7 +1464,7 @@ export interface PhdAdmission {
         brochure_links?:
           | {
               link_text?: string | null;
-              link_url?: string | null;
+              link_file?: (number | null) | Media;
               id?: string | null;
             }[]
           | null;
@@ -1614,7 +1614,7 @@ export interface PhdAdmissionsSelect<T extends boolean = true> {
           | T
           | {
               link_text?: T;
-              link_url?: T;
+              link_file?: T;
               id?: T;
             };
         id?: T;

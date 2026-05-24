@@ -77,9 +77,10 @@ const PhDAdmission: GlobalConfig = {
               label: 'Link Text'
             },
             {
-              name: 'link_url',
-              type: 'text',
-              label: 'Link URL'
+              name: 'link_file',
+              type: 'relationship',
+              relationTo: 'media',
+              label: 'Upload Brochure/PDF'
             }
           ]
         },

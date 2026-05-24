@@ -23,7 +23,7 @@ export default function BTechClient({ btechList }) {
   } = curriculum;
 
   return (
-    <div className="bg-white m-8 text-black p-8 rounded-xl shadow-lg max-w-6xl mx-auto">
+    <div className="bg-white m-8 text-black p-8 rounded-xl max-w-6xl mx-auto">
 
       {/* Tabs */}
       <div className="flex flex-wrap justify-center gap-4 mb-8 border-b pb-4">
@@ -69,19 +69,36 @@ export default function BTechClient({ btechList }) {
           </div>
 
           {/* Academic Handbook */}
-          {academic_handbook_link && (
-            <div className="bg-gray-100 p-4 rounded-lg">
-              <h3 className="text-xl font-semibold mb-2">Academic Handbook</h3>
-              <a
-                href={academic_handbook_link}
-                className="text-blue-600 hover:underline"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                View Academic Handbook
-              </a>
-            </div>
-          )}
+          {(() => {
+            const handbookUrl = typeof academic_handbook_link === 'object' ? academic_handbook_link?.url : academic_handbook_link;
+            if (!handbookUrl) return null;
+            return (
+              <div className="bg-gray-100 p-6 rounded-lg">
+                <h3 className="text-xl font-semibold mb-4 text-center">Academic Handbook</h3>
+                <div className="w-full border border-gray-200 rounded-lg overflow-hidden bg-white shadow-sm">
+                  <iframe
+                    src={handbookUrl}
+                    className="w-full h-[600px] border-none"
+                    title="Academic Handbook PDF"
+                  />
+                </div>
+                <div className="mt-4 flex justify-center">
+                  <a
+                    href={handbookUrl}
+                    download
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-5 py-2.5 rounded-lg text-sm transition-colors duration-150 inline-flex items-center gap-2 cursor-pointer shadow-md"
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                    </svg>
+                    Download
+                  </a>
+                </div>
+              </div>
+            );
+          })()}
         </div>
       )}
 
@@ -98,16 +115,36 @@ export default function BTechClient({ btechList }) {
           </div>
 
           {/* Curriculum PDF */}
-          {msme_curriculum_link && (
-            <a
-              href={msme_curriculum_link}
-              className="inline-block mt-4 text-blue-600 font-medium hover:underline"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              View Curriculum PDF
-            </a>
-          )}
+          {(() => {
+            const curriculumUrl = typeof msme_curriculum_link === 'object' ? msme_curriculum_link?.url : msme_curriculum_link;
+            if (!curriculumUrl) return null;
+            return (
+              <div className="bg-gray-100 p-6 rounded-lg">
+                <h4 className="text-xl font-semibold mb-4 text-center">Curriculum PDF</h4>
+                <div className="w-full border border-gray-200 rounded-lg overflow-hidden bg-white shadow-sm">
+                  <iframe
+                    src={curriculumUrl}
+                    className="w-full h-[600px] border-none"
+                    title="Curriculum PDF"
+                  />
+                </div>
+                <div className="mt-4 flex justify-center">
+                  <a
+                    href={curriculumUrl}
+                    download
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-5 py-2.5 rounded-lg text-sm transition-colors duration-150 inline-flex items-center gap-2 cursor-pointer shadow-md"
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                    </svg>
+                    Download
+                  </a>
+                </div>
+              </div>
+            );
+          })()}
         </div>
       )}
 

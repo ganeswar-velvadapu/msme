@@ -14,13 +14,15 @@ const PhD_P: CollectionConfig = {
     },
     {
       name: 'brochure_link',
-      type: 'text',
-      label: 'Brochure PDF Link',
+      type: 'relationship',
+      relationTo: 'media',
+      label: 'Upload Brochure PDF',
     },
     {
       name: 'curriculum_link',
-      type: 'text',
-      label: 'Curriculum Link',
+      type: 'relationship',
+      relationTo: 'media',
+      label: 'Upload Curriculum PDF',
     },
     {
       name: 'course_and_thesis',

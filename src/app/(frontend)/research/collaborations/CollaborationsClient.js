@@ -42,7 +42,7 @@ export default function CollaborationsClient({ collaborations }) {
         </div>
 
         {/* Collaborations Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-6">
+        <div className="grid grid-cols-1 justify-items-center md:grid-cols-4 lg:grid-cols-6 gap-6">
           {filteredCollaborations.map((collab) => (
             <div
               key={collab.id}

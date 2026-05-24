@@ -16,7 +16,7 @@ export default function MTechClient({ mtechList }) {
   ];
 
   return (
-    <div className="bg-white m-8 text-black p-8 rounded-xl shadow-lg max-w-6xl mx-auto">
+    <div className="bg-white m-8 text-black p-8 rounded-xl max-w-6xl mx-auto">
 
       <div className="text-center text-lg text-gray-700 mb-8 leading-relaxed max-w-3xl mx-auto">
         {about}
@@ -63,31 +63,76 @@ export default function MTechClient({ mtechList }) {
       {/* Content Section */}
       <div className="text-gray-800 text-base leading-relaxed px-4 space-y-4">
         {activeSubTab === "about" && (
-          <div>
+          <div className="space-y-4">
             <p>{activeSpecialization.description || "No information available."}</p>
-            {activeSpecialization.brochure_link && (
-              <a
-                href={activeSpecialization.brochure_link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-600 hover:underline mt-2 inline-block"
-              >
-                View Brochure
-              </a>
-            )}
+            {(() => {
+              const brochureUrl = typeof activeSpecialization.brochure_link === 'object' ? activeSpecialization.brochure_link?.url : activeSpecialization.brochure_link;
+              if (!brochureUrl) return null;
+              return (
+                <div className="bg-gray-100 p-6 rounded-lg mt-6">
+                  <h4 className="text-xl font-semibold mb-4 text-center">Specialization Brochure</h4>
+                  <div className="w-full border border-gray-200 rounded-lg overflow-hidden bg-white shadow-sm">
+                    <iframe
+                      src={brochureUrl}
+                      className="w-full h-[600px] border-none"
+                      title="Brochure PDF"
+                    />
+                  </div>
+                  <div className="mt-4 flex justify-center">
+                    <a
+                      href={brochureUrl}
+                      download
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-5 py-2.5 rounded-lg text-sm transition-colors duration-150 inline-flex items-center gap-2 cursor-pointer shadow-md"
+                    >
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                      </svg>
+                      Download
+                    </a>
+                  </div>
+                </div>
+              );
+            })()}
           </div>
         )}
         {activeSubTab === "course_and_thesis" && (
-          <>
-            <div className='flex w-full justify-center'>
+          <div className="space-y-6">
+            <div className='flex w-full justify-center text-center'>
               <p>{activeSpecialization.course_and_thesis}</p>
             </div>
-            <div className='flex w-full justify-center'>
-              <a href={activeSpecialization.curriculum_link} target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-600 hover:underline mt-2 inline-block">Curriculum Link</a>
-            </div>
-          </>
+            {(() => {
+              const curriculumUrl = typeof activeSpecialization.curriculum_link === 'object' ? activeSpecialization.curriculum_link?.url : activeSpecialization.curriculum_link;
+              if (!curriculumUrl) return null;
+              return (
+                <div className="bg-gray-100 p-6 rounded-lg mt-6">
+                  <h4 className="text-xl font-semibold mb-4 text-center">Curriculum PDF</h4>
+                  <div className="w-full border border-gray-200 rounded-lg overflow-hidden bg-white shadow-sm">
+                    <iframe
+                      src={curriculumUrl}
+                      className="w-full h-[600px] border-none"
+                      title="Curriculum PDF"
+                    />
+                  </div>
+                  <div className="mt-4 flex justify-center">
+                    <a
+                      href={curriculumUrl}
+                      download
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-5 py-2.5 rounded-lg text-sm transition-colors duration-150 inline-flex items-center gap-2 cursor-pointer shadow-md"
+                    >
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                      </svg>
+                      Download
+                    </a>
+                  </div>
+                </div>
+              );
+            })()}
+          </div>
         )}
         {activeSubTab === "eligibility_and_admissions" && (
           <div className='flex w-full justify-center'>

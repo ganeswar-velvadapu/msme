@@ -35,8 +35,9 @@ export const BTech_P: CollectionConfig = {
                 },
                 {
                     name:"academic_handbook_link",
-                    type:"text",
-                    label:"Enter academic handbook link"
+                    type:"relationship",
+                    relationTo: "media",
+                    label:"Upload Academic Handbook"
                 }
             ]
         },
@@ -57,8 +58,9 @@ export const BTech_P: CollectionConfig = {
                 },
                 {
                     name:"msme_curriculum_link",
-                    type:"text",
-                    label:"Enter curriculum link"
+                    type:"relationship",
+                    relationTo: "media",
+                    label:"Upload Curriculum PDF"
                 },
             ]
         },

@@ -121,7 +121,7 @@ export default function PhDClient({ phdData }) {
 
   return (
     <div className="w-full flex justify-center px-4 py-8">
-      <div className="bg-white text-black p-6 sm:p-10 rounded-xl shadow-lg w-full max-w-4xl">
+      <div className="bg-white text-black p-6 sm:p-10 rounded-xl w-full max-w-4xl">
 
         {/* TOP-LEVEL TABS — centered */}
         <div className="flex flex-wrap justify-center gap-3 mb-8">
@@ -197,25 +197,44 @@ export default function PhDClient({ phdData }) {
                 )}
 
                 {activeType?.brochure_links && activeType.brochure_links.length > 0 && (
-                  <div className="bg-gray-50 p-5 sm:p-6 rounded-lg mb-4">
-                    <h4 className="text-lg sm:text-xl font-semibold mb-3">Brochures &amp; Documents</h4>
-                    <div className="space-y-3">
-                      {activeType.brochure_links.map((brochure, index) => (
-                        <div
-                          key={index}
-                          className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-3 bg-white rounded-lg border border-gray-200"
-                        >
-                          <span className="text-gray-700 text-sm sm:text-base">{brochure.link_text}</span>
-                          <a
-                            href={brochure.link_url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="bg-black text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-800 transition-colors duration-200 text-center whitespace-nowrap"
+                  <div className="bg-gray-50 p-5 sm:p-6 rounded-lg mb-4 space-y-6">
+                    <h4 className="text-lg sm:text-xl font-semibold mb-3 text-center">Brochures &amp; Documents</h4>
+                    <div className="space-y-6">
+                      {activeType.brochure_links.map((brochure, index) => {
+                        const brochureUrl = typeof brochure.link_file === 'object' ? brochure.link_file?.url : (brochure.link_file || brochure.link_url);
+                        if (!brochureUrl) return null;
+                        return (
+                          <div
+                            key={index}
+                            className="p-4 bg-white rounded-lg border border-gray-200 shadow-sm space-y-4"
                           >
-                            Download PDF
-                          </a>
-                        </div>
-                      ))}
+                            <div className="text-gray-800 font-semibold text-center text-sm sm:text-base">
+                              {brochure.link_text}
+                            </div>
+                            <div className="w-full border border-gray-200 rounded-lg overflow-hidden bg-white shadow-sm">
+                              <iframe
+                                src={brochureUrl}
+                                className="w-full h-[600px] border-none"
+                                title={brochure.link_text || `Brochure PDF ${index + 1}`}
+                              />
+                            </div>
+                            <div className="mt-4 flex justify-center">
+                              <a
+                                href={brochureUrl}
+                                download
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-5 py-2.5 rounded-lg text-sm transition-colors duration-150 inline-flex items-center gap-2 cursor-pointer shadow-md"
+                              >
+                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                </svg>
+                                Download
+                              </a>
+                            </div>
+                          </div>
+                        );
+                      })}
                     </div>
                   </div>
                 )}

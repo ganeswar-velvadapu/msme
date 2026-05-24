@@ -51,8 +51,9 @@ const MTechAdmission: GlobalConfig = {
         },
         {
           name: 'brochure_link_mtech',
-          type: 'text',
-          label: 'Brochure Link',
+          type: 'relationship',
+          relationTo: 'media',
+          label: 'Upload Brochure PDF',
         },
       ],
     },
