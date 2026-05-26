@@ -11,7 +11,7 @@ export default function Footer() {
         about: [
             { name: "Department", url: "/about" },
             { name: "History", url: "/about" },
-          
+            { name: "Website Credits", url: "/credits" }
         ],
         academics: [
             { name: "Programs", url: "/academia/programs/btech" },

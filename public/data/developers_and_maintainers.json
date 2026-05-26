@@ -1,0 +1,36 @@
+{
+  "developers": [
+    {
+      "name": "Ganeswar Velvadapu",
+      "email": "hello@ganeswarv.me",
+      "personal_website": "https://ganeswarv.me",
+      "role": "Lead Developer",
+      "photo": "/developers/Ganeswar.jpg"
+    },
+    {
+      "name": "Agam",
+      "email": "agam@msme.iith.ac.in",
+      "personal_website": "",
+      "role": "Developer",
+      "photo": "/developers/agam.jpg"
+    }
+  ],
+  "maintainers": [
+    {
+      "name": "Junaid",
+      "email": "junaid.mohammad@msme.iith.ac.in",
+      "personal_website": "",
+      "role": "Current Maintainer",
+      "photo": "/developers/junaid.jpg"
+    }
+  ],
+  "helpers": [
+    {
+      "name": "PhD student",
+      "email": "",
+      "personal_website": "",
+      "role": "Content Support",
+      "photo": ""
+    }
+  ]
+}
