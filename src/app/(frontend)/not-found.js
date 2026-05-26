@@ -18,7 +18,7 @@ export default function NotFound() {
             Page Not Found
           </h1>
           <p className="text-gray-500 text-sm leading-relaxed max-w-sm mx-auto">
-            Sorry, we couldn't find the page you are looking for. It might have been moved, renamed, or is temporarily unavailable.
+            Sorry, we couldn&apos;t find the page you are looking for. It might have been moved, renamed, or is temporarily unavailable.
           </p>
         </div>
 
