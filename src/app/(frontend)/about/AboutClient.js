@@ -270,7 +270,7 @@ export default function AboutClient({
                   {/* HOD Info at the Bottom */}
                   <div className="border-t border-gray-100 pt-8 mt-4">
                     <h3 className="text-2xl font-bold text-black uppercase tracking-tight">
-                      {hodMessage?.select_hod?.faculty_designation || "Professor and Head"}
+                      {hodMessage?.select_hod?.faculty_name}
                     </h3>
                     <p className="text-gray-500 font-medium mt-1">
                       Head of the Department
