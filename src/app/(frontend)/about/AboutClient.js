@@ -247,7 +247,7 @@ export default function AboutClient({
                   </div>
                 )}
                 <div className="flex-grow">
-                  <p className="text-gray-700 text-base leading-relaxed text-justify whitespace-pre-line">
+                  <p className="text-gray-700 text-lg leading-relaxed text-justify whitespace-pre-line">
                     {activeAboutMsme}
                   </p>
                 </div>
