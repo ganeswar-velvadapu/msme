@@ -235,7 +235,7 @@ export default function AboutClient({
               </h2>
               <div className="flex flex-col md:flex-row gap-8 items-start">
                 {about_msme_image?.url && (
-                  <div className="w-full md:w-80 lg:w-96 flex-shrink-0">
+                  <div className="w-full md:w-60 lg:w-72 flex-shrink-0">
                       <img
                         src={about_msme_image.url}
                         alt="From Atoms to Application"
