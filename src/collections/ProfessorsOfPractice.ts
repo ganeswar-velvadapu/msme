@@ -19,6 +19,12 @@ export const popFaculty: CollectionConfig = {
       label: "Faculty Group Web Page",
     },
     {
+      name: "pop_faculty_cv",
+      type: "upload",
+      relationTo: "media",
+      label: "Upload CV (PDF)"
+    },
+    {
       name: "pop_linked_in_faculty",
       type: "text",
       label: "LinkedIn URL",

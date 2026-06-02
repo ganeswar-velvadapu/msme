@@ -1,4 +1,4 @@
-import UpcomingEvents from "../Events/Events";
+import EventsCalendar from "../eventscalendar/EventsCalendar";
 import MSME from "../msme/Msme";
 import LatestNews from "../News/News";
 
@@ -35,15 +35,18 @@ export default function AfterCarousel() {
             <div className="flex flex-col px-4 sm:px-12 lg:border-r border-gray-200">
               <div className="flex flex-col items-center mb-10">
                 <h2 className="text-3xl font-bold text-gray-900 mb-2">News</h2>
-                <a href="/news" className="text-gray-500 hover:text-black font-medium flex items-center gap-1 transition-colors text-xs uppercase tracking-wider">
-                  View All News
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
-                  </svg>
-                </a>
+                
               </div>
               <div className="flex-grow">
                 <LatestNews isHome={true} limit={10} />
+              </div>
+              <div className="mt-8 text-center">
+                <a href="/news" className="text-gray-500 hover:text-black font-semibold flex items-center justify-center gap-1 transition-colors text-xs uppercase tracking-wider">
+                  Click here to know more details
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+                  </svg>
+                </a>
               </div>
             </div>
 
@@ -51,15 +54,17 @@ export default function AfterCarousel() {
             <div className="flex flex-col px-4 sm:px-12 pt-16 lg:pt-0">
               <div className="flex flex-col items-center mb-10">
                 <h2 className="text-3xl font-bold text-gray-900 mb-2">Events</h2>
-                <a href="/events" className="text-gray-500 hover:text-black font-medium flex items-center gap-1 transition-colors text-xs uppercase tracking-wider">
-                  View All Events
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              </div>
+              <div className="flex-grow">
+                <EventsCalendar isHome={true} />
+              </div>
+              <div className="mt-8 text-center">
+                <a href="/events" className="text-gray-500 hover:text-black font-semibold flex items-center justify-center gap-1 transition-colors text-xs uppercase tracking-wider">
+                  Click here to know more details
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
                   </svg>
                 </a>
-              </div>
-              <div className="flex-grow">
-                <UpcomingEvents isHome={true} limit={10} />
               </div>
             </div>
 

@@ -88,6 +88,18 @@ export default function FacultyProfile({ faculty }) {
                                             <Globe size={24} className="text-gray-700" />
                                         </a>
                                     )}
+
+                                    {faculty.faculty_cv?.url && (
+                                        <a
+                                            href={faculty.faculty_cv.url}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="p-3 rounded-full bg-red-50 hover:bg-red-100 transition-colors"
+                                            title="Curriculum Vitae (CV)"
+                                        >
+                                            <FileText size={24} className="text-red-700" />
+                                        </a>
+                                    )}
                                 </div>
                             </div>
 

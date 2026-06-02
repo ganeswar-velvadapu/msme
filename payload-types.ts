@@ -278,7 +278,6 @@ export interface Event {
   events_image?: (number | null) | Media;
   events_web_page?: string | null;
   events_pdf_broucher_link?: string | null;
-  events_time?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -314,6 +313,7 @@ export interface Faculty {
   id: number;
   faculty_image?: (number | null) | Media;
   faculty_group_web_page?: string | null;
+  faculty_cv?: (number | null) | Media;
   linked_in_faculty?: string | null;
   google_scholar_url?: string | null;
   scopus_id?: string | null;
@@ -552,6 +552,7 @@ export interface AdjunctFaculty {
   id: number;
   adjunct_faculty_image?: (number | null) | Media;
   adjunct_faculty_group_web_page?: string | null;
+  adjunct_faculty_cv?: (number | null) | Media;
   adjunct_linked_in_faculty?: string | null;
   adjunct_google_scholar_url?: string | null;
   adjunct_scopus_id?: string | null;
@@ -591,6 +592,7 @@ export interface ProfessorsInPractice {
   id: number;
   pop_faculty_image?: (number | null) | Media;
   pop_faculty_group_web_page?: string | null;
+  pop_faculty_cv?: (number | null) | Media;
   pop_linked_in_faculty?: string | null;
   pop_google_scholar_url?: string | null;
   pop_scopus_id?: string | null;
@@ -654,6 +656,7 @@ export interface DistinguishedFaculty {
   id: number;
   faculty_image?: (number | null) | Media;
   faculty_group_web_page?: string | null;
+  faculty_cv?: (number | null) | Media;
   linked_in_faculty?: string | null;
   google_scholar_url?: string | null;
   scopus_id?: string | null;
@@ -929,7 +932,6 @@ export interface EventsSelect<T extends boolean = true> {
   events_image?: T;
   events_web_page?: T;
   events_pdf_broucher_link?: T;
-  events_time?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -1005,6 +1007,7 @@ export interface CollaborationsSelect<T extends boolean = true> {
 export interface FacultySelect<T extends boolean = true> {
   faculty_image?: T;
   faculty_group_web_page?: T;
+  faculty_cv?: T;
   linked_in_faculty?: T;
   google_scholar_url?: T;
   scopus_id?: T;
@@ -1195,6 +1198,7 @@ export interface PhdPSelect<T extends boolean = true> {
 export interface AdjunctFacultySelect<T extends boolean = true> {
   adjunct_faculty_image?: T;
   adjunct_faculty_group_web_page?: T;
+  adjunct_faculty_cv?: T;
   adjunct_linked_in_faculty?: T;
   adjunct_google_scholar_url?: T;
   adjunct_scopus_id?: T;
@@ -1233,6 +1237,7 @@ export interface AdjunctFacultySelect<T extends boolean = true> {
 export interface ProfessorsInPracticeSelect<T extends boolean = true> {
   pop_faculty_image?: T;
   pop_faculty_group_web_page?: T;
+  pop_faculty_cv?: T;
   pop_linked_in_faculty?: T;
   pop_google_scholar_url?: T;
   pop_scopus_id?: T;
@@ -1293,6 +1298,7 @@ export interface NptelLecturesSelect<T extends boolean = true> {
 export interface DistinguishedFacultySelect<T extends boolean = true> {
   faculty_image?: T;
   faculty_group_web_page?: T;
+  faculty_cv?: T;
   linked_in_faculty?: T;
   google_scholar_url?: T;
   scopus_id?: T;
@@ -1363,6 +1369,7 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
 export interface About {
   id: number;
   about_msme?: string | null;
+  about_msme_image?: (number | null) | Media;
   about_the_department?: {
     description?: string | null;
     sections?:
@@ -1519,6 +1526,7 @@ export interface HodMessage {
  */
 export interface AboutSelect<T extends boolean = true> {
   about_msme?: T;
+  about_msme_image?: T;
   about_the_department?:
     | T
     | {

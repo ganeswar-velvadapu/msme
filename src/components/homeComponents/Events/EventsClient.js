@@ -8,11 +8,23 @@ export default function EventsClient({ materialsScienceEvents, isHome }) {
 
   // Format date function
   const formatDate = (dateString) => {
+    if (!dateString) return "";
     const eventDate = new Date(dateString);
     return eventDate.toLocaleDateString("en-US", {
       month: "long",
       day: "numeric",
       year: "numeric",
+    });
+  };
+
+  // Format time function
+  const formatTime = (dateString) => {
+    if (!dateString) return "";
+    const eventDate = new Date(dateString);
+    return eventDate.toLocaleTimeString("en-US", {
+      hour: "numeric",
+      minute: "2-digit",
+      hour12: true,
     });
   };
 
@@ -81,7 +93,7 @@ export default function EventsClient({ materialsScienceEvents, isHome }) {
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                {selectedEvent.events_time}
+                {formatTime(selectedEvent.events_date)}
               </span>
             </div>
 
@@ -166,9 +178,9 @@ export default function EventsClient({ materialsScienceEvents, isHome }) {
 
     return (
       <div className="relative group w-full max-w-lg mx-auto px-4">
-        <div
-          className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl border border-gray-100 transition-all duration-300 cursor-pointer transform hover:-translate-y-1"
-          onClick={() => openEventModal(event)}
+        <a
+          href="/events"
+          className="block bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl border border-gray-100 transition-all duration-300 transform hover:-translate-y-1"
         >
           <div className="h-52 relative overflow-hidden bg-gray-50 flex items-center justify-center">
             <img
@@ -204,7 +216,7 @@ export default function EventsClient({ materialsScienceEvents, isHome }) {
               {event.events_description}
             </p>
           </div>
-        </div>
+        </a>
 
         {/* Navigation Buttons */}
         <button
@@ -273,7 +285,7 @@ export default function EventsClient({ materialsScienceEvents, isHome }) {
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
-                      {event.events_time}
+                      {formatTime(event.events_date)}
                     </div>
                   </div>
 

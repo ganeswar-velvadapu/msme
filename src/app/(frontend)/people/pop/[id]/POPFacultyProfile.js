@@ -8,6 +8,7 @@ export default function POPFacultyProfile({ faculty }) {
     const scopus = faculty.pop_scopus_id || faculty.scopus_id;
     const orcid = faculty.pop_orcid_id || faculty.orcid_id;
     const groupWebPage = faculty.pop_faculty_group_web_page || faculty.faculty_group_web_page;
+    const facultyCv = faculty.pop_pop_faculty_cv || faculty.pop_faculty_cv || faculty.faculty_cv;
 
     return (
         <div className="min-h-screen bg-gray-50 py-8">
@@ -92,6 +93,18 @@ export default function POPFacultyProfile({ faculty }) {
                                             title="Faculty Group Web Page"
                                         >
                                             <Globe size={24} className="text-gray-700" />
+                                        </a>
+                                    )}
+
+                                    {facultyCv?.url && (
+                                        <a
+                                            href={facultyCv.url}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="p-3 rounded-full bg-red-50 hover:bg-red-100 transition-colors"
+                                            title="Curriculum Vitae (CV)"
+                                        >
+                                            <FileText size={24} className="text-red-700" />
                                         </a>
                                     )}
                                 </div>

@@ -19,6 +19,12 @@
                 label: "Faculty Group Web Page"
             },
             {
+                name: "faculty_cv",
+                type: "upload",
+                relationTo: "media",
+                label: "Upload CV (PDF)"
+            },
+            {
                 name: "linked_in_faculty",
                 type: "text",
                 label: "LinkedIn URL"

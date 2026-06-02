@@ -12,6 +12,11 @@ export const Events:CollectionConfig = {
             name : "events_date",
             type : "date",
             label : "Date",
+            admin: {
+                date: {
+                    pickerAppearance: "dayAndTime",
+                }
+            }
         },
         {
             name : "events_title",
@@ -46,11 +51,6 @@ export const Events:CollectionConfig = {
             name : "events_pdf_broucher_link",
             type : "text",
             label : "Enter PDF/Broucher Link",
-        },
-        {
-            name : "events_time",
-            type:"text",
-            label : "Enter time"
         }
     ]
 
