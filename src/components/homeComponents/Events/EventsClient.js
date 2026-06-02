@@ -1,5 +1,6 @@
 "use client";
 import { useState, useRef } from "react";
+import Link from "next/link";
 
 export default function EventsClient({ materialsScienceEvents, isHome }) {
   const scrollRef = useRef(null);
@@ -178,7 +179,7 @@ export default function EventsClient({ materialsScienceEvents, isHome }) {
 
     return (
       <div className="relative group w-full max-w-lg mx-auto px-4">
-        <a
+        <Link
           href="/events"
           className="block bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl border border-gray-100 transition-all duration-300 transform hover:-translate-y-1"
         >
@@ -216,7 +217,7 @@ export default function EventsClient({ materialsScienceEvents, isHome }) {
               {event.events_description}
             </p>
           </div>
-        </a>
+        </Link>
 
         {/* Navigation Buttons */}
         <button

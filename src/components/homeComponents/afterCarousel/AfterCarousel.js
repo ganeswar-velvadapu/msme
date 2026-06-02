@@ -1,6 +1,7 @@
 import EventsCalendar from "../eventscalendar/EventsCalendar";
 import MSME from "../msme/Msme";
 import LatestNews from "../News/News";
+import Link from "next/link";
 
 export default function AfterCarousel() {
   return (
@@ -41,12 +42,12 @@ export default function AfterCarousel() {
                 <LatestNews isHome={true} limit={10} />
               </div>
               <div className="mt-8 text-center">
-                <a href="/news" className="text-gray-500 hover:text-black font-semibold flex items-center justify-center gap-1 transition-colors text-xs uppercase tracking-wider">
+                <Link href="/news" className="text-gray-500 hover:text-black font-semibold flex items-center justify-center gap-1 transition-colors text-xs uppercase tracking-wider">
                   Click here to know more details
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
                   </svg>
-                </a>
+                </Link>
               </div>
             </div>
 
@@ -59,12 +60,12 @@ export default function AfterCarousel() {
                 <EventsCalendar isHome={true} />
               </div>
               <div className="mt-8 text-center">
-                <a href="/events" className="text-gray-500 hover:text-black font-semibold flex items-center justify-center gap-1 transition-colors text-xs uppercase tracking-wider">
+                <Link href="/events" className="text-gray-500 hover:text-black font-semibold flex items-center justify-center gap-1 transition-colors text-xs uppercase tracking-wider">
                   Click here to know more details
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
                   </svg>
-                </a>
+                </Link>
               </div>
             </div>
 

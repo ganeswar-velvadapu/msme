@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Link from "next/link";
 
 export default function NewsClient({ newsItems, isHome }) {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -39,7 +40,7 @@ export default function NewsClient({ newsItems, isHome }) {
 
     return (
       <div className="relative group w-full max-w-lg mx-auto px-4">
-        <a
+        <Link
           href="/news"
           className="block bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl border border-gray-100 transition-all duration-300 transform hover:-translate-y-1"
         >
@@ -77,7 +78,7 @@ export default function NewsClient({ newsItems, isHome }) {
               {news.news_short_description}
             </p>
           </div>
-        </a>
+        </Link>
 
         {/* Navigation Buttons */}
         <button
