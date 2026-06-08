@@ -15,7 +15,7 @@ export default async function Mtech() {
 
   return (
     <>
-      <PageBanner title="M.Tech Programme" />
+      <PageBanner title="M.Tech. Programme" />
       <MtechClient mtechList={mtech.docs} />
     </>
   );

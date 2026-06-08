@@ -10,8 +10,8 @@ export default function Footer() {
     const footerLinks = {
         about: [
             { name: "Department", url: "/about" },
-            { name: "History", url: "/about" },
-            { name: "Website Credits", url: "/credits" }
+            { name: "History", url: "/about?tab=history" },
+            { name: "Website Credits", url: "/" }
         ],
         academics: [
             { name: "Programs", url: "/academia/programs/btech" },

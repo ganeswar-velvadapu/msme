@@ -15,7 +15,7 @@ export default async function Phd() {
 
   return (
     <>
-      <PageBanner title="Ph.D. Programme" />
+      <PageBanner title="PhD Programme" />
       <PhDClient phdList={phd.docs} />
     </>
   );

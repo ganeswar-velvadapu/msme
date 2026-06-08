@@ -29,7 +29,7 @@ export default function UgStudentsClient({students}) {
   return (
     <div className="max-w-5xl mx-auto p-6">
       <h1 className="text-3xl font-bold mb-8 text-black">
-        B.Tech
+        B.Tech.
       </h1>
       
       <div className="mb-6 flex flex-wrap justify-center gap-2">

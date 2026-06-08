@@ -3,14 +3,14 @@ import { CollectionConfig } from 'payload';
 const MTech_P: CollectionConfig = {
   slug: 'mtech-p',
   labels: {
-    singular: 'M. Tech Programme',
-    plural: 'M.Tech Programmes',
+    singular: 'M.Tech. Programme',
+    plural: 'M.Tech. Programmes',
   },
   fields: [
     {
       name: 'about',
       type: 'textarea',
-      label: 'About MTech Program',
+      label: 'About M.Tech. Program',
     },
     {
       name: 'specializations',

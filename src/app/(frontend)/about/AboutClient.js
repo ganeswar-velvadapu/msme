@@ -170,7 +170,7 @@ export default function AboutClient({
     },
     {
       Thrust: "Academic Programs",
-      Thrust_Area: "We offer B.Tech, M.Tech. and Ph.D programs in MSME and various specialized areas such as Industrial Metallurgy, Semiconductor Materials, Integrated Computational Materials Engineering. Additionally in an interdisciplinary partnership with other departments at IITH, we offer B.Tech in Computational Engineering, M.Tech in additive manufacturing, E-waste Resource engineering, and Lightweighting technology."
+      Thrust_Area: "We offer B.Tech., M.Tech. and PhD programs in MSME and various specialized areas such as Industrial Metallurgy, Semiconductor Materials, Integrated Computational Materials Engineering. Additionally in an interdisciplinary partnership with other departments at IITH, we offer B.Tech. in Computational Engineering, M.Tech. in additive manufacturing, E-waste Resource engineering, and Lightweighting technology."
     },
     {
       Thrust: "Facilities",
