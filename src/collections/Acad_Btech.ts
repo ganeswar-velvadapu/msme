@@ -4,8 +4,8 @@ import { CollectionConfig } from "payload";
 export const BTech_P: CollectionConfig = {
     slug: "btech-p",
     labels: {
-    singular: 'B. Tech Programme',
-    plural: 'B. Tech Programmes',
+    singular: 'B.Tech. Programme',
+    plural: 'B.Tech. Programmes',
   },
     fields: [
         {

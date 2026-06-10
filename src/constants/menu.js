@@ -61,11 +61,11 @@ const main = [
                 "hasChildren": true,
                 "children": [
                     {
-                        "name": "B Tech",
+                        "name": "B.Tech.",
                         "url": "/people/students/btech"
                     },
                     {
-                        "name": "M Tech",
+                        "name": "M.Tech.",
                         "url": "/people/students/mtech"
                     },
                     {
@@ -91,11 +91,11 @@ const main = [
                 "hasChildren": true,
                 "children": [
                     {
-                        "name": "B Tech",
+                        "name": "B.Tech.",
                         "url": "/academia/programs/btech"
                     },
                     {
-                        "name": "M Tech",
+                        "name": "M.Tech.",
                         "url": "/academia/programs/mtech"
                     },
                     {
@@ -120,11 +120,11 @@ const main = [
         "hasChildren": true,
         "children": [
             {
-                "name": "B.Tech",
+                "name": "B.Tech.",
                 "url": "/admissions/btech"
             },
             {
-                "name": "M.Tech",
+                "name": "M.Tech.",
                 "url": "/admissions/mtech"
             },
             {

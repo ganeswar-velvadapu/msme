@@ -7,19 +7,22 @@ export default function FacultyCard({
     id
 }) {
     return (
-        <>
-            <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer border border-gray-100">
+        <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow border border-gray-100 overflow-hidden flex flex-col h-full group">
+            <Link href={`/people/faculty/${id}`} className="block overflow-hidden h-[250px]">
                 <img
                     src={image_url || "/api/placeholder/400/400"}
                     alt={name}
-                    className="w-full h-[250px] object-cover"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-
-               <div className="m-4">
-                 <Link href={`/people/faculty/${id}`} className="text-xl font-semibold text-gray-900 mb-2 hover:text-blue-600">{name}</Link>
-                <p className="text-gray-600 mb-3">{designation}</p>
-               </div>
+            </Link>
+            <div className="p-4 flex-grow flex flex-col justify-between">
+                <div>
+                    <Link href={`/people/faculty/${id}`} className="text-xl font-semibold text-gray-900 hover:text-blue-600 transition-colors block mb-2">
+                        {name}
+                    </Link>
+                    <p className="text-gray-600">{designation}</p>
+                </div>
             </div>
-        </>
+        </div>
     );
 }

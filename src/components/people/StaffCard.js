@@ -15,7 +15,7 @@ export default function StaffCard({ name, designation, image_url, onClick }) {
             <div className="m-4 flex flex-col flex-grow">
 
                 <p className="text-gray-600 mb-3">
-                    {designation}
+                    {name}
                 </p>
 
                 {/* Push button to bottom */}

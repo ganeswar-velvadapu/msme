@@ -16,7 +16,7 @@ export default async function Btech() {
 
   return (
     <>
-      <PageBanner title="B.Tech Admissions" />
+      <PageBanner title="B.Tech. Admissions" />
       <BtechClient btech={btech} />
     </>
   );

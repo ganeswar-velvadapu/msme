@@ -14,7 +14,7 @@ export const Alumni: CollectionConfig = {
             name: "alumni_degree",
             type: "select",
             label: "Enter Degree",
-            options: ["B. Tech", "M. Tech", 'PhD']
+            options: ["B.Tech.", "M.Tech.", "PhD"]
         },
         {
             name: "alumni_batch",

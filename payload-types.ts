@@ -485,7 +485,7 @@ export interface Phd {
 export interface Alumnus {
   id: number;
   alumni_student_name?: string | null;
-  alumni_degree?: ('B. Tech' | 'M. Tech' | 'PhD') | null;
+  alumni_degree?: ('B.Tech.' | 'M.Tech.' | 'PhD') | null;
   alumni_batch?: string | null;
   updatedAt: string;
   createdAt: string;
