@@ -1,7 +1,7 @@
 "use client";
 import { useState, useMemo, useEffect, useRef } from "react";
 import { useSearchParams } from "next/navigation";
-import { Search, ExternalLink, ChevronLeft, ChevronRight, Youtube } from "lucide-react";
+import { Search, ExternalLink, ChevronLeft, ChevronRight, Play } from "lucide-react";
 
 // Robust helper to extract and clean YouTube embed URL from watch/playlist/share links
 function getYouTubeEmbedUrl(url) {
@@ -455,7 +455,7 @@ export default function AboutClient({
                       </div>
                     ) : (
                       <div className="aspect-video w-full bg-gray-50 flex flex-col items-center justify-center text-gray-400 p-4 text-center">
-                        <Youtube size={36} className="mb-2 text-gray-300" />
+                        <Play size={36} className="mb-2 text-gray-300" />
                         <span className="text-sm font-medium">Video preview not available</span>
                       </div>
                     )}

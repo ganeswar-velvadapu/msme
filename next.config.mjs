@@ -5,9 +5,6 @@ const NEXT_PUBLIC_SERVER_URL = 'https://msme.iith.ac.in'
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  images: {
-    domains: ['msme.iith.ac.in'],
-  },
   reactStrictMode: true,
   env: {
     NEXT_PUBLIC_SERVER_URL,
