@@ -52,7 +52,6 @@ export default function StaffClient({ staffList }) {
     };
   }, []);
 
-  console.log(sortedAndFilteredStaff)
 
   return (
     <div className="py-12 px-4 max-w-7xl mx-auto">
