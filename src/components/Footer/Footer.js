@@ -4,6 +4,7 @@ import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram, FaMapMarkerAlt, FaPhone
 export default function Footer() {
     const headEmail = `head@msme.iith.ac.in`;
     const officeEmail = `office@msme.iith.ac.in`
+    const officePhone = `+91-40-2359-6550`
     const location = "MSME Block, IIT Hyderabad, Kandi, Sangareddy, Hyderabad, Telangana, India";
     const copyright = "© 2026 Department of Materials Science and Metallurgical Engineering, IIT Hyderabad. All rights reserved.";
 
@@ -81,6 +82,12 @@ export default function Footer() {
                                     {officeEmail}
                                 </Link>
                             </div>
+                            <div className="flex items-center">
+                                <FaPhone className="mr-3 text-black text-lg flex-shrink-0" />
+                                <Link href={`tel:${officePhone}`} className="text-gray-800 hover:text-gray-600 transition-colors duration-300">
+                                    {officePhone}
+                                </Link>
+                            </div>    
                         </div>
                     </div>
                 </div>
