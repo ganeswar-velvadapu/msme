@@ -1,35 +1,27 @@
-
-import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
 import NavHeading from "../../components/navHeading/navHeading";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const inter = localFont({
+  src: "../../../public/fonts/Inter/Inter-VariableFont_opsz,wght.ttf",
+  variable: "--font-inter",
 });
 
 export const metadata = {
   title: "Depeartment of Materials Science and Metallurgy",
   description: "Depeartment of Materials Science and Metallurgy",
 };
+
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        cz-shortcut-listen="true"
-        >
-        <NavHeading/>
-        <Header/>
+    <html lang="en" className={inter.variable}>
+      <body className="antialiased">
+        <NavHeading />
+        <Header />
         {children}
-        <Footer/>
+        <Footer />
       </body>
     </html>
   );
