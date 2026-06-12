@@ -1432,24 +1432,24 @@ export interface About {
  */
 export interface MtechAdmission {
   id: number;
-  specializations_mtech?:
+  specializations?:
     | {
-        name_mtech_ad: string;
-        eligibility_mtech_ad?:
+        name: string;
+        eligibility?:
           | {
-              category_mtech_ad?: string | null;
-              details_mtech_ad?: string | null;
+              category?: string | null;
+              details?: string | null;
               id?: string | null;
             }[]
           | null;
-        admission_process_mtech?:
+        admissionProcess?:
           | {
-              admission_type_mtech?: string | null;
-              admission_details_mtech?: string | null;
+              type?: string | null;
+              details?: string | null;
               id?: string | null;
             }[]
           | null;
-        brochure_link_mtech?: (number | null) | Media;
+        brochure?: (number | null) | Media;
         id?: string | null;
       }[]
     | null;
@@ -1593,25 +1593,25 @@ export interface AboutSelect<T extends boolean = true> {
  * via the `definition` "mtech-admissions_select".
  */
 export interface MtechAdmissionsSelect<T extends boolean = true> {
-  specializations_mtech?:
+  specializations?:
     | T
     | {
-        name_mtech_ad?: T;
-        eligibility_mtech_ad?:
+        name?: T;
+        eligibility?:
           | T
           | {
-              category_mtech_ad?: T;
-              details_mtech_ad?: T;
+              category?: T;
+              details?: T;
               id?: T;
             };
-        admission_process_mtech?:
+        admissionProcess?:
           | T
           | {
-              admission_type_mtech?: T;
-              admission_details_mtech?: T;
+              type?: T;
+              details?: T;
               id?: T;
             };
-        brochure_link_mtech?: T;
+        brochure?: T;
         id?: T;
       };
   updatedAt?: T;

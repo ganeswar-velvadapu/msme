@@ -1,56 +1,56 @@
 import { GlobalConfig } from 'payload';
 
 const MTechAdmission: GlobalConfig = {
-  slug: 'mtech-admissions', // unique identifier for this global
-  label: 'M.Tech Admissions', // optional: label for admin panel
+  slug: 'mtech-admissions',
+  label: 'M.Tech Admissions',
   fields: [
     {
-      name: 'specializations_mtech',
+      name: 'specializations',
       type: 'array',
       label: 'Specializations',
       fields: [
         {
-          name: 'name_mtech_ad',
+          name: 'name',
           type: 'text',
           label: 'Specialization Name',
           required: true,
         },
         {
-          name: 'eligibility_mtech_ad',
+          name: 'eligibility',
           type: 'array',
           label: 'Eligibility Criteria',
           fields: [
             {
-              name: 'category_mtech_ad',
+              name: 'category',
               type: 'text',
               label: 'Category (e.g., MoE Fellowship, Self-Sponsored)',
             },
             {
-              name: 'details_mtech_ad',
+              name: 'details',
               type: 'textarea',
               label: 'Eligibility Details',
             },
           ],
         },
         {
-          name: 'admission_process_mtech',
+          name: 'admissionProcess',
           type: 'array',
           label: 'Admission Process',
           fields: [
             {
-              name: 'admission_type_mtech',
+              name: 'type',
               type: 'text',
               label: 'Admission Type (e.g., Written Test, Interview, GATE score)',
             },
             {
-              name: 'admission_details_mtech',
+              name: 'details',
               type: 'textarea',
               label: 'Admission Details',
             },
           ],
         },
         {
-          name: 'brochure_link_mtech',
+          name: 'brochure',
           type: 'relationship',
           relationTo: 'media',
           label: 'Upload Brochure PDF',
