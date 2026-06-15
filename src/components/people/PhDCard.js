@@ -2,7 +2,10 @@
 
 export default function PhDCard({ name, roll_no, image_url, onClick }) {
     return (
-        <div className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer border border-gray-100 flex flex-col group">
+        <div 
+            className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer border border-gray-100 flex flex-col group"
+            onClick={onClick}
+        >
             <div className="relative aspect-square overflow-hidden bg-gray-50">
                 <img
                     src={image_url || "/api/placeholder/400/400"}
@@ -19,16 +22,12 @@ export default function PhDCard({ name, roll_no, image_url, onClick }) {
                     {roll_no}
                 </p>
 
-                <button
-                    className="mt-auto text-sm font-semibold text-black inline-flex items-center hover:text-gray-600 transition-colors cursor-pointer"
-                    onClick={(e) => {
-                        e.stopPropagation();
-                        onClick();
-                    }}
+                <div
+                    className="mt-auto text-sm font-semibold text-black inline-flex items-center group-hover:text-gray-600 transition-colors"
                 >
                     Know more
                     <svg
-                        className="ml-1 w-4 h-4"
+                        className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -40,7 +39,7 @@ export default function PhDCard({ name, roll_no, image_url, onClick }) {
                             d="M9 5l7 7-7 7"
                         />
                     </svg>
-                </button>
+                </div>
             </div>
         </div>
     );

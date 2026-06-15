@@ -3,8 +3,10 @@ import Link from "next/link"
 
 export default function StaffCard({ name, designation, image_url, onClick }) {
     return (
-        <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer border border-gray-100 flex flex-col">
-
+        <div 
+            className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer border border-gray-100 flex flex-col group"
+            onClick={onClick}
+        >
             <img
                 src={image_url || "/api/placeholder/400/400"}
                 alt={name}
@@ -13,19 +15,17 @@ export default function StaffCard({ name, designation, image_url, onClick }) {
 
             {/* Content */}
             <div className="m-4 flex flex-col flex-grow">
-
                 <p className="text-gray-600 mb-3">
                     {name}
                 </p>
 
                 {/* Push button to bottom */}
-                <button
-                    className="mt-auto text-sm font-medium text-gray-900 hover:text-gray-700 inline-flex items-center transition-colors hover:cursor-pointer"
-                    onClick={onClick}
+                <div
+                    className="mt-auto text-sm font-medium text-gray-900 group-hover:text-gray-700 inline-flex items-center transition-colors"
                 >
                     Know more
                     <svg
-                        className="ml-1 w-4 h-4"
+                        className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -37,10 +37,8 @@ export default function StaffCard({ name, designation, image_url, onClick }) {
                             d="M9 5l7 7-7 7"
                         />
                     </svg>
-                </button>
-
+                </div>
             </div>
-
         </div>
     )
 }

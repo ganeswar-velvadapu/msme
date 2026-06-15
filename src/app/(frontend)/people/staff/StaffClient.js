@@ -93,7 +93,7 @@ export default function StaffClient({ staffList }) {
 
       {/* Staff Detail Modal */}
       {isModalOpen && selectedStaff && (
-        <div className="fixed inset-0 backdrop-blur-md bg-black/60 z-50 flex items-center justify-center p-6">
+        <div className="fixed inset-0 backdrop-blur-md bg-black/60 z-[10000] flex items-center justify-center p-6">
           <div className="bg-white rounded-lg shadow-xl w-full max-w-4xl max-h-[90vh] overflow-hidden flex flex-col">
             <div className="p-4 border-b border-gray-200 flex justify-between items-center">
               <h2 className="text-xl font-semibold text-gray-900">

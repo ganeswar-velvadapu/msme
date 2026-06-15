@@ -79,7 +79,7 @@ export default function ResearchFacilitiesClient({ facilities }) {
 
             {/* Modal for Details */}
             {selectedFacility && (
-                <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[9999] flex items-center justify-center p-4" onClick={closeModal}>
+                <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[10000] flex items-center justify-center p-4" onClick={closeModal}>
                     <div
                         className="bg-white rounded-xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
                         onClick={(e) => e.stopPropagation()}

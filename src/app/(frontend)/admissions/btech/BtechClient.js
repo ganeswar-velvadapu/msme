@@ -2,7 +2,7 @@
 
 export default function BTechClient({ btech }) {
 
-  console.log(btech)
+  // console.log(btech)
 
   return (
     <div className="bg-white m-8 text-black p-8 rounded-xl max-w-6xl mx-auto">
