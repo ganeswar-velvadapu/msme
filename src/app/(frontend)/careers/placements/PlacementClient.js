@@ -32,6 +32,18 @@ export default function PlacementsClient({ placements, years }) {
     );
   }
 
+  const hasBtechStats = currentPlacement?.btech_placements && 
+                        currentPlacement.btech_placements.length > 0 && 
+                        currentPlacement.btech_placements[0] &&
+                        currentPlacement.btech_placements[0].registeredStudents !== null &&
+                        currentPlacement.btech_placements[0].registeredStudents !== undefined;
+
+  const hasMtechStats = currentPlacement?.mtech_placements && 
+                        currentPlacement.mtech_placements.length > 0 && 
+                        currentPlacement.mtech_placements[0] &&
+                        currentPlacement.mtech_placements[0].registeredStudents !== null &&
+                        currentPlacement.mtech_placements[0].registeredStudents !== undefined;
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
@@ -86,18 +98,30 @@ export default function PlacementsClient({ placements, years }) {
               </div>
 
               {/* Display stats based on the active tab */}
-              {activeTab === 'btech' && currentPlacement.btech_placements && (
-                <PlacementStats 
-                  data={currentPlacement.btech_placements[0]} 
-                  type="B.Tech." 
-                />
+              {activeTab === 'btech' && (
+                hasBtechStats ? (
+                  <PlacementStats 
+                    data={currentPlacement.btech_placements[0]} 
+                    type="B.Tech." 
+                  />
+                ) : (
+                  <div className="bg-gray-50 border border-gray-100 rounded-xl p-8 text-center my-6">
+                    <p className="text-gray-500 text-lg font-medium">No placement statistics for this particular year</p>
+                  </div>
+                )
               )}
               
-              {activeTab === 'mtech' && currentPlacement.mtech_placements && (
-                <PlacementStats 
-                  data={currentPlacement.mtech_placements[0]} 
-                  type="M.Tech." 
-                />
+              {activeTab === 'mtech' && (
+                hasMtechStats ? (
+                  <PlacementStats 
+                    data={currentPlacement.mtech_placements[0]} 
+                    type="M.Tech." 
+                  />
+                ) : (
+                  <div className="bg-gray-50 border border-gray-100 rounded-xl p-8 text-center my-6">
+                    <p className="text-gray-500 text-lg font-medium">No placement statistics for this particular year</p>
+                  </div>
+                )
               )}
 
               {/* Companies Section */}

@@ -7,13 +7,13 @@ export async function POST(request) {
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: "ms23btech11034@iith.ac.in",
+      user: "website@msme.iith.ac.in",
       pass: process.env.APP_PASSWORD,
     },
   });
 
   const mailToUser = {
-    from: "ms23btech11034@iith.ac.in",
+    from: "website@msme.iith.ac.in",
     to: email,
     subject: "Thank you for contacting us",
     html: `
@@ -26,8 +26,8 @@ export async function POST(request) {
   };
 
   const mailToOffice = {
-    from: "ms23btech11034@iith.ac.in",
-    to: "ms23btech11004@iith.ac.in",
+    from: "website@msme.iith.ac.in",
+    to: "office@msme.iith.ac.in",
     subject: `New Contact Request By: ${name}`,
     html: `
       <p><strong>Name :</strong> ${name}</p>
