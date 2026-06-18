@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
+import { FileText } from "lucide-react";
 
 export default function NewsClient({ newsItems, isHome }) {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -24,6 +25,18 @@ export default function NewsClient({ newsItems, isHome }) {
     return "/api/placeholder/400/400";
   };
 
+  const isImageFile = (mediaObj) => {
+    if (!mediaObj) return false;
+    if (mediaObj.mimeType && mediaObj.mimeType.startsWith("image/")) {
+      return true;
+    }
+    if (mediaObj.url) {
+      const url = mediaObj.url.toLowerCase();
+      return url.endsWith(".png") || url.endsWith(".jpg") || url.endsWith(".jpeg") || url.endsWith(".webp") || url.endsWith(".gif") || url.endsWith(".svg");
+    }
+    return false;
+  };
+
   const nextSlide = (e) => {
     if (e) e.stopPropagation();
     setCurrentIndex((prev) => (prev + 1) % newsItems.length);
@@ -45,11 +58,21 @@ export default function NewsClient({ newsItems, isHome }) {
           className="block bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl border border-gray-100 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer"
         >
           <div className="h-[250px] relative overflow-hidden bg-gray-50 flex items-center justify-center">
-            <img
-              src={getImageUrl(news)}
-              alt={news.news_title}
-              className="max-w-full max-h-full object-contain transition-transform duration-500 hover:scale-105"
-            />
+            {isImageFile(news.news_image) ? (
+              <img
+                src={getImageUrl(news)}
+                alt={news.news_title}
+                className="max-w-full max-h-full object-contain transition-transform duration-500 hover:scale-105"
+              />
+            ) : (
+              <div className="w-full h-full bg-slate-50 flex flex-col items-center justify-center text-slate-400 p-4">
+                <FileText size={48} className="text-red-500 mb-2" />
+                <span className="text-xs font-semibold uppercase tracking-wider text-slate-500">Document</span>
+                {news.news_image?.filename && (
+                  <span className="text-[10px] text-slate-400 truncate max-w-[80%] mt-1">{news.news_image.filename}</span>
+                )}
+              </div>
+            )}
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none"></div>
 
             {news.news_tag && (
@@ -113,11 +136,21 @@ export default function NewsClient({ newsItems, isHome }) {
             className="news-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg border border-gray-100 hover:border-indigo-200 transition-all duration-300 transform hover:-translate-y-1 block cursor-pointer"
           >
             <div className="h-[200px] relative overflow-hidden bg-gray-50 flex items-center justify-center">
-              <img
-                src={getImageUrl(news)}
-                alt={news.news_title}
-                className="max-w-full max-h-full object-contain transition-transform duration-500 hover:scale-110"
-              />
+              {isImageFile(news.news_image) ? (
+                <img
+                  src={getImageUrl(news)}
+                  alt={news.news_title}
+                  className="max-w-full max-h-full object-contain transition-transform duration-500 hover:scale-110"
+                />
+              ) : (
+                <div className="w-full h-full bg-slate-50 flex flex-col items-center justify-center text-slate-400 p-4">
+                  <FileText size={48} className="text-red-500 mb-2" />
+                  <span className="text-xs font-semibold uppercase tracking-wider text-slate-500">Document</span>
+                  {news.news_image?.filename && (
+                    <span className="text-[10px] text-slate-400 truncate max-w-[80%] mt-1">{news.news_image.filename}</span>
+                  )}
+                </div>
+              )}
               <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black/60 to-transparent"></div>
               {news.news_tag && (
                 <div className="absolute top-3 left-3">

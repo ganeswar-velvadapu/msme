@@ -1,6 +1,7 @@
 "use client";
 import { useState, useRef } from "react";
 import Link from "next/link";
+import { FileText } from "lucide-react";
 
 export default function EventsClient({ materialsScienceEvents, isHome }) {
   const scrollRef = useRef(null);
@@ -36,6 +37,18 @@ export default function EventsClient({ materialsScienceEvents, isHome }) {
     }
     return "/api/placeholder/400/400";
   };
+
+  const isImageFile = (mediaObj) => {
+    if (!mediaObj) return false;
+    if (mediaObj.mimeType && mediaObj.mimeType.startsWith("image/")) {
+      return true;
+    }
+    if (mediaObj.url) {
+      const url = mediaObj.url.toLowerCase();
+      return url.endsWith(".png") || url.endsWith(".jpg") || url.endsWith(".jpeg") || url.endsWith(".webp") || url.endsWith(".gif") || url.endsWith(".svg");
+    }
+    return false;
+  };
   const openEventModal = (event) => {
     setSelectedEvent(event);
     setIsModalOpen(true);
@@ -57,11 +70,27 @@ export default function EventsClient({ materialsScienceEvents, isHome }) {
         >
           <div className="relative">
             <div className="h-72 w-full bg-gray-100 flex items-center justify-center overflow-hidden">
-              <img
-                src={getImageUrl(selectedEvent)}
-                alt={selectedEvent.events_title}
-                className="max-w-full max-h-full object-contain"
-              />
+              {isImageFile(selectedEvent.events_image) ? (
+                <img
+                  src={getImageUrl(selectedEvent)}
+                  alt={selectedEvent.events_title}
+                  className="max-w-full max-h-full object-contain"
+                />
+              ) : selectedEvent.events_image?.url?.toLowerCase().endsWith(".pdf") || selectedEvent.events_image?.mimeType === "application/pdf" ? (
+                <iframe
+                  src={`${selectedEvent.events_image.url}#toolbar=0`}
+                  title={selectedEvent.events_title}
+                  className="w-full h-full border-none"
+                />
+              ) : (
+                <div className="w-full h-full bg-slate-50 flex flex-col items-center justify-center text-slate-400 p-4">
+                  <FileText size={48} className="text-red-500 mb-2" />
+                  <span className="text-xs font-semibold uppercase tracking-wider text-slate-500">Document Attachment</span>
+                  {selectedEvent.events_image?.filename && (
+                    <span className="text-[10px] text-slate-400 truncate max-w-[80%] mt-1">{selectedEvent.events_image.filename}</span>
+                  )}
+                </div>
+              )}
             </div>
 
             <button
@@ -154,6 +183,18 @@ export default function EventsClient({ materialsScienceEvents, isHome }) {
                   Download Brochure
                 </a>
               )}
+
+              {selectedEvent.events_image && selectedEvent.events_image.url && !isImageFile(selectedEvent.events_image) && (
+                <a
+                  href={selectedEvent.events_image.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 bg-white border border-black text-black hover:bg-gray-50 py-3 px-4 rounded-lg transition-colors duration-200 cursor-pointer"
+                >
+                  <FileText className="h-5 w-5 text-red-500" />
+                  Download Attached File
+                </a>
+              )}
             </div>
           </div>
         </div>
@@ -184,11 +225,21 @@ export default function EventsClient({ materialsScienceEvents, isHome }) {
           className="block bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl border border-gray-100 transition-all duration-300 transform hover:-translate-y-1"
         >
           <div className="h-52 relative overflow-hidden bg-gray-50 flex items-center justify-center">
-            <img
-              src={getImageUrl(event)}
-              alt={event.events_title}
-              className="max-w-full max-h-full object-contain transition-transform duration-500 hover:scale-105"
-            />
+            {isImageFile(event.events_image) ? (
+              <img
+                src={getImageUrl(event)}
+                alt={event.events_title}
+                className="max-w-full max-h-full object-contain transition-transform duration-500 hover:scale-105"
+              />
+            ) : (
+              <div className="w-full h-full bg-slate-50 flex flex-col items-center justify-center text-slate-400 p-4">
+                <FileText size={48} className="text-red-500 mb-2" />
+                <span className="text-xs font-semibold uppercase tracking-wider text-slate-500">Document</span>
+                {event.events_image?.filename && (
+                  <span className="text-[10px] text-slate-400 truncate max-w-[80%] mt-1">{event.events_image.filename}</span>
+                )}
+              </div>
+            )}
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none"></div>
 
             {event.events_tag && (
@@ -259,11 +310,21 @@ export default function EventsClient({ materialsScienceEvents, isHome }) {
                 onClick={() => openEventModal(event)}
               >
                 <div className="relative h-40 overflow-hidden bg-gray-50 flex items-center justify-center">
-                  <img
-                    src={getImageUrl(event)}
-                    alt={event.events_title}
-                    className="max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105"
-                  />
+                  {isImageFile(event.events_image) ? (
+                    <img
+                      src={getImageUrl(event)}
+                      alt={event.events_title}
+                      className="max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-slate-50 flex flex-col items-center justify-center text-slate-400 p-4">
+                      <FileText size={42} className="text-red-500 mb-1" />
+                      <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-500">Document</span>
+                      {event.events_image?.filename && (
+                        <span className="text-[9px] text-slate-400 truncate max-w-[80%] mt-0.5">{event.events_image.filename}</span>
+                      )}
+                    </div>
+                  )}
                   {event.events_tag && (
                     <div className="absolute top-3 left-3">
                       <span className="text-xs font-medium px-3 py-1 rounded-full bg-black text-white">

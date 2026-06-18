@@ -43,7 +43,7 @@
                 name : "news_image",
                 type : "upload",
                 relationTo : "media",
-                label : "Upload Image"
+                label : "Upload File"
             },
         ]
 

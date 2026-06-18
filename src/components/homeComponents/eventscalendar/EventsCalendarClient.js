@@ -51,6 +51,18 @@ export default function EventsCalendarClient({ materialsScienceEvents, isHome })
     return null;
   };
 
+  const isImageFile = (mediaObj) => {
+    if (!mediaObj) return false;
+    if (mediaObj.mimeType && mediaObj.mimeType.startsWith("image/")) {
+      return true;
+    }
+    if (mediaObj.url) {
+      const url = mediaObj.url.toLowerCase();
+      return url.endsWith(".png") || url.endsWith(".jpg") || url.endsWith(".jpeg") || url.endsWith(".webp") || url.endsWith(".gif") || url.endsWith(".svg");
+    }
+    return false;
+  };
+
   const closeEventModal = () => {
     setIsModalOpen(false);
   };
@@ -195,11 +207,27 @@ export default function EventsCalendarClient({ materialsScienceEvents, isHome })
             <div className="relative">
               {getImageUrl(selectedEvent) ? (
                 <div className="h-72 w-full bg-slate-50 flex items-center justify-center overflow-hidden border-b border-gray-100">
-                  <img
-                    src={getImageUrl(selectedEvent)}
-                    alt={selectedEvent.events_title}
-                    className="max-w-full max-h-full object-contain p-4"
-                  />
+                  {isImageFile(selectedEvent.events_image) ? (
+                    <img
+                      src={getImageUrl(selectedEvent)}
+                      alt={selectedEvent.events_title}
+                      className="max-w-full max-h-full object-contain p-4"
+                    />
+                  ) : selectedEvent.events_image?.url?.toLowerCase().endsWith(".pdf") || selectedEvent.events_image?.mimeType === "application/pdf" ? (
+                    <iframe
+                      src={`${selectedEvent.events_image.url}#toolbar=0`}
+                      title={selectedEvent.events_title}
+                      className="w-full h-full border-none"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-slate-50 flex flex-col items-center justify-center text-slate-400 p-4">
+                      <FileText size={48} className="text-red-500 mb-2" />
+                      <span className="text-xs font-semibold uppercase tracking-wider text-slate-500">Document Attachment</span>
+                      {selectedEvent.events_image?.filename && (
+                        <span className="text-[10px] text-slate-400 truncate max-w-[80%] mt-1">{selectedEvent.events_image.filename}</span>
+                      )}
+                    </div>
+                  )}
                 </div>
               ) : (
                 <div className="h-40 w-full bg-gradient-to-br from-gray-50 to-slate-100 flex items-center justify-center border-b border-gray-100">
@@ -285,6 +313,18 @@ export default function EventsCalendarClient({ materialsScienceEvents, isHome })
                   >
                     <FileText className="h-4 w-4 text-gray-500" />
                     Download Brochure
+                  </a>
+                )}
+
+                {selectedEvent.events_image && selectedEvent.events_image.url && !isImageFile(selectedEvent.events_image) && (
+                  <a
+                    href={selectedEvent.events_image.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-2 bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 active:bg-gray-100 font-semibold py-3 px-4 rounded-xl transition-all shadow-sm cursor-pointer"
+                  >
+                    <FileText className="h-4 w-4 text-red-500" />
+                    Download Attached File
                   </a>
                 )}
               </div>

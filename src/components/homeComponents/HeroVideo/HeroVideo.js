@@ -44,7 +44,7 @@ const HeroVideo = () => {
   }, []);
 
   return (
-    <div className="relative w-full overflow-hidden" style={{ height: "78vh" }}>
+    <div className="relative w-full overflow-hidden h-[calc(100vh-152px)] sm:h-[calc(100vh-184px)] md:h-[calc(100vh-200px)] min-h-[450px]">
       {/* Loading Indicator Overlay */}
       {isLoading && (
         <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/60 z-30 backdrop-blur-md transition-opacity duration-300">
@@ -66,7 +66,7 @@ const HeroVideo = () => {
       />
 
       {/* Dark overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-black/80" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/20 to-black/20" />
 
       {/* Mute/Unmute Floating Button */}
       {!isLoading && (

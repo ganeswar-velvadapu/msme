@@ -39,7 +39,7 @@ export const Events:CollectionConfig = {
         {
             name : "events_image",
             type : "upload",
-            label : "Upload Image",
+            label : "Upload File",
             relationTo : "media"
         },
         {
