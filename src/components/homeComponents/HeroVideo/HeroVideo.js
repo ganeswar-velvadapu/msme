@@ -44,7 +44,7 @@ const HeroVideo = () => {
   }, []);
 
   return (
-    <div className="relative w-full overflow-hidden h-[calc(100vh-152px)] sm:h-[calc(100vh-184px)] md:h-[calc(100vh-200px)] min-h-[450px]">
+    <div className="relative w-full overflow-hidden aspect-video md:aspect-auto md:h-[calc(100vh-200px)] md:min-h-[450px]">
       {/* Loading Indicator Overlay */}
       {isLoading && (
         <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/60 z-30 backdrop-blur-md transition-opacity duration-300">
