@@ -34,12 +34,14 @@ export const ResearchFacilities: CollectionConfig = {
         },
         {
             name: "research_facility_usage_charges",
-            type: "text",
+            type: "upload",
+            relationTo: "media",
             label: "Research Facility Usage charges",
         },
         {
             name: "research_facility_forms",
-            type: "text",
+            type: "upload",
+            relationTo: "media",
             label: "Research Facility Forms",
         },
         {

@@ -37,7 +37,7 @@ export default function DistinguishedFacultyProfile({ faculty }) {
                                             className="p-3 rounded-full bg-blue-100 hover:bg-blue-200 transition-colors"
                                             title="LinkedIn Profile"
                                         >
-                                            <img src="/linked_in_logo.webp" height={24} width={24} alt="LinkedIn" />
+                                            <img src="/icons/linked_in_logo.webp" height={24} width={24} alt="LinkedIn" />
                                         </a>
                                     )}
 
@@ -49,7 +49,7 @@ export default function DistinguishedFacultyProfile({ faculty }) {
                                             className="p-3 rounded-full bg-orange-100 hover:bg-orange-200 transition-colors"
                                             title="Google Scholar"
                                         >
-                                            <img src="/google_scholar.png" height={24} width={24} alt="Google Scholar" />
+                                            <img src="/icons/google_scholar.png" height={24} width={24} alt="Google Scholar" />
                                         </a>
                                     )}
 
@@ -61,7 +61,7 @@ export default function DistinguishedFacultyProfile({ faculty }) {
                                             className="p-3 rounded-full bg-blue-50 hover:bg-blue-100 transition-colors"
                                             title="Scopus Profile"
                                         >
-                                            <img src="/scopus.png" height={24} width={24} alt="Scopus" />
+                                            <img src="/icons/scopus.png" height={24} width={24} alt="Scopus" />
                                         </a>
                                     )}
 
@@ -73,7 +73,7 @@ export default function DistinguishedFacultyProfile({ faculty }) {
                                             className="p-3 rounded-full bg-green-50 hover:bg-green-100 transition-colors"
                                             title="ORCID Profile"
                                         >
-                                            <img src="/orcid.png" height={24} width={24} alt="ORCID" />
+                                            <img src="/icons/orcid.png" height={24} width={24} alt="ORCID" />
                                         </a>
                                     )}
 

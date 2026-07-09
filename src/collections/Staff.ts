@@ -22,6 +22,11 @@ export const Staff: CollectionConfig = {
             label: "Staff Designation"
         },
         {
+            name: "staff_personal_webpage",
+            type: "text",
+            label: "Staff Personal Web Page"
+        },
+        {
             name: "staff_email",
             type: "email",
 

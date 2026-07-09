@@ -151,7 +151,18 @@ export default function ResearchFacilitiesClient({ facilities }) {
                                         <CreditCard className="text-gray-400 mt-1 flex-shrink-0" size={18} />
                                         <div>
                                             <p className="text-sm font-medium text-gray-500">Usage Charges</p>
-                                            <p className="text-gray-900">{selectedFacility.research_facility_usage_charges || "N/A"}</p>
+                                            {selectedFacility.research_facility_usage_charges && typeof selectedFacility.research_facility_usage_charges === 'object' && selectedFacility.research_facility_usage_charges.url ? (
+                                                <a
+                                                    href={selectedFacility.research_facility_usage_charges.url}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="text-blue-600 hover:underline text-sm font-medium"
+                                                >
+                                                    View Usage Charges
+                                                </a>
+                                            ) : (
+                                                <p className="text-gray-900">{selectedFacility.research_facility_usage_charges || "N/A"}</p>
+                                            )}
                                         </div>
                                     </div>
 
@@ -160,7 +171,18 @@ export default function ResearchFacilitiesClient({ facilities }) {
                                             <FileText className="text-gray-400 mt-1 flex-shrink-0" size={18} />
                                             <div>
                                                 <p className="text-sm font-medium text-gray-500">Forms</p>
-                                                <p className="text-gray-900">{selectedFacility.research_facility_forms}</p>
+                                                {typeof selectedFacility.research_facility_forms === 'object' && selectedFacility.research_facility_forms.url ? (
+                                                    <a
+                                                        href={selectedFacility.research_facility_forms.url}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className="text-blue-600 hover:underline text-sm font-medium"
+                                                    >
+                                                        Download Form
+                                                    </a>
+                                                ) : (
+                                                    <p className="text-gray-900">{selectedFacility.research_facility_forms}</p>
+                                                )}
                                             </div>
                                         </div>
                                     )}

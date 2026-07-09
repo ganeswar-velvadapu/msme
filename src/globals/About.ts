@@ -85,5 +85,11 @@ export const About: GlobalConfig = {
                 },
             ]
         },
+        {
+            name: "department_brochure",
+            type: "upload",
+            relationTo: "media",
+            label: "Department Brochure"
+        },
     ]
 }

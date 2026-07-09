@@ -361,8 +361,8 @@ export interface Researchfacility {
   research_facility_fic?: string | null;
   research_facility_fic_email?: string | null;
   research_facility_staff_incharge?: string | null;
-  research_facility_usage_charges?: string | null;
-  research_facility_forms?: string | null;
+  research_facility_usage_charges?: (number | null) | Media;
+  research_facility_forms?: (number | null) | Media;
   research_facility_image_url?: (number | null) | Media;
   priority: 'high' | 'low';
   writeup?: string | null;
@@ -404,6 +404,7 @@ export interface Staff {
   staff_image?: (number | null) | Media;
   staff_name?: string | null;
   staff_designation?: string | null;
+  staff_personal_webpage?: string | null;
   staff_email?: string | null;
   staff_education?: string | null;
   staff_office?: string | null;
@@ -1069,6 +1070,7 @@ export interface StaffSelect<T extends boolean = true> {
   staff_image?: T;
   staff_name?: T;
   staff_designation?: T;
+  staff_personal_webpage?: T;
   staff_email?: T;
   staff_education?: T;
   staff_office?: T;
@@ -1423,6 +1425,7 @@ export interface About {
     link_to_program?: string | null;
     id?: string | null;
   }[];
+  department_brochure?: (number | null) | Media;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -1584,6 +1587,7 @@ export interface AboutSelect<T extends boolean = true> {
         link_to_program?: T;
         id?: T;
       };
+  department_brochure?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

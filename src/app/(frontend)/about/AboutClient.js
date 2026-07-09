@@ -1,7 +1,7 @@
 "use client";
 import { useState, useMemo, useEffect, useRef } from "react";
 import { useSearchParams } from "next/navigation";
-import { Search, ExternalLink, ChevronLeft, ChevronRight, Play } from "lucide-react";
+import { Search, ExternalLink, ChevronLeft, ChevronRight, Play, FileDown } from "lucide-react";
 
 // Robust helper to extract and clean YouTube embed URL from watch/playlist/share links
 function getYouTubeEmbedUrl(url) {
@@ -156,6 +156,7 @@ export default function AboutClient({
     about_the_department = {},
     timeline_at_iith = [],
     Explore = [],
+    department_brochure,
   } = aboutContent;
 
   // Fallback defaults in case the PostgreSQL global data was reset during schema synchronization
@@ -301,6 +302,38 @@ export default function AboutClient({
               </div>
             </div>
           )}
+
+          {/* Department Brochure */}
+          {(() => {
+            const brochureUrl = typeof department_brochure === 'object' ? department_brochure?.url : department_brochure;
+            if (!brochureUrl) return null;
+            return (
+              <div className="bg-gray-100 p-6 rounded-lg">
+                <h3 className="text-xl font-semibold mb-4 text-center text-black">Department Brochure</h3>
+                <div className="w-full border border-gray-200 rounded-lg overflow-hidden bg-white shadow-sm">
+                  <iframe
+                    src={brochureUrl}
+                    className="w-full h-[600px] border-none"
+                    title="Department Brochure PDF"
+                  />
+                </div>
+                <div className="mt-4 flex justify-center">
+                  <a
+                    href={brochureUrl}
+                    download
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-5 py-2.5 rounded-lg text-sm transition-colors duration-150 inline-flex items-center gap-2 cursor-pointer shadow-md"
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                    </svg>
+                    Download
+                  </a>
+                </div>
+              </div>
+            );
+          })()}
         </div>
       )}
 

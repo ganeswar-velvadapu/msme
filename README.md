@@ -1,8 +1,23 @@
 Todo(client) -
-- staff page navbar issue - done
-- Video issue in home page - done
-- On click on photos it should show information - done (staff, PhD, and research facilities cards are fully clickable)
-- Increase the size of news in home page - done (redirects to individual news pages now with optimized heights)
+- Need to add a field for staff - personal web page 
+- In staff page change the order of display first staff Name and then staff designation
+- In about 
+- In facilities replace  {
+            name: "research_facility_usage_charges",
+            type: "text",
+            label: "Research Facility Usage charges",
+        },
+        {
+            name: "research_facility_forms",
+            type: "text",
+            label: "Research Facility Forms",
+        },
+
+        these 2 fields to accept files instead of text 
+- In about add a file field for department brochure and display it after hod message 
+- put google_scholar, linked_in_logo, orcidm scopus under icons folder and update imports 
+- Remove unnecessary icons
+    
 
 Todo(server) -
 - take backup of media and sql files 

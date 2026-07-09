@@ -8,8 +8,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "schema-create": "PAYLOAD_CONFIG_PATH=./payload.config.ts payload migrate:create",
-    "schema-refresh": "PAYLOAD_CONFIG_PATH=./payload.config.ts payload migrate:refresh"
+    "generate" : "pnpm payload migrate:create",
+    "migrate" : "pnpm payload migrate",
+    "generate-types" : "pnpm payload generate"
   },
   "dependencies": {
     "@payloadcms/db-postgres": "^3.85.1",

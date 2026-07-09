@@ -7,6 +7,7 @@ import {
   MapPin,
   GraduationCap,
   BookOpen,
+  Globe,
 } from "lucide-react";
 import StaffCard from "../../../../components/people/StaffCard";
 
@@ -149,6 +150,20 @@ export default function StaffClient({ staffList }) {
                         Office: {selectedStaff?.staff_office ?? "N/A"}
                       </span>
                     </div>
+
+                    {selectedStaff?.staff_personal_webpage && (
+                      <div className="flex items-center gap-2">
+                        <Globe size={18} className="text-gray-500" />
+                        <a
+                          href={selectedStaff.staff_personal_webpage.startsWith("http") ? selectedStaff.staff_personal_webpage : `https://${selectedStaff.staff_personal_webpage}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-blue-600 hover:underline"
+                        >
+                          Personal Website
+                        </a>
+                      </div>
+                    )}
                   </div>
 
                   <div className="mb-6">
