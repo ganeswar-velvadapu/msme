@@ -10,8 +10,8 @@ const inter = localFont({
 });
 
 export const metadata = {
-  title: "Depeartment of Materials Science and Metallurgy",
-  description: "Depeartment of Materials Science and Metallurgy",
+  title: "Department of Materials Science and Metallurgy",
+  description: "Department of Materials Science and Metallurgy",
 };
 
 export default function RootLayout({ children }) {
