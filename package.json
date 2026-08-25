@@ -10,7 +10,7 @@
     "lint": "next lint",
     "generate" : "pnpm payload migrate:create",
     "migrate" : "pnpm payload migrate",
-    "generate-types" : "pnpm payload generate"
+    "generate-types" : "pnpm payload generate:types"
   },
   "dependencies": {
     "@payloadcms/db-postgres": "^3.85.1",

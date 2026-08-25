@@ -512,7 +512,13 @@ export interface BtechP {
           id?: string | null;
         }[]
       | null;
-    msme_curriculum_link?: (number | null) | Media;
+    curriculum_files?:
+      | {
+          curriculum_heading?: string | null;
+          curriculum_file?: (number | null) | Media;
+          id?: string | null;
+        }[]
+      | null;
   };
   updatedAt: string;
   createdAt: string;
@@ -1179,7 +1185,13 @@ export interface BtechPSelect<T extends boolean = true> {
               curriculum_description?: T;
               id?: T;
             };
-        msme_curriculum_link?: T;
+        curriculum_files?:
+          | T
+          | {
+              curriculum_heading?: T;
+              curriculum_file?: T;
+              id?: T;
+            };
       };
   updatedAt?: T;
   createdAt?: T;
