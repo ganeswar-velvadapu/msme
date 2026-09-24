@@ -361,8 +361,9 @@ export interface Researchfacility {
   research_facility_fic?: string | null;
   research_facility_fic_email?: string | null;
   research_facility_staff_incharge?: string | null;
-  research_facility_usage_charges?: (number | null) | Media;
-  research_facility_forms?: (number | null) | Media;
+  research_facility_staff_email?: string | null;
+  facility_usage_charges?: string | null;
+  research_facility_usage_file?: (number | null) | Media;
   research_facility_image_url?: (number | null) | Media;
   priority: 'high' | 'low';
   writeup?: string | null;
@@ -997,8 +998,9 @@ export interface ResearchfacilitiesSelect<T extends boolean = true> {
   research_facility_fic?: T;
   research_facility_fic_email?: T;
   research_facility_staff_incharge?: T;
-  research_facility_usage_charges?: T;
-  research_facility_forms?: T;
+  research_facility_staff_email?: T;
+  facility_usage_charges?: T;
+  research_facility_usage_file?: T;
   research_facility_image_url?: T;
   priority?: T;
   writeup?: T;
