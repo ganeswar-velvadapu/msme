@@ -49,6 +49,12 @@ export const ResearchFacilities: CollectionConfig = {
       label: "Research Facility usage charges file uplaod",
     },
     {
+      name: "research_facility_application_form",
+      type: "upload",
+      relationTo: "media",
+      label: "Application form upload",
+    },
+    {
       name: "research_facility_image_url",
       type: "upload",
       relationTo: "media",

@@ -337,6 +337,35 @@ export default function ResearchFacilitiesClient({ facilities }) {
                                         </div>
                                     )}
 
+                                    {/* Application Form */}
+                                    {selectedFacility.research_facility_application_form?.url && (
+                                        <div className="flex items-start gap-3">
+                                            <FileText
+                                                className="text-gray-400 mt-1 flex-shrink-0"
+                                                size={18}
+                                            />
+
+                                            <div className="min-w-0">
+                                                <p className="text-sm font-medium text-gray-500">
+                                                    Application Form
+                                                </p>
+
+                                                <a
+                                                    href={
+                                                        selectedFacility
+                                                            .research_facility_application_form
+                                                            .url
+                                                    }
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="text-blue-600 hover:underline text-sm font-medium"
+                                                >
+                                                    Download Application Form
+                                                </a>
+                                            </div>
+                                        </div>
+                                    )}
+
                                     {/* Booking Form */}
                                     {selectedFacility.facility_usage_charges && (
                                         <div className="flex items-start gap-3">
