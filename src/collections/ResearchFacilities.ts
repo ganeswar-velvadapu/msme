@@ -40,7 +40,7 @@ export const ResearchFacilities: CollectionConfig = {
     {
       name: "facility_usage_charges",
       type: "text",
-      label: "Research Facility usage charges form",
+      label: "Research Facility booking form",
     },
     {
       name: "research_facility_usage_file",
